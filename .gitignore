@@ -1,0 +1,9 @@
+*.jpeg
+*.jpg
+*.svg
+*.sql
+*.png
+*.pyc
+media/
+.env
+__pycache__/
