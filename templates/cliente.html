@@ -5,52 +5,84 @@
 {% endblock %}
 
 {% block body_content %}
-    <h1>Libro de reclamaciones</h1>
-
-    <form action="" method="post">
-        <label for="date_id">Fecha de la ocurrencia:</label>
-        <input type="date" name="date" id="date_id" value="" required>
-        <label for="id_sheet">ID book</label>
-        <input type="hidden" name="nro_sheet" id="id_sheet" value="database">
+    <header>
+        <div>
+            <h1>Libro de reclamaciones</h1>
+        </div>
+    </header>
+    <section id="formulario">
        
-        <fieldset>
-            <legend><strong>Identificacion del cliente</strong></legend>
-            <label for="name_id">Nombre:</label>
-            <input type="text" name="name" id="name_id" value="" required>
-
-            <input type="radio" id="dni" name="type_doc" value="DNI">
-            <label for="type_doc">DNI</label>
-
-            <input type="radio" id="ce" name="type_doc" value="CE">
-            <label for="type_doc">CE</label>
-
-            <input type="radio" id="ruc" name="type_doc" value="ruc">
-            <label for="type_doc">RUC</label>
-            <input type="number" name="document" id="document_id" maxlength="10" 
-                value="" required>
+        <form action="" method="post">
+            <div>
+                <label for="date_id">Fecha de la ocurrencia:</label>
+                <input type="date" name="date" id="date_id" value="" required>
+            </div>
+            <div>
+                <label for="id_sheet">ID book</label>
+                <input type="hidden" name="nro_sheet" id="id_sheet" value="database">
+            </div>
+            
+            <fieldset id="info_cliente">
+                <legend><strong>Identificacion del cliente</strong></legend>
+                    <div>
+                        <label for="name_id"></label>
+                        <input type="text" name="name" id="name_id" value=""
+                            placeholder="Nombres" required>
+                    </div>
+                    <div>
+                        <input type="radio" id="dni" name="type_doc" value="DNI">
+                        <label for="type_doc">DNI</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ce" name="type_doc" value="CE">
+                        <label for="type_doc">CE</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ruc" name="type_doc" value="ruc">
+                        <label for="type_doc">RUC</label>
+                        <input type="number" name="document" id="document_id" 
+                            maxlength="10" value="" placeholder="Nro de documento" required>
+                    </div>
+                    <div>
+                        <label for="domicilio_id"></label>
+                        <textarea name="domicilio" id="domicilio_id" rows="4" cols="30" 
+                            placeholder="Domicilio" required></textarea>
+                    </div>
+                    <div>
+                        <label for="contact_id"></label>
+                        <input type="text" name="contact" id="contact_id" value=""
+                            placeholder="Telefono/Email" required>
+                    </div>
        
-            <label for="domicilio_id">Domicilio:</label>
-            <textarea name="domicilio" id="domicilio_id" rows="4" cols="30" required></textarea>
-            <label for="contact_id">Telefono/Email</label>
-            <input type="text" name="contact" id="contact_id" value="" required>
-        </fieldset>
+            </fieldset>
         
-        <fieldset>
-            <legend><strong>Detalle de la reclamacion:</strong></legend>
-            <label for="time_id">Hora de la ocurrencia:</label>
-            <input type="time" name="time" id="time_id" value="">
-            <input type="radio" id="reclamo" name="type_obj" value="reclamo">
-            <label for="reclamo">Reclamo</label>
-            <input type="radio" id="queja" name="type_obj" value="queja">
-            <label for="queja">Queja</label>
-            <label for="request_id">Monto reclamado:</label> 
-            <input type="number" name="amount" id="request_id" value="">
-            <label for="detail_id"></label> 
-            <textarea name="detalle" id="detail_id" placeholder="Detalle"
-                rows="8" cols="40" required></textarea>
-        </fieldset>
-        
-        
-    </form>
+            <fieldset id="reclamo">
+                <legend><strong>Detalle de la reclamacion:</strong></legend>
+
+                <div>
+                    <label for="time_id">Hora de la ocurrencia:</label>
+                    <input type="time" name="time" id="time_id" value="">
+                </div>
+                <div>
+                    <input type="radio" id="reclamo" name="type_obj" value="reclamo">
+                    <label for="reclamo">Reclamo</label>
+                </div>
+                <div>
+                    <input type="radio" id="queja" name="type_obj" value="queja">
+                    <label for="queja">Queja</label>
+                </div>
+                <div>
+                    <label for="request_id">Monto reclamado:</label> 
+                    <input type="number" name="amount" id="request_id" value="">
+                </div>
+                <div>
+                    <label for="detail_id"></label> 
+                    <textarea name="detalle" id="detail_id" placeholder="Detalle"
+                        rows="8" cols="40" required></textarea>
+                </div>
+                
+            </fieldset>
+        </form>
+    </section>
     
 {% endblock %}
