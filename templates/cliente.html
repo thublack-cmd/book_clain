@@ -6,12 +6,15 @@
 
 {% block body_content %}
     <header>
-        <div>
-            <h1>Libro de reclamaciones</h1>
-        </div>
+        <h1>Sala Cubatta</h1>
+        <span>Fecha: {{ dia }}</span>
     </header>
-    <section id="formulario">
-       
+
+    <div class="encabezado">
+        <h1>Libro de reclamaciones</h1>
+    </div>
+
+    <section id="form_section">
         <form action="" method="post">
             <div>
                 <label for="date_id">Fecha de la ocurrencia:</label>
@@ -22,13 +25,14 @@
                 <input type="hidden" name="nro_sheet" id="id_sheet" value="database">
             </div>
             
-            <fieldset id="info_cliente">
+            <fieldset>
                 <legend><strong>Identificacion del cliente</strong></legend>
-                    <div>
-                        <label for="name_id"></label>
-                        <input type="text" name="name" id="name_id" value=""
-                            placeholder="Nombres" required>
-                    </div>
+                <div>
+                    <label for="name_id"></label>
+                    <input type="text" name="name" id="name_id" value=""
+                        placeholder="Nombres" required>
+                </div>
+                <div>
                     <div>
                         <input type="radio" id="dni" name="type_doc" value="DNI">
                         <label for="type_doc">DNI</label>
@@ -40,19 +44,22 @@
                     <div>
                         <input type="radio" id="ruc" name="type_doc" value="ruc">
                         <label for="type_doc">RUC</label>
-                        <input type="number" name="document" id="document_id" 
-                            maxlength="10" value="" placeholder="Nro de documento" required>
                     </div>
-                    <div>
-                        <label for="domicilio_id"></label>
-                        <textarea name="domicilio" id="domicilio_id" rows="4" cols="30" 
-                            placeholder="Domicilio" required></textarea>
-                    </div>
-                    <div>
-                        <label for="contact_id"></label>
-                        <input type="text" name="contact" id="contact_id" value=""
-                            placeholder="Telefono/Email" required>
-                    </div>
+                </div>
+                <div>
+                    <input type="number" name="document" id="document_id" 
+                        maxlength="10" value="" placeholder="Nro de documento" required>
+                </div>
+                <div>
+                    <label for="domicilio_id"></label>
+                    <textarea name="domicilio" id="domicilio_id" 
+                        placeholder="Domicilio" required></textarea>
+                </div>
+                <div>
+                    <label for="contact_id"></label>
+                    <input type="text" name="contact" id="contact_id" value=""
+                        placeholder="Telefono/Email" required>
+                </div>
        
             </fieldset>
         
@@ -72,13 +79,14 @@
                     <label for="queja">Queja</label>
                 </div>
                 <div>
-                    <label for="request_id">Monto reclamado:</label> 
-                    <input type="number" name="amount" id="request_id" value="">
+                    <label for="request_id"></label> 
+                    <input type="number" name="amount" id="request_id"
+                        placeholder="Monto reclamado" value="">
                 </div>
                 <div>
                     <label for="detail_id"></label> 
                     <textarea name="detalle" id="detail_id" placeholder="Detalle"
-                        rows="8" cols="40" required></textarea>
+                        required></textarea>
                 </div>
                 
             </fieldset>
