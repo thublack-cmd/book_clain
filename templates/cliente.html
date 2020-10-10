@@ -16,23 +16,16 @@
 
     <section id="form_section">
         <form action="" method="post">
-            <div>
-                <label for="date_id">Fecha de la ocurrencia:</label>
-                <input type="date" name="date" id="date_id" value="" required>
-            </div>
-            <div>
-                <label for="id_sheet">ID book</label>
-                <input type="hidden" name="nro_sheet" id="id_sheet" value="database">
-            </div>
-            
-            <fieldset>
-                <legend><strong>Identificacion del cliente</strong></legend>
-                <div>
-                    <label for="name_id"></label>
-                    <input type="text" name="name" id="name_id" value=""
-                        placeholder="Nombres" required>
+            <fieldset id="customer">
+                <div class="section_head">
+                    <strong>Identificacion del cliente</strong>
                 </div>
                 <div>
+                    <label for="name_id"></label>
+                    <input type="text" class="input_in" name="name" id="name_id" value=""
+                        placeholder="Nombres" required>
+                </div>
+                <div class="document">
                     <div>
                         <input type="radio" id="dni" name="type_doc" value="DNI">
                         <label for="type_doc">DNI</label>
@@ -45,40 +38,42 @@
                         <input type="radio" id="ruc" name="type_doc" value="ruc">
                         <label for="type_doc">RUC</label>
                     </div>
+                    <div id="nro_doc">
+                        <input type="number" name="document"  maxlength="10" value="" 
+                            placeholder="Nro de documento" required>
+                    </div>
                 </div>
                 <div>
-                    <input type="number" name="document" id="document_id" 
-                        maxlength="10" value="" placeholder="Nro de documento" required>
+                    <label for="contact_id"></label>
+                    <input type="email" name="contact" id="contact_id" value=""
+                        placeholder="Correo electronico" class="input_in" required>
                 </div>
                 <div>
                     <label for="domicilio_id"></label>
                     <textarea name="domicilio" id="domicilio_id" 
                         placeholder="Domicilio" required></textarea>
                 </div>
-                <div>
-                    <label for="contact_id"></label>
-                    <input type="text" name="contact" id="contact_id" value=""
-                        placeholder="Telefono/Email" required>
-                </div>
-       
             </fieldset>
         
             <fieldset id="reclamo">
-                <legend><strong>Detalle de la reclamacion:</strong></legend>
-
-                <div>
-                    <label for="time_id">Hora de la ocurrencia:</label>
-                    <input type="time" name="time" id="time_id" value="">
+                <div class="section_head">
+                    <strong>Detalle de la reclamacion</strong>
+                </div>
+                <div id="cont_fecha">
+                    <label for="date_id">Fecha y hora de la ocurrencia:</label>
+                    <input type="datetime-local" name="date" id="date_id" value="" required>
                 </div>
                 <div>
-                    <input type="radio" id="reclamo" name="type_obj" value="reclamo">
-                    <label for="reclamo">Reclamo</label>
+                    <div class="type_custo">
+                        <input type="radio" id="reclamo" name="type_obj" value="reclamo">
+                        <label for="reclamo">Reclamo</label>
+                    </div>
+                    <div class="type_custo">
+                        <input type="radio" id="queja" name="type_obj" value="queja">
+                        <label for="queja">Queja</label>
+                    </div>
                 </div>
-                <div>
-                    <input type="radio" id="queja" name="type_obj" value="queja">
-                    <label for="queja">Queja</label>
-                </div>
-                <div>
+                <div id="amount">
                     <label for="request_id"></label> 
                     <input type="number" name="amount" id="request_id"
                         placeholder="Monto reclamado" value="">
