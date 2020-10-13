@@ -15,7 +15,7 @@
     </div>
 
     <section id="form_section">
-        <form action="" method="post">
+        <form action="{{ url_for('client_view') }}" method="post">
             <fieldset id="customer">
                 <div class="section_head">
                     <strong>Identificacion del cliente</strong>
@@ -80,11 +80,12 @@
                 </div>
                 <div>
                     <label for="detail_id"></label> 
-                    <textarea name="detalle" id="detail_id" placeholder="Detalle"
+                    <textarea name="detail" id="detail_id" placeholder="Detalle"
                         required></textarea>
                 </div>
                 
             </fieldset>
+            <button type="submit">Registrar</button>
         </form>
     </section>
     
