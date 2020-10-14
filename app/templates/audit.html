@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block head_content %} 
+    <title>Gestion de reclamaciones || Cubatta</title> 
+{% endblock %} 
+
+{% block body_content %}
+
+    {% include 'nav.html' %}
+
+    <div class="encabezado">
+        <h1>Gestion de reclamos/quejas</h1>
+    </div>
+
+    <section id="search_section">
+        <form action="" method="post" id="sh_form">
+            <label for="search_id">
+                <input type="text" id="search_id" name="search" value="" placeholder="Ingrese
+                texto a buscar">
+            </label>
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+    <section id="list_section">
+        <div id="pending">
+            <table>
+                <h3>Pendientes</h3>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del cliente</th>
+                    <th>Correo electronico</th>
+                    <th>Detalle</th>
+                </tr>
+                {% for r in reclamos %}
+                    {% if not r.answer_id %}
+                        <tr>
+                            <td><a href="{{ url_for('discharge_view', id=r.id) }}">{{ r.id }}</td>
+                            <td>{{ r.name }}</td>
+                            <td>{{ r.email }}</td>
+                            <td>{{ r.detail }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div id="last_five">
+            <table>
+                <h3>Ultimos 5</h3>
+                    <tr>
+                        <th>Nombre del cliente</th>
+                        <th>Correo electronico</th>
+                        <th>Detalle</th>
+                    </tr>
+                {% for r in reclamos %}
+                    {% if r.answer_id %}
+                        <tr>
+                            <td>{{ r.name }}</td>
+                            <td>{{ r.email }}</td>
+                            <td>{{ r.detail }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+    
+{% endblock %}

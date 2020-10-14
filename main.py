@@ -32,4 +32,20 @@ def client_view():
     return render_template('cliente.html', dia=now)
 
 
-db.create_all()
+@app.route('/gestion')
+def audit_view():
+    q = Clain.query.all()
+    return render_template('audit.html', reclamos=q)
+
+
+@app.route('/<int:id>/descargo')
+def discharge_view(id):
+
+    q = Clain.query.get(id)
+
+    data = {
+            'q': q,
+            }
+    return render_template('discharge.html', **data)
+
+# db.create_all()

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Descargo de reclamo || Cubatta</title>
+{% endblock %}
+
+{% block body_content %}
+
+    {% include 'nav.html' %}
+
+    <table>
+        <tr>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Detalle</th>
+        </tr>
+        <tr>
+            <th>{{q.name}}</th>
+            <th>{{q.date}}</th>
+            <th>{{q.detail}}</th>
+        </tr>
+    </table>
+
+    <form action="" method="post">
+        <label for="detail_anser">
+            <textarea name="detail_dis" id="detail_answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
+        </label>
+        
+    <button type="submit">Registrar</button>
+    </form>
+    
+    
+{% endblock %}
