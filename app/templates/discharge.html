@@ -8,6 +8,11 @@
 
     {% include 'nav.html' %}
 
+    <div class="encabezado">
+        <h1>Descargo del reclamo nro {{ q.id }}</h1>
+        
+    </div>    
+
     <table>
         <tr>
             <th>Cliente</th>
@@ -21,13 +26,14 @@
         </tr>
     </table>
 
-    <form action="" method="post">
-        <label for="detail_anser">
-            <textarea name="detail_dis" id="detail_answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
-        </label>
-        
-    <button type="submit">Registrar</button>
-    </form>
-    
+    <section id="dis_form">
+        <form action="" method="post">
+            <label for="detail_answer">
+                <textarea name="detail_dis" id="detail_answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
+            </label>
+            
+        <button type="submit">Registrar</button>
+        </form>
+    </section>
     
 {% endblock %}

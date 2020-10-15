@@ -51,14 +51,19 @@ html {
 
 /* discharge */
 #detail_answer {
-    background-color: #323232;
+/*     background-color: #323232; */
     width: 80%;
-    margin: 4rem auto;
-    font-size: 2.5rem;
-    color: white;
- }
+/*     margin: 4rem auto; */
+/*     font-size: 2.5rem; */
+/*     color: white; */
+}
 
- form button {
+#dis_form form{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#dis_form form button {
     float: right;
  }
 
@@ -98,7 +103,7 @@ header span {
     width: 100%;
  }
 
-section form {
+#form_section form {
     width: inherit;
     display: inline-flex;
     justify-content: center;
