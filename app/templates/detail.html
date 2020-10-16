@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Detalle de reclamo || Cubatta</title>
+{% endblock %}
+
+{% block body_content %}
+{% include 'nav.html' %}
+
+    <div class="encabezado">
+        <h1>Descargo del reclamo nro {{ q.id }}</h1>
+    </div>    
+
+
+    <table>
+        <h3>Pendientes</h3>
+        <tr>
+            <th>Nombre del cliente</th>
+            <th>Correo electronico</th>
+            <th>Detalle</th>
+            <th>Descargo</th>
+        </tr>
+        <tr>
+            <td>{{ q.name }}</td>
+            <td>{{ q.email }}</td>
+            <td>{{ q.detail }}</td>
+            <td>{{ q.answer_id.answer_con }}</td>                    
+        </tr>
+    </table>
+
+{% endblock %}

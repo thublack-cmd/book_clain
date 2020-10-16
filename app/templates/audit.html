@@ -8,6 +8,16 @@
 
     {% include 'nav.html' %}
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <div class="encabezado">
         <h1>Gestion de reclamos/quejas</h1>
     </div>
@@ -54,7 +64,8 @@
                 {% for r in reclamos %}
                     {% if r.answer_id %}
                         <tr>
-                            <td>{{ r.name }}</td>
+                            <td><a href="{{ url_for('processed_view', id=r.id)
+                                    }}">{{ r.name }}</td>
                             <td>{{ r.email }}</td>
                             <td>{{ r.detail }}</td>
                         </tr>
