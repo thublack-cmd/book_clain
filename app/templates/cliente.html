@@ -11,6 +11,16 @@
         <span>Fecha: {{ dia }}</span>
     </header>
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <div class="encabezado">
         <h1>Libro de reclamaciones</h1>
     </div>

@@ -27,7 +27,7 @@
 
     <section id="dis_form">
         <form action="{{ url_for('audit_view') }}" method="post">
-            <input type="hidden" name="id_clain" value="{{ id }}">
+            <input type="hidden" name="id_clain" value="{{ q.id }}">
             <label for="detail_answer">
                 <textarea name="detail_dis" id="detail_answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
             </label>

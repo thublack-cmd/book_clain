@@ -3,6 +3,7 @@ from flask import render_template, Flask, request, redirect, url_for, flash
 
 from app.config import app
 from app.models import db, Clain, Answer
+from app.mail import send_mail_open, send_mail_close
 
 # from Python
 from datetime import date, datetime
@@ -27,7 +28,14 @@ def client_view():
         db.session.add(new_clain)
         db.session.commit()
 
-        return f'Registro exitoso, le responderemos a su correo {request.form["contact"]} en breve'
+        data = {
+                'email': request.form['contact'],
+                'tipo': request.form['type_obj'],
+                }
+        send_mail_open(**data)
+
+        flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
+        return redirect(url_for('client_view'))
 
     return render_template('cliente.html', dia=now)
 
@@ -41,7 +49,17 @@ def audit_view():
         db.session.add(new_discharge)
         db.session.commit()
 
+    # Save id discharge on clain table
         add_discharge(request.form['id_clain'])
+
+    # Get row of Clain table
+        q = Clain.query.get(request.form['id_clain'])
+        data = {
+                'email': q.email,
+                'tipo': q.type_claim,
+                'resp': request.form['detail_dis']
+                }
+        send_mail_close(**data)
 
         flash('Descargo guardado exitosamente')
 
@@ -67,7 +85,6 @@ def discharge_view(id):
     if not q.answer_id:
         data = {
                 'q': q,
-                'id': id,
                 }
         return render_template('discharge.html', **data)
 

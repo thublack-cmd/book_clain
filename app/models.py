@@ -18,6 +18,7 @@ class Clain(db.Model):
     type_claim = db.Column(db.String(6), nullable=False)
     amount = db.Column(db.Integer)
     detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
     answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
     updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
@@ -31,7 +32,6 @@ class Answer(db.Model):
     answer_con = db.Column(db.String(500), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
     updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
-    clain_id = db.Column(db.Integer, db.ForeignKey('clain.id'))
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
