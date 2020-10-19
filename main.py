@@ -1,7 +1,8 @@
 # from Flask
 from flask import render_template, Flask, request, redirect, url_for, flash
+from flask_login import login_required, current_user
 
-from app.config import app
+from app.config import app, login_manager
 from app.models import db, Clain, Answer
 from app.mail import send_mail_open, send_mail_close
 
@@ -9,6 +10,31 @@ from app.mail import send_mail_open, send_mail_close
 from datetime import date, datetime
 
 now = (date.today()).strftime('%d-%m-%Y')
+
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    flash('Debe ingresar para ver ese contenido')
+    return redirect('/login')
+
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    if request.method == 'POST':
+        pass
+    return render_template('signup.html')
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('audit_view'))
+
+    if request.method == 'POST':
+        pass
+
+    return render_template('login.html')
+
 
 @app.route('/', methods=['POST', 'GET'])
 def client_view():
@@ -41,6 +67,7 @@ def client_view():
 
 
 @app.route('/gestion', methods=['GET', 'POST'])
+@login_required
 def audit_view():
     if request.method == 'POST':
         new_discharge = Answer(
@@ -78,6 +105,7 @@ def add_discharge(id_clain):
 
 
 @app.route('/<int:id>/descargo')
+@login_required
 def discharge_view(id):
 
     q = Clain.query.get(id)
@@ -91,7 +119,9 @@ def discharge_view(id):
     flash('Ese reclamo ya fue procesado')
     return redirect(url_for('audit_view'))
 
+
 @app.route('/<int:id>/detalle')
+@login_required
 def processed_view(id):
     q = Clain.query.get(id)
 

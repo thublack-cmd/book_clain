@@ -1,6 +1,8 @@
 # Configuracion del motor de la base de datos
 from flask import Flask
 from flask_mail import Mail
+from flask_login import LoginManager
+
 
 app = Flask(__name__)
 app.secret_key = "b'_5#y2LF4Q8z\n\xec]/"
@@ -15,3 +17,4 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app)
+login_manager = LoginManager(app)

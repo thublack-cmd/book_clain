@@ -1,6 +1,8 @@
 # Models database
 from flask_sqlalchemy import SQLAlchemy
-from .config import app
+from flask_login import UserMixin
+
+from .config import app, login_manager
 
 import datetime
 
@@ -35,3 +37,43 @@ class Answer(db.Model):
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
+
+
+class User(db.Model):
+
+    username = db.Column(db.String(15), nullable=False, primary_key=True)
+    password = db.Column(db.String(150), nullable=False)
+    is_superuser = db.Column(db.Boolean, nullable=True, default=False)
+    first_name = db.Column(db.String(15), nullable=False)
+    last_name = db.Column(db.String(15), nullable=False)
+
+    def __repr__(self):
+        return f'<User {self.last_name}, {self.first_name}>'
+
+def get_user(user_id):
+    return User.query.get(user_id)
+
+
+class user_data:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+class user_model(UserMixin):
+    def __init__(self, data_user):
+        self.id = data_user.username
+        self.password = data_user.password
+
+    @staticmethod
+    def query(user_id):
+        user = get_user(user_id)
+        data_user = user_data(
+                username = user.id,
+                password = user.to_dict()['password']
+                )
+        return user_model(data_user)
+
+
+@login_manager.user_loader
+def load_user(username):
+    return user_model.query(username)
