@@ -20,21 +20,21 @@
     </div>
 
     <section id="signup_sec">
-        <form action="{{ url_for('login') }}" method="post" id="signup_form">
+        <form action="{{ url_for('signup') }}" method="post" id="signup_form">
             <label>
-                <input type="text" name="username" value="" placeholder="Usuario"> 
+                <input type="text" name="username" placeholder="Usuario"> 
             </label>
             <label>
-                <input type="password" name="password" value="" placeholder="Contrasena"> 
+                <input type="password" name="password" placeholder="Contrasena"> 
             </label>
             <label>
-                <input type="text" name="first_name" value="" placeholder="Nombre">
+                <input type="text" name="first_name" placeholder="Nombre">
             </label>
             <label>
-                <input type="text" name="last_name" value="" placeholder="last_name">
+                <input type="text" name="last_name"  placeholder="last_name">
             </label>
             <label>Is admin?
-                <input type="checkbox" name="sudo" value="">
+                <input type="checkbox" name="sudo" value="False">
             </label>
             <button type="submit">Ingresar</button>
         </form>

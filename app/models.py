@@ -50,6 +50,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.last_name}, {self.first_name}>'
 
+
 def get_user(user_id):
     return User.query.get(user_id)
 
@@ -68,8 +69,8 @@ class user_model(UserMixin):
     def query(user_id):
         user = get_user(user_id)
         data_user = user_data(
-                username = user.id,
-                password = user.to_dict()['password']
+                username = user.username,
+                password = user.password,
                 )
         return user_model(data_user)
 
