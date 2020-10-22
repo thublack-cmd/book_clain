@@ -33,41 +33,38 @@
     </section>
     <section id="list_section">
         <div id="pending">
-            <table>
+            <table class="table_list">
                 <h3>Pendientes</h3>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre del cliente</th>
-                    <th>Correo electronico</th>
-                    <th>Detalle</th>
+                    <th>Cliente</th>
+                    <th>Email</th>
+                    <th class="detail_th">Detalle</th>
                 </tr>
                 {% for r in reclamos %}
                     {% if not r.answer_id %}
                         <tr>
-                            <td><a href="{{ url_for('discharge_view', id=r.id) }}">{{ r.id }}</td>
-                            <td>{{ r.name }}</td>
+                            <td><a href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                             <td>{{ r.email }}</td>
-                            <td>{{ r.detail }}</td>
+                            <td class="detail_td">{{ r.detail }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}
             </table>
         </div>
         <div id="last_five">
-            <table>
+            <table class="table_list">
                 <h3>Ultimos 5</h3>
                     <tr>
-                        <th>Nombre del cliente</th>
-                        <th>Correo electronico</th>
+                        <th>Cliente</th>
+                        <th>Email</th>
                         <th>Detalle</th>
                     </tr>
                 {% for r in reclamos %}
                     {% if r.answer_id %}
                         <tr>
-                            <td><a href="{{ url_for('processed_view', id=r.id)
-                                    }}">{{ r.name }}</td>
+                            <td><a href="{{ url_for('processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             <td>{{ r.email }}</td>
-                            <td>{{ r.detail }}</td>
+                            <td class="detail_td">{{ r.detail }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}

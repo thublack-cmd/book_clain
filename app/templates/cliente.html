@@ -7,7 +7,9 @@
 {% block body_content %}
 
     <header>
-        <h1>Sala Cubatta</h1>
+        <picture>
+            <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
+        </picture>
         <span>Fecha: {{ dia }}</span>
     </header>
 
@@ -33,30 +35,30 @@
                 </div>
                 <div>
                     <label for="name_id"></label>
-                    <input type="text" class="input_in" name="name" id="name_id" value=""
+                    <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value=""
                         placeholder="Nombres" required>
                 </div>
                 <div class="document">
                     <div>
                         <input type="radio" id="dni" name="type_doc" value="DNI">
-                        <label for="type_doc">DNI</label>
+                        <label for="dni">DNI</label>
                     </div>
                     <div>
                         <input type="radio" id="ce" name="type_doc" value="CE">
-                        <label for="type_doc">CE</label>
+                        <label for="ce">CE</label>
                     </div>
                     <div>
                         <input type="radio" id="ruc" name="type_doc" value="ruc">
-                        <label for="type_doc">RUC</label>
+                        <label for="ruc">RUC</label>
                     </div>
                     <div id="nro_doc">
-                        <input type="number" name="document"  maxlength="10" value="" 
+                        <input type="number" autocomplete="off" name="document"  maxlength="10" value="" 
                             placeholder="Nro de documento" required>
                     </div>
                 </div>
                 <div>
                     <label for="contact_id"></label>
-                    <input type="email" name="contact" id="contact_id" value=""
+                    <input type="email" autocomplete="off" name="contact" id="contact_id" value=""
                         placeholder="Correo electronico" class="input_in" required>
                 </div>
                 <div>
@@ -76,8 +78,8 @@
                 </div>
                 <div>
                     <div class="type_custo">
-                        <input type="radio" id="reclamo" name="type_obj" value="reclamo">
-                        <label for="reclamo">Reclamo</label>
+                        <input type="radio" id="reclamo_id" name="type_obj" value="reclamo">
+                        <label for="reclamo_id">Reclamo</label>
                     </div>
                     <div class="type_custo">
                         <input type="radio" id="queja" name="type_obj" value="queja">
@@ -86,18 +88,16 @@
                 </div>
                 <div id="amount">
                     <label for="request_id"></label> 
-                    <input type="number" name="amount" id="request_id"
+                    <input type="number" autocomplete="off" name="amount" id="request_id"
                         placeholder="Monto reclamado" value="">
                 </div>
                 <div>
                     <label for="detail_id"></label> 
-                    <textarea name="detail" id="detail_id" placeholder="Detalle"
+                    <textarea autocomplete="off" name="detail" id="detail_id" placeholder="Detalle"
                         required></textarea>
                 </div>
-                
             </fieldset>
-            <button type="submit">Registrar</button>
+            <button class="btn_client" type="submit">REGISTRAR</button> 
         </form>
     </section>
-    
 {% endblock %}

@@ -9,6 +9,88 @@ html {
     background-color: #323232;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Navbar style */
+.dropbtn {
+    background-color: black;
+    color: #00cc66;
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    font-size: 1.7rem;
+    min-width: 10rem;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: black; color: #00cc66;}
+ 
+.dropdown:hover .dropdown-content {display: block;}
+ 
+/* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+
+nav {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+nav ul{
+    display: inline-flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-right: 1.5rem;
+}
+
+nav picture {
+    margin-left: 1.5rem;
+}
+
+nav ul li {
+    margin: auto 0.8rem;
+}
+
+#logout {
+    font-size: 2rem;
+}
+
+/* Flash message styles */
+.flashes {
+    height: 3.2rem;
+    list-style: none;
+    margin: 1.5rem 1rem;
+}
+
+.flashes li {
+    width: 30%;
+    height: 100%;
+    background-color: #4FF054;
+    opacity: 0.8;
+    color: white;
+    font-size: 2rem;
+    border: 2px solid green;
+    border-radius: 1.5rem 5rem 3rem;
+    text-align: center;
+    padding-top: 0.4rem;
+}
+
 /* Audit view */
 #search_section {
     display: inline-flex;
@@ -29,20 +111,47 @@ html {
     width: 100%;
     margin: 4rem 0;
     font-size: 2rem;
+    color: white;
 }
 
-#list_section table {
+.table_list {
     width: 100%;
+    border-collapse: collapse;
+}
+
+.table_list th {
+    border-bottom: 0.1rem solid #00cc66;
+    font-weight: bold;
+}
+
+.table_list td {
+    font-weight: lighter;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.table_list a {
+    color: #00cc66;
+}
+
+.table_list a:hover {
+    color: white;
+    font-weight: bold;
+}
+
+.detail_td {
+    max-width: 180px;
 }
 
 #pending {
     width: 40%;
 }
 
-#pending h3 {
+#list_section h3 {
     font-size: 3rem;
     text-align: center;
-    margin: 0.8rem 0;
+    margin: 1.6rem 0;
+    font-weight: bold;
 }
 
 #last_five {
@@ -51,26 +160,57 @@ html {
 
 /* discharge */
 #detail_answer {
-/*     background-color: #323232; */
-    width: 80%;
-/*     margin: 4rem auto; */
-/*     font-size: 2.5rem; */
-/*     color: white; */
+    width: 100%;
 }
 
-#dis_form form{
-    width: 80%;
-    margin: 0 auto;
+#sec_dis {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10rem;
 }
 
-#dis_form form button {
-    float: right;
- }
+#dis_form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 4rem;
+}
+
+.btn_send {
+    width: 30%;
+    height: 3rem;
+    margin: 4rem auto;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.table_dis {
+    width: 40%;
+    border-collapse: collapse;
+    margin-left: 4rem;
+}
+
+.table_dis th {
+    border-bottom: 0.1rem solid #00cc66;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.table_dis td {
+    font-size: 2rem;
+    color: white;
+    font-weight: lighter;
+    text-align: center;
+    padding: 1rem 0;
+}
 
 /* Client view */
 header {
     padding: 1rem;
     width: 100%;
+    height: 5rem;
     display: inline-flex;
     justify-content: space-between;
     background-color: #000000;
@@ -108,7 +248,33 @@ header span {
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
+}
+
+#form_section form input, textarea {
     font-size: 2rem;
+}
+
+#form_section form input, textarea:focus {
+    outline: none;
+}
+
+.btn_client {
+    float: right;
+    width: 15%;
+    height: 4rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
+    color: #00cc66;
+    font-weight: bold;
+    box-shadow: -2px 2px 39px -10px rgba(0,0,0,0.75);
+    transition: background-color 0.5s;
+}
+
+.btn_client:hover {
+    background-color: #1D8F43;
+    color: white;
 }
 
 .section_head {
@@ -140,7 +306,6 @@ header span {
 }
 
 .input_in:focus {
-    outline: none;
     text-align: center;
 }
 
@@ -153,18 +318,14 @@ textarea {
     border-bottom: 0.8px solid #00cc66;
 }
 
-textarea:focus {
-    outline: none;
-}
-
 fieldset {
-    width: 60%;
+    width: 50%;
     font-size: 2rem;
     padding-bottom: 5.5rem; 
     margin: 3rem auto;
     display: inherit;
     flex-direction: inherit;
-    box-shadow: 0px 0px 27px 5px rgba(0,0,0,1);
+    box-shadow: -2px 2px 39px -10px rgba(0,0,0,0.75);
     border: none;
     background-color: white;
 }
@@ -208,7 +369,7 @@ fieldset div {
     border: none;
 }
 
- #nro_doc {
+#nro_doc {
     width: 30%;
     height: 3rem;
     margin-left: 1rem;
@@ -216,25 +377,83 @@ fieldset div {
     margin-bottom: auto;
  }
 
- #nro_doc input {
+#nro_doc input {
     width: 100%;
     border: none;
     border-bottom: 0.8px solid #00cc66; 
     padding: 0 0 0 1rem;
  }
 
- #nro_doc input:focus {
-    outline: none;
- }
-
- #amount {
+#amount {
     width: 100%;
     height: 3rem;
  }
 
- #amount input {
+#amount input {
     width: 45%;
     border: none;
     border-bottom: 0.8px solid #00cc66;
     padding-left: 1rem;
+ }
+
+ /* Login view */
+#login_sec {
+    display: flex;
+    justify-content: center;
+    margin-top: 15rem;
+ }
+
+#login_form {
+    display: inline-flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50rem;
+    justify-content: center;
+    text-align: center;
+ }
+
+#login_form input {
+    width: 70%;
+    background-color: #323232;
+    color: white;
+    font-size: 2rem;
+    font-weight: lighter;
+    text-align: center;
+    height: 3rem;
+    border: none;
+    border-bottom: 0.8px solid #00cc66;
+    margin-bottom: 3rem;
+ }
+
+#login_form input:focus {
+    outline: none;
+    border-bottom: 4px solid #00cc66;
+ }
+
+#login_form button {
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 4.5rem;
+    border-radius: 5rem;
+    border: 0.4rem solid #00cc66;
+    color: #00cc66;
+    background-color: transparent;
+    transition: background-color .5s;
+    font-size: 2rem;
+    font-weight: bold;
+ }
+
+#login_form button:hover {
+    background-color: white;
+    border: none;
+    box-shadow: 0px 7px 22px -6px rgba(0,0,0,0.75);
+ }
+
+#login_form button:focus {
+    outline: none;
+    background-color: white;
+    border: none;
+    box-shadow: 0px 7px 22px -6px rgba(0,0,0,0.75);
  }

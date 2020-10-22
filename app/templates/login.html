@@ -18,10 +18,10 @@
     <section id="login_sec">
         <form action="{{ url_for('login') }}" method="post" id="login_form">
             <label>
-                <input type="text" name="username" value="" placeholder="Usuario"> 
+                <input type="text" name="username" autocomplete="off" value="" placeholder="Usuario"> 
             </label>
             <label>
-                <input type="password" name="password" value="" placeholder="Contrasena"> 
+                <input type="password" name="password" autocomplete="off" value="" placeholder="Contrasena"> 
             </label>
             <button type="submit">Ingresar</button>
         </form>

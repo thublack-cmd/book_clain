@@ -12,27 +12,27 @@
         <h1>Descargo del reclamo nro {{ q.id }}</h1>
     </div>    
 
-    <table>
-        <tr>
-            <th>Cliente</th>
-            <th>Fecha</th>
-            <th>Detalle</th>
-        </tr>
-        <tr>
-            <th>{{q.name}}</th>
-            <th>{{q.date}}</th>
-            <th>{{q.detail}}</th>
-        </tr>
-    </table>
+    <section id="sec_dis">
+        <table class="table_dis">
+            <tr>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Detalle</th>
+            </tr>
+            <tr>
+                <td>{{q.name}}</td>
+                <td>{{q.date}}</td>
+                <td>{{q.detail}}</td>
+            </tr>
+        </table>
 
-    <section id="dis_form">
-        <form action="{{ url_for('audit_view') }}" method="post">
+        <form id="dis_form" action="{{ url_for('audit_view') }}" method="post">
             <input type="hidden" name="id_clain" value="{{ q.id }}">
             <label for="detail_answer">
                 <textarea name="detail_dis" id="detail_answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
             </label>
             
-        <button type="submit">Registrar</button>
+        <button class="btn_send" type="submit">Registrar</button>
         </form>
     </section>
     

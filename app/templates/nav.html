@@ -1,10 +1,35 @@
 
     <header>
         <nav>
+            <picture>
+                <a href="{{ url_for('audit_view') }}">
+                    <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="Logo sala">
+                </a>                    
+            </picture>
             <ul>
-                <li><a href="{{ url_for('logout') }}">Log out</a></li>
-                <li>Salas</li>
-                <li>Restaurantes</li>
+                <li class="dropdown">
+                    <button class="dropbtn">Salas</button>
+                    <div class="dropdown-content">
+                        <a href="#">Cubatta</a>
+                        <a href="#">Tribeca</a>
+                        <a href="#">Montreal</a>
+                        <a href="#">Kavari</a>
+                        <a href="#">La Siete</a>
+                        <a href="#">Magia</a>
+                        <a href="#">Cassino</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <button class="dropbtn">Restaurantes</button>
+                    <div class="dropdown-content">
+                        <a href="#">Zarate</a>
+                        <a href="#">Proceres</a>
+                        <a href="#">Huacho</a>
+                        <a href="#">Huarmey</a>
+                        <a href="#">Casma</a>
+                    </div>
+                </li>
+                <li><a id="logout" href="{{ url_for('logout') }}">Log out</a></li>
             </ul>
         </nav>
     </header>
