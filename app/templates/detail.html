@@ -8,23 +8,21 @@
 {% include 'nav.html' %}
 
     <div class="encabezado">
-        <h1>Descargo del reclamo nro {{ q.id }}</h1>
+        <h1>Detalle del reclamo {{ q.id }}</h1>
     </div>    
 
-
-    <table>
-        <h3>Pendientes</h3>
+    <table class="detail_table">
         <tr>
-            <th>Nombre del cliente</th>
-            <th>Correo electronico</th>
+            <th>Cliente</th>
+            <th>Email</th>
             <th>Detalle</th>
             <th>Descargo</th>
         </tr>
         <tr>
             <td>{{ q.name }}</td>
             <td>{{ q.email }}</td>
-            <td>{{ q.detail }}</td>
-            <td>{{ q.answer.answer_con }}</td>                    
+            <td class="de_td">{{ q.detail }}</td>
+            <td class="de_td">{{ q.answer.answer_con }}</td>                    
         </tr>
     </table>
 

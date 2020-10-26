@@ -43,7 +43,7 @@
                 {% for r in reclamos %}
                     {% if not r.answer_id %}
                         <tr>
-                            <td><a href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            <td><a class="pending_a" href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
                         </tr>
@@ -62,7 +62,7 @@
                 {% for r in reclamos %}
                     {% if r.answer_id %}
                         <tr>
-                            <td><a href="{{ url_for('processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            <td><a class="last_a" href="{{ url_for('processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
                         </tr>

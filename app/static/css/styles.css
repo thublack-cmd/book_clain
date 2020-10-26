@@ -130,7 +130,11 @@ nav ul li {
     padding: 1rem 0;
 }
 
-.table_list a {
+.pending_a {
+    color: #FF0901;
+}
+
+.last_a {
     color: #00cc66;
 }
 
@@ -161,11 +165,13 @@ nav ul li {
 /* discharge */
 #detail_answer {
     width: 100%;
+    background-color: transparent;
+    color: white;
 }
 
 #sec_dis {
     display: inline-flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
     margin-top: 10rem;
 }
@@ -173,22 +179,30 @@ nav ul li {
 #dis_form {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    margin-right: 4rem;
+    width: 60%;
+    margin: 8rem auto;
 }
 
 .btn_send {
-    width: 30%;
-    height: 3rem;
+    width: 25%;
+    height: 4rem;
     margin: 4rem auto;
     font-size: 2rem;
     font-weight: bold;
+    color: #00cc66;
+    transition: background-color .5s;
+}
+
+.btn_send:hover, :focus{
+    background-color: #00cc66;
+    color: white;
+    outline: none;
 }
 
 .table_dis {
-    width: 40%;
+    width: 60%;
     border-collapse: collapse;
-    margin-left: 4rem;
+    margin: 2rem auto;
 }
 
 .table_dis th {
@@ -204,6 +218,36 @@ nav ul li {
     font-weight: lighter;
     text-align: center;
     padding: 1rem 0;
+}
+
+.td_detail {
+    max-width: 450px;
+}
+
+/* Discharge detail view */
+.detail_table {
+    width: 80%;
+    margin: 12rem auto;
+    border-collapse: collapse;
+}
+
+.detail_table th {
+    border-bottom: 0.1rem solid #00cc66;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.detail_table td {
+    font-size: 2rem;
+    color: white;
+    font-weight: lighter;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.de_td {
+    max-width: 400px;
 }
 
 /* Client view */
