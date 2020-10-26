@@ -32,6 +32,7 @@ class Answer(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
     updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 

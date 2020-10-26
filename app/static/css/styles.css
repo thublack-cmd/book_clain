@@ -140,7 +140,6 @@ nav ul li {
 
 .table_list a:hover {
     color: white;
-    font-weight: bold;
 }
 
 .detail_td {
@@ -193,7 +192,8 @@ nav ul li {
     transition: background-color .5s;
 }
 
-.btn_send:hover, :focus{
+.btn_send:hover,
+.btn_send:focus{
     background-color: #00cc66;
     color: white;
     outline: none;
@@ -380,23 +380,23 @@ fieldset div {
     margin: 2rem 0;
 }
 
- .document {
+.document {
     width: 100%;   
 }
 
- .document div {
+.document div {
     width: 10%;
 }
 
- .type_custo {
+.type_custo {
     width: 15%;
 }
 
- .document label, .type_custo label {
+.document label, .type_custo label {
     padding-left: 0.7rem;
 }
 
- fieldset label {
+fieldset label {
     color: #0E4520;
 }
 

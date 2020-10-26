@@ -122,7 +122,8 @@ def client_view():
 def audit_view():
     if request.method == 'POST':
         new_discharge = Answer(
-                answer_con=request.form['detail_dis']
+                answer_con = request.form['detail_dis'],
+                id_user = current_user.id
                 )
         db.session.add(new_discharge)
         db.session.commit()
@@ -143,8 +144,19 @@ def audit_view():
 
         return redirect(url_for('audit_view'))
 
-    q = Clain.query.all()
-    return render_template('audit.html', reclamos=q)
+    page = int(request.args.get('page', 1))
+    q_in = Clain.query.filter(Clain.answer_id == None)
+    if q_in.count() == 0:
+        q_in = None
+    q_out = Clain.query.filter(Clain.answer_id != None)\
+            .paginate(page, per_page=5)
+
+    reclamos = {
+            'pendings': q_in,
+            'answered': q_out,
+            }
+
+    return render_template('audit.html', **reclamos)
 
 def add_discharge(id_clain):
     # Find last answer ID

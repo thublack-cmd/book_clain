@@ -33,23 +33,27 @@
     </section>
     <section id="list_section">
         <div id="pending">
-            <table class="table_list">
-                <h3>Pendientes</h3>
-                <tr>
-                    <th>Cliente</th>
-                    <th>Email</th>
-                    <th class="detail_th">Detalle</th>
-                </tr>
-                {% for r in reclamos %}
-                    {% if not r.answer_id %}
-                        <tr>
-                            <td><a class="pending_a" href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            <td>{{ r.email }}</td>
-                            <td class="detail_td">{{ r.detail }}</td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-            </table>
+            <h3>Pendientes</h3>
+            {% if pendings %}
+                <table class="table_list">
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Email</th>
+                        <th class="detail_th">Detalle</th>
+                    </tr>
+                    {% for r in pendings %}
+                        {% if r %}
+                            <tr>
+                                <td><a class="pending_a" href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                                <td>{{ r.email }}</td>
+                                <td class="detail_td">{{ r.detail }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            {% else %}
+                <h3>No hay entradas pendientes</h3>                
+            {% endif %}
         </div>
         <div id="last_five">
             <table class="table_list">
@@ -59,8 +63,8 @@
                         <th>Email</th>
                         <th>Detalle</th>
                     </tr>
-                {% for r in reclamos %}
-                    {% if r.answer_id %}
+                {% for r in answered.items %}
+                    {% if r %}
                         <tr>
                             <td><a class="last_a" href="{{ url_for('processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             <td>{{ r.email }}</td>
@@ -69,6 +73,19 @@
                     {% endif %}
                 {% endfor %}
             </table>
+            <div class=pagination>
+                {% for page in answered.iter_pages() %}
+                    {% if page %}
+                        {% if page != answered.page %}
+                            <a href="{{ url_for('audit_view', page=page) }}">{{ page }}</a>
+                        {% else %}
+                        <strong>{{ page }}</strong>
+                        {% endif %}
+                    {% else %}
+                        <span>…</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </section>
     
