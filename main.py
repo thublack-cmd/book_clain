@@ -122,6 +122,39 @@ def client_view():
 @login_required
 def audit_view():
     if request.method == 'POST':
+        # Clain search module
+        if 'client' in request.form:
+            print(request.form)
+            if request.form['client'] or request.form['date']:
+                c_name = request.form['client']
+                date_sea = request.form["date"]
+
+                q_search = search_view(c_name, date_sea)
+
+                if q_search.count() == 0:
+                    q_in = None
+                    q_out = None
+                else:
+                    page = int(request.args.get('page', 1))
+                    q_in = q_search.filter(Clain.answer_id == None)
+                    if q_in.count() == 0:
+                        q_in = None
+                    q_out = q_search.filter(Clain.answer_id != None).paginate(page, per_page=5)
+                    if not q_out.items:
+                        q_out = None
+
+                reclamos = {
+                        'pendings': q_in,
+                        'answered': q_out,
+                        }
+
+                return render_template('audit.html', **reclamos)
+
+            else:
+                flash('Introduce un termino para realizar la busqueda')
+
+                return redirect(url_for('audit_view'))
+
         new_discharge = Answer(
                 answer_con = request.form['detail_dis'],
                 id_user = current_user.id
@@ -129,10 +162,10 @@ def audit_view():
         db.session.add(new_discharge)
         db.session.commit()
 
-    # Save id discharge on clain table
+        # Save id discharge on clain table
         add_discharge(request.form['id_clain'])
 
-    # Get row of Clain table
+        # Get row of Clain table
         q = Clain.query.get(request.form['id_clain'])
         data = {
                 'email': q.email,
@@ -145,6 +178,8 @@ def audit_view():
 
         return redirect(url_for('audit_view'))
 
+
+    # Method GET section
     page = int(request.args.get('page', 1))
     q_in = Clain.query.filter(Clain.answer_id == None)
     if q_in.count() == 0:
@@ -194,5 +229,21 @@ def processed_view(id):
         return redirect(url_for('audit_view'))
 
     return render_template('detail.html', q=q)
+
+
+def search_view(name, d_search):
+
+    if name and d_search:
+        q = Clain.query.filter(Clain.name.contains(name), Clain.date.contains(d_search))
+        return q
+    elif name:
+        q = Clain.query.filter(Clain.name.contains(name))
+        return q
+    elif d_search:
+        q = Clain.query.filter(Clain.date.contains(d_search))
+        return q
+    else:
+        q = 0
+        return q
 
 # db.create_all()

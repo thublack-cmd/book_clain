@@ -95,14 +95,42 @@ nav ul li {
 #search_section {
     display: inline-flex;
     justify-content: space-around;
-    width: 30%;
+    width: 40%;
     margin: 4rem 0;
 } 
 
+.search_btn {
+    margin-left: 1rem;
+    color: white;
+    border: none;
+    background-image: url(../images/search_icon.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 4rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
 #sh_form {
+    display: flex;
     justify-content: space-around;
-    flex-direction: row;
     width: 85%;
+}
+
+#sh_form input {
+    height: 2.5rem;
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    border-bottom: 0.8px solid #00cc66;
+}
+
+#sh_form input:focus,
+#sh_form input:hover {
+    outline: none;
 }
 
 #list_section {

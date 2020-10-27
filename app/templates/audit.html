@@ -23,12 +23,14 @@
     </div>
 
     <section id="search_section">
-        <form action="" method="post" id="sh_form">
+        <form action="{{ url_for('audit_view') }}" method="post" id="sh_form">
             <label for="search_id">
-                <input type="text" id="search_id" name="search" value="" placeholder="Ingrese
-                texto a buscar">
+                <input type="text" id="search_id" name="client" value="" placeholder="Cliente">
             </label>
-            <button type="submit">Buscar</button>
+            <label for="date_id">
+                <input type="date" id="date_id" name="date" value="">
+            </label>
+            <button class="search_btn" type="submit"></button>
         </form>
     </section>
     <section id="list_section">
@@ -42,13 +44,11 @@
                         <th class="detail_th">Detalle</th>
                     </tr>
                     {% for r in pendings %}
-                        {% if r %}
-                            <tr>
-                                <td><a class="pending_a" href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                                <td>{{ r.email }}</td>
-                                <td class="detail_td">{{ r.detail }}</td>
-                            </tr>
-                        {% endif %}
+                        <tr>
+                            <td><a class="pending_a" href="{{ url_for('discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            <td>{{ r.email }}</td>
+                            <td class="detail_td">{{ r.detail }}</td>
+                        </tr>
                     {% endfor %}
                 </table>
             {% else %}
@@ -56,36 +56,38 @@
             {% endif %}
         </div>
         <div id="last_five">
-            <table class="table_list">
-                <h3>Ultimos 5</h3>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Email</th>
-                        <th>Detalle</th>
-                    </tr>
-                {% for r in answered.items %}
-                    {% if r %}
+            <h3>Ultimos 5</h3>
+            {% if answered %}
+                <table class="table_list">
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Email</th>
+                            <th>Detalle</th>
+                        </tr>
+                    {% for r in answered.items %}
                         <tr>
                             <td><a class="last_a" href="{{ url_for('processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
                         </tr>
-                    {% endif %}
-                {% endfor %}
-            </table>
-            <div class=pagination>
-                {% for page in answered.iter_pages() %}
-                    {% if page %}
-                        {% if page != answered.page %}
-                            <a href="{{ url_for('audit_view', page=page) }}">{{ page }}</a>
+                    {% endfor %}
+                </table>
+                <div class=pagination>
+                    {% for page in answered.iter_pages() %}
+                        {% if page %}
+                            {% if page != answered.page %}
+                                <a href="{{ url_for('audit_view', page=page) }}">{{ page }}</a>
+                            {% else %}
+                            <strong>{{ page }}</strong>
+                            {% endif %}
                         {% else %}
-                        <strong>{{ page }}</strong>
+                            <span>…</span>
                         {% endif %}
-                    {% else %}
-                        <span>…</span>
-                    {% endif %}
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h3>No hay entradas solucionadas</h3>
+            {% endif %}
         </div>
     </section>
     
