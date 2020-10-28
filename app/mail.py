@@ -1,10 +1,11 @@
 from threading import Thread
-from flask_mail import Message
-from .config import mail, app
+from flask_mail import Message, Mail
+from flask import current_app as app
 
+mail = Mail()
 
 def _send_async_email(flask_app, msg):
-    with flask_app.app_context():
+    with flask_app:
         mail.send(msg)
 
 

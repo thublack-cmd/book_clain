@@ -2,11 +2,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
-from .config import app, login_manager
+# from . import db
 
 import datetime
 
-db = SQLAlchemy(app)
+
+db = SQLAlchemy()
 
 class Clain(db.Model):
 
@@ -74,8 +75,3 @@ class user_model(UserMixin):
                 password = user.password,
                 )
         return user_model(data_user)
-
-
-@login_manager.user_loader
-def load_user(username):
-    return user_model.query(username)

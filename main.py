@@ -4,20 +4,21 @@ from flask_login import login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # from APP
-from app.config import app, login_manager
+from app import create_app
+# from app.config import login_manager
 from app.models import db, Clain, Answer, get_user, user_data, user_model, User
 from app.mail import send_mail_open, send_mail_close
 
 # from Python
 from datetime import date, datetime
 
+app = create_app()
 now = (date.today()).strftime('%d-%m-%Y')
 
-@login_manager.unauthorized_handler
+@app.login_manager.unauthorized_handler
 def unauthorized_callback():
     flash('Debe ingresar para ver ese contenido')
     return redirect('/login')
-
 
 @app.route('/signup', methods=['POST', 'GET'])
 @login_required
