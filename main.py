@@ -12,7 +12,6 @@ from app.mail import send_mail_open, send_mail_close
 from datetime import date, datetime
 
 now = (date.today()).strftime('%d-%m-%Y')
-# prueba de ramas
 
 @login_manager.unauthorized_handler
 def unauthorized_callback():
