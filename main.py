@@ -124,7 +124,6 @@ def audit_view():
     if request.method == 'POST':
         # Clain search module
         if 'client' in request.form:
-            print(request.form)
             if request.form['client'] or request.form['date']:
                 c_name = request.form['client']
                 date_sea = request.form["date"]
