@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # from APP
 from app import create_app
-# from app.config import login_manager
 from app.models import db, Clain, Answer, get_user, user_data, user_model, User
 from app.mail import send_mail_open, send_mail_close
 
