@@ -1,41 +1,51 @@
 # from Flask
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_required, current_user
 
-# from APP
-from app import create_app
-from app.models import db, Clain, Answer
-from app.mail import send_mail_open, send_mail_close
-
-# from Python
+# from  Python
 from datetime import date, datetime
 
-app = create_app()
+# from APP
+from app.models import db, Clain
+from app.mail import send_mail_open
+from . import cubatta
+
 now = (date.today()).strftime('%d-%m-%Y')
 
-@app.login_manager.unauthorized_handler
-def unauthorized_callback():
-    flash('Debe ingresar para ver ese contenido')
-    return redirect('/auth/login')
+@cubatta.route('/cubatta/cliente', methods=['POST', 'GET'])
+def client_view():
+    if request.method == 'POST':
+        d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
+        new_clain = Clain(
+                name=request.form["name"],
+                type_doc=request.form["type_doc"],
+                nro_doc=request.form["document"],
+                email=request.form["contact"],
+                address=request.form["domicilio"],
+                date=d,
+                type_claim=request.form["type_obj"],
+                amount=request.form["amount"],
+                detail=request.form["detail"],
+                )
+        db.session.add(new_clain)
+        db.session.commit()
+
+        data = {
+                'email': request.form['contact'],
+                'tipo': request.form['type_obj'],
+                }
+        send_mail_open(**data)
+
+        flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
+        return redirect(url_for('client_view'))
+
+    return render_template('cliente.html', dia=now)
 
 
-def entry_point(sala):
-    clain_db = Clain + '_' + sala
-    view = 'audit_viewt' + '_' + sala
-    answer_db = Answer + '_' + sala
+@cubatta.route('/', methods=['POST', 'GET'])
+def audit_cub_view():
+    sala = 'tribeca'
 
-    datos = {
-        'clain_db': clain_db,
-        'view': view,
-        'answer_db': answer_db
-            }
-
-    return datos
-
-
-def audit_view(sala, request):
-
-    datos = entry_point(sala)
+    audit_view(sala, request)
 
     if request.method == 'POST':
         # Clain search module
@@ -44,17 +54,17 @@ def audit_view(sala, request):
                 c_name = request.form['client']
                 date_sea = request.form["date"]
 
-                q_search = search_view(c_name, date_sea, datos['clain_db'])
+                q_search = search_view(c_name, date_sea)
 
                 if q_search.count() == 0:
                     q_in = None
                     q_out = None
                 else:
                     page = int(request.args.get('page', 1))
-                    q_in = q_search.filter(datos['clain_db'].answer_id == None)
+                    q_in = q_search.filter(Clain.answer_id == None)
                     if q_in.count() == 0:
                         q_in = None
-                    q_out = q_search.filter(datos['clain_db'].answer_id != None).paginate(page, per_page=5)
+                    q_out = q_search.filter(Clain.answer_id != None).paginate(page, per_page=5)
                     if not q_out.items:
                         q_out = None
 
@@ -68,9 +78,9 @@ def audit_view(sala, request):
             else:
                 flash('Introduce un termino para realizar la busqueda')
 
-                return redirect(url_for(datos['view']))
+                return redirect(url_for('audit_view'))
 
-        new_discharge = datos['answer_db'](
+        new_discharge = Answer(
                 answer_con = request.form['detail_dis'],
                 id_user = current_user.id
                 )
@@ -81,7 +91,7 @@ def audit_view(sala, request):
         add_discharge(request.form['id_clain'])
 
         # Get row of Clain table
-        q = datos['clain_db'].query.get(request.form['id_clain'])
+        q = Clain.query.get(request.form['id_clain'])
         data = {
                 'email': q.email,
                 'tipo': q.type_claim,
@@ -91,15 +101,15 @@ def audit_view(sala, request):
 
         flash('Descargo guardado exitosamente')
 
-        return redirect(url_for(datos['view']))
+        return redirect(url_for('audit_view'))
 
 
     # Method GET section
     page = int(request.args.get('page', 1))
-    q_in = datos['clain_db'].query.filter(datos['clain_db'].answer_id == None)
+    q_in = Clain.query.filter(Clain.answer_id == None)
     if q_in.count() == 0:
         q_in = None
-    q_out = datos['clain_db'].query.filter(datos['clain_db'].answer_id != None)\
+    q_out = Clain.query.filter(Clain.answer_id != None)\
             .paginate(page, per_page=5)
 
     reclamos = {
@@ -118,6 +128,8 @@ def add_discharge(id_clain):
     db.session.commit()
 
 
+@app.route('/<int:id>/descargo')
+@login_required
 def discharge_view(id):
 
     q = Clain.query.get(id)
@@ -132,6 +144,8 @@ def discharge_view(id):
     return redirect(url_for('audit_view'))
 
 
+@app.route('/<int:id>/detalle')
+@login_required
 def processed_view(id):
     q = Clain.query.get(id)
 
@@ -142,21 +156,18 @@ def processed_view(id):
     return render_template('detail.html', q=q)
 
 
-def search_view(name, d_search, clain):
-    '''
-        Search module
-        '''
+def search_view(name, d_search):
+
     if name and d_search:
-        q = clain.query.filter(clain.name.contains(name), clain.date.contains(d_search))
+        q = Clain.query.filter(Clain.name.contains(name), Clain.date.contains(d_search))
         return q
     elif name:
-        q = clain.query.filter(clain.name.contains(name))
+        q = Clain.query.filter(Clain.name.contains(name))
         return q
     elif d_search:
-        q = clain.query.filter(clain.date.contains(d_search))
+        q = Clain.query.filter(Clain.date.contains(d_search))
         return q
     else:
         q = 0
         return q
 
-# db.create_all()

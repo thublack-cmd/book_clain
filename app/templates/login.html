@@ -16,7 +16,7 @@
     {% endwith %}
 
     <section id="login_sec">
-        <form action="{{ url_for('login') }}" method="post" id="login_form">
+        <form action="{{ url_for('auth.login') }}" method="post" id="login_form">
             <label>
                 <input type="text" name="username" autocomplete="off" value="" placeholder="Usuario"> 
             </label>
