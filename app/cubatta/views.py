@@ -6,11 +6,13 @@ from flask_login import login_required
 from datetime import date, datetime
 
 # from APP
+from app.main import audit_view, discharge_view, processed_view
 from app.models import db, Clain_cub
 from app.mail import send_mail_open
 from . import cubatta
 
 now = (date.today()).strftime('%d-%m-%Y')
+sala = 'tribeca'
 
 @cubatta.route('/cubatta/cliente', methods=['POST', 'GET'])
 def client_view():
@@ -45,7 +47,6 @@ def client_view():
 @cubatta.route('/', methods=['POST', 'GET'])
 @login_required
 def audit_view_cub():
-    sala = 'tribeca'
 
     audit_view(sala, request)
 
