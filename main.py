@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 
 # from APP
 from app import create_app
-from app.models import db, Clain, Answer
+from app.models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas
 from app.mail import send_mail_open, send_mail_close
 
 # from Python
@@ -20,9 +20,34 @@ def unauthorized_callback():
 
 
 def entry_point(sala):
-    clain_db = Clain + '_' + sala
-    view = 'audit_viewt' + '_' + sala
-    answer_db = Answer + '_' + sala
+    if sala == 'cubatta':
+        clain_db = Clain_cub
+        view = 'audit_view_cub'
+        answer_db = Answer_cub
+    elif sala == 'tribeca':
+        clain_db = Clain_tri
+        view = 'audit_view_tri'
+        answer_db = Answer_tri
+    elif sala == 'montreal':
+        clain_db = Clain_mon
+        view = 'audit_view_mon'
+        answer_db = Answer_mon
+    elif sala == 'kavari':
+        clain_db = Clain_kav
+        view = 'audit_view_kav'
+        answer_db = Answer_kav
+    elif sala == 'siete':
+        clain_db = Clain_sie
+        view = 'audit_view_sie'
+        answer_db = Answer_sie
+    elif sala == 'magia':
+        clain_db = Clain_mag
+        view = 'audit_view_mag'
+        answer_db = Answer_mag
+    else:
+        clain_db = Clain_cas
+        view = 'audit_view_cas'
+        answer_db = Answer_cas
 
     datos = {
         'clain_db': clain_db,
@@ -61,6 +86,7 @@ def audit_view(sala, request):
                 reclamos = {
                         'pendings': q_in,
                         'answered': q_out,
+                        'sala': sala,
                         }
 
                 return render_template('audit.html', **reclamos)
@@ -78,7 +104,7 @@ def audit_view(sala, request):
         db.session.commit()
 
         # Save id discharge on clain table
-        add_discharge(request.form['id_clain'])
+        add_discharge(request.form['id_clain'], sala)
 
         # Get row of Clain table
         q = datos['clain_db'].query.get(request.form['id_clain'])
@@ -105,39 +131,50 @@ def audit_view(sala, request):
     reclamos = {
             'pendings': q_in,
             'answered': q_out,
+            'sala': sala,
             }
 
     return render_template('audit.html', **reclamos)
 
-def add_discharge(id_clain):
-    # Find last answer ID
-    discharge = Answer.query.order_by(Answer.created_at.desc()).first()
 
-    save_id = Clain.query.get(id_clain)
+def add_discharge(id_clain, sala):
+
+    datos = entry_point(sala)
+
+    # Find last answer ID
+    discharge = datos['answer_db'].query.order_by(datos['answer_db'].created_at.desc()).first()
+
+    save_id = datos['clain_db'].query.get(id_clain)
     save_id.answer_id = discharge.id
     db.session.commit()
 
 
-def discharge_view(id):
+def discharge_view(id, sala):
 
-    q = Clain.query.get(id)
+    datos = entry_point(sala)
+
+    q = datos['clain_db'].query.get(id)
 
     if not q.answer_id:
         data = {
                 'q': q,
+                'sala': sala,
                 }
         return render_template('discharge.html', **data)
 
     flash('Ese reclamo ya fue procesado')
-    return redirect(url_for('audit_view'))
+    return redirect(url_for(datos['view']))
 
 
-def processed_view(id):
-    q = Clain.query.get(id)
+def processed_view(id, sala):
+
+    datos = entry_point(sala)
+
+    q = datos['clain_db'].query.get(id)
 
     if not q.answer_id:
         flash('Este reclamo no ha sido atendido')
-        return redirect(url_for('audit_view'))
+        return redirect(url_for(datos['view']))
 
     return render_template('detail.html', q=q)
 

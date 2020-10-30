@@ -7,7 +7,7 @@ import datetime
 
 db = SQLAlchemy()
 
-class Clain(db.Model):
+class Clain_cub(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -27,7 +27,199 @@ class Clain(db.Model):
     def __repr__(self):
         return '<Clain %r>' % self.name
 
-class Answer(db.Model):
+class Answer_cub(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+
+class Clain_tri(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(6), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_tri(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+
+class Clain_mon(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(6), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+ 
+class Answer_mon(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+
+class Clain_kav(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(6), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_kav(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+
+class Clain_sie(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(6), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_sie(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+
+class Clain_mag(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(6), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_mag(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+
+class Clain_cas(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(6), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer = db.relationship('Answer', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_cas(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     answer_con = db.Column(db.String(500), nullable=False)
