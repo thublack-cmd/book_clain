@@ -3,6 +3,7 @@
 {% block head_content %} 
     {% if sala == 'cubatta' %}
         <title>Gestion de reclamaciones || Cubatta</title> 
+    {% endif %}
 {% endblock %} 
 
 {% block body_content %}
@@ -25,7 +26,8 @@
 
     <section id="search_section">
         {% if sala == 'cubatta' %}
-            <form action="{{ url_for('audit_view_cub') }}" method="post" id="sh_form">
+            <form action="{{ url_for('cubatta.audit_view') }}" method="post" id="sh_form">
+        {% endif %}
             <label for="search_id">
                 <input type="text" id="search_id" name="client" value="" placeholder="Cliente">
             </label>
@@ -48,7 +50,8 @@
                     {% for r in pendings %}
                         <tr>
                             {% if sala == 'cubatta' %}
-                            <td><a class="pending_a" href="{{ url_for('discharge_view_cub', id=r.id) }}">{{ r.name }}</a></td>
+                                <td><a class="pending_a" href="{{ url_for('cubatta.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% endif %}
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
                         </tr>
@@ -70,7 +73,8 @@
                     {% for r in answered.items %}
                         <tr>
                             {% if sala == 'cubatta' %}
-                            <td><a class="last_a" href="{{ url_for('processed_view_cub', id=r.id) }}">{{ r.name }}</a></td>
+                                <td><a class="last_a" href="{{ url_for('cubatta.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% endif %}
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
                         </tr>
@@ -81,7 +85,8 @@
                         {% if page %}
                             {% if page != answered.page %}
                                 {% if sala == 'cubatta' %}
-                                <a href="{{ url_for('audit_view_cub', page=page) }}">{{ page }}</a>
+                                    <a href="{{ url_for('cubatta.audit_view', page=page) }}">{{ page }}</a>
+                                {% endif %}
                             {% else %}
                             <strong>{{ page }}</strong>
                             {% endif %}

@@ -6,7 +6,7 @@ from flask_login import login_required
 from datetime import date, datetime
 
 # from APP
-from app.main import audit_view, discharge_view, processed_view
+from app.main_view import audit_main, discharge_main, processed_main
 from app.models import db, Clain_cub
 from app.mail import send_mail_open
 from . import cubatta
@@ -46,23 +46,23 @@ def client_view():
 
 @cubatta.route('/', methods=['POST', 'GET'])
 @login_required
-def audit_view_cub():
+def audit_view():
 
-    audit_view(sala, request)
+    audit_main(sala, request)
 
 
 @cubatta.route('/<int:id>/descargo')
 @login_required
-def discharge_view_cub(id):
+def discharge_view(id):
 
-    discharge_view(id, sala)
+    discharge_main(id, sala)
 
 
 @cubatta.route('/<int:id>/detalle')
 @login_required
-def processed_view_cub(id):
+def processed_view(id):
 
-    processed_view(id, sala)
+    processed_main(id, sala)
 
 
     # if request.method == 'POST':

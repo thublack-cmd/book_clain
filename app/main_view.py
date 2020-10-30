@@ -1,22 +1,23 @@
+# from Python
+from datetime import date, datetime
+
 # from Flask
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 
 # from APP
-from app import create_app
-from app.models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas
-from app.mail import send_mail_open, send_mail_close
+# from . import create_app
+from .models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas
+from .mail import send_mail_open, send_mail_close
 
-# from Python
-from datetime import date, datetime
 
-app = create_app()
+# app = create_app()
 now = (date.today()).strftime('%d-%m-%Y')
 
-@app.login_manager.unauthorized_handler
-def unauthorized_callback():
-    flash('Debe ingresar para ver ese contenido')
-    return redirect('/auth/login')
+# @app.login_manager.unauthorized_handler
+# def unauthorized_callback():
+#     flash('Debe ingresar para ver ese contenido')
+#     return redirect('/auth/login')
 
 
 def entry_point(sala):
@@ -58,7 +59,7 @@ def entry_point(sala):
     return datos
 
 
-def audit_view(sala, request):
+def audit_main(sala, request):
 
     datos = entry_point(sala)
 
@@ -149,7 +150,7 @@ def add_discharge(id_clain, sala):
     db.session.commit()
 
 
-def discharge_view(id, sala):
+def discharge_main(id, sala):
 
     datos = entry_point(sala)
 
@@ -166,7 +167,7 @@ def discharge_view(id, sala):
     return redirect(url_for(datos['view']))
 
 
-def processed_view(id, sala):
+def processed_main(id, sala):
 
     datos = entry_point(sala)
 

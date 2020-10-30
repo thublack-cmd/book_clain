@@ -30,3 +30,4 @@ def create_app():
 @login_manager.user_loader
 def load_user(username):
     return user_model.query(username)
+
