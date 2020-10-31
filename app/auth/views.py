@@ -2,8 +2,10 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app.models import db, get_user, user_data, user_model, User
+from app.models import db, User
+
 from . import auth
+from .auth_db import get_user, user_data, user_model
 
 
 @auth.route('/signup', methods=['POST', 'GET'])
@@ -42,7 +44,7 @@ def signup():
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('audit_view'))
+        return redirect(url_for('cubatta.audit_view'))
 
     if request.method == 'POST':
         username = request.form['username']
@@ -58,7 +60,7 @@ def login():
 
                 login_user(user)
                 flash('Bienvenido')
-                return redirect(url_for('audit_view'))
+                return redirect(url_for('cubatta.audit_view'))
             else: flash('Contrasena incorrecta')
         else: flash('Usuario no existe')
 

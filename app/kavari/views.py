@@ -7,18 +7,18 @@ from flask_login import login_required
 
 # from APP
 from app.main_view import audit_main, discharge_main, processed_main
-from app.models import db, Clain_cub
+from app.models import db, Clain_kav
 from app.mail import send_mail_open
-from . import cubatta
+from . import kavari
 
 now = (date.today()).strftime('%d-%m-%Y')
-sala = 'cubatta'
+sala = 'kavari'
 
-@cubatta.route('/cliente', methods=['POST', 'GET'])
+@kavari.route('/cliente', methods=['POST', 'GET'])
 def client_view():
     if request.method == 'POST':
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
-        new_clain = Clain_cub(
+        new_clain = Clain_kav(
                 name=request.form["name"],
                 type_doc=request.form["type_doc"],
                 nro_doc=request.form["document"],
@@ -39,7 +39,7 @@ def client_view():
         send_mail_open(**data)
 
         flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
-        return redirect(url_for('cubatta.client_view'))
+        return redirect(url_for('kavari.client_view'))
 
     data = {
             'dia': now,
@@ -49,7 +49,7 @@ def client_view():
     return render_template('cliente.html', **data)
 
 
-@cubatta.route('/', methods=['POST', 'GET'])
+@kavari.route('/', methods=['POST', 'GET'])
 @login_required
 def audit_view():
 
@@ -58,7 +58,7 @@ def audit_view():
     return a
 
 
-@cubatta.route('/<int:id>/descargo')
+@kavari.route('/<int:id>/descargo')
 @login_required
 def discharge_view(id):
 
@@ -67,7 +67,7 @@ def discharge_view(id):
     return d
 
 
-@cubatta.route('/<int:id>/detalle')
+@kavari.route('/<int:id>/detalle')
 @login_required
 def processed_view(id):
 

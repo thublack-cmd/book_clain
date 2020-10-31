@@ -1,15 +1,56 @@
 {% extends 'base.html' %}
 
 {% block head_content %}
-    <title>Libro de reclamaciones || Cubatta</title>
+    {% if sala == 'cubatta' %}
+        <title>Libro de reclamaciones || Cubatta</title>
+    {% elif sala == 'tribeca' %}
+        <title>Libro de reclamaciones || Tribeca</title>
+    {% elif sala == 'montreal' %}
+        <title>Libro de reclamaciones || Montreal</title>
+    {% elif sala == 'kavari' %}
+        <title>Libro de reclamaciones || Kavari</title>
+    {% elif sala == 'siete' %}
+        <title>Libro de reclamaciones || Siete</title>
+    {% elif sala == 'magia' %}
+        <title>Libro de reclamaciones || Magia</title>
+    {% elif sala == 'cassino' %}
+        <title>Libro de reclamaciones || Cassino</title>
+    {% endif %}
 {% endblock %}
 
 {% block body_content %}
 
     <header>
-        <picture>
-            <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
-        </picture>
+        {% if sala == 'cubatta' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
+            </picture>
+        {% elif sala == 'tribeca' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="logo sala">
+            </picture>
+        {% elif sala == 'montreal' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="logo sala">
+            </picture>
+        {% elif sala == 'kavari' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="logo sala">
+            </picture>
+        {% elif sala == 'siete' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="logo sala">
+            </picture>
+        {% elif sala == 'magia' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="logo sala">
+            </picture>
+        {% elif sala == 'cassino' %}
+            <picture>
+                <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
+            </picture>
+        {% endif %}
+
         <span>Fecha: {{ dia }}</span>
     </header>
 
@@ -28,7 +69,21 @@
     </div>
 
     <section id="form_section">
-        <form action="{{ url_for('client_view') }}" method="post">
+        {% if sala == 'cubatta' %}
+            <form action="{{ url_for('cubatta.client_view') }}" method="post">
+        {% elif sala == 'tribeca' %}
+            <form action="{{ url_for('tribeca.client_view') }}" method="post">
+        {% elif sala == 'montreal' %}
+            <form action="{{ url_for('montreal.client_view') }}" method="post">
+        {% elif sala == 'kavari' %}
+            <form action="{{ url_for('kavari.client_view') }}" method="post">
+        {% elif sala == 'siete' %}
+            <form action="{{ url_for('siete.client_view') }}" method="post">
+        {% elif sala == 'magia' %}
+            <form action="{{ url_for('magia.client_view') }}" method="post">
+        {% elif sala == 'cassino' %}
+            <form action="{{ url_for('cassino.client_view') }}" method="post">
+        {% endif %}
             <fieldset id="customer">
                 <div class="section_head">
                     <strong>Identificacion del cliente</strong>

@@ -3,6 +3,18 @@
 {% block head_content %} 
     {% if sala == 'cubatta' %}
         <title>Gestion de reclamaciones || Cubatta</title> 
+    {% elif sala == 'tribeca' %}
+        <title>Gestion de reclamaciones || Tribeca</title> 
+    {% elif sala == 'montreal' %}
+        <title>Gestion de reclamaciones || Montreal</title> 
+    {% elif sala == 'kavari' %}
+        <title>Gestion de reclamaciones || Kavari</title> 
+    {% elif sala == 'siete' %}
+        <title>Gestion de reclamaciones || Siete</title> 
+    {% elif sala == 'magia' %}
+        <title>Gestion de reclamaciones || Magia</title> 
+    {% elif sala == 'cassino' %}
+        <title>Gestion de reclamaciones || Cassino</title> 
     {% endif %}
 {% endblock %} 
 
@@ -27,6 +39,18 @@
     <section id="search_section">
         {% if sala == 'cubatta' %}
             <form action="{{ url_for('cubatta.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'tribeca' %}
+            <form action="{{ url_for('tribeca.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'montreal' %}
+            <form action="{{ url_for('montreal.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'kavari' %}
+            <form action="{{ url_for('kavari.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'siete' %}
+            <form action="{{ url_for('siete.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'magia' %}
+            <form action="{{ url_for('magia.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'cassino' %}
+            <form action="{{ url_for('cassino.audit_view') }}" method="post" id="sh_form">
         {% endif %}
             <label for="search_id">
                 <input type="text" id="search_id" name="client" value="" placeholder="Cliente">
@@ -51,6 +75,18 @@
                         <tr>
                             {% if sala == 'cubatta' %}
                                 <td><a class="pending_a" href="{{ url_for('cubatta.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'tribeca' %}
+                                <td><a class="pending_a" href="{{ url_for('tribeca.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'montreal' %}
+                                <td><a class="pending_a" href="{{ url_for('montreal.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'kavari' %}
+                                <td><a class="pending_a" href="{{ url_for('kavari.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'siete' %}
+                                <td><a class="pending_a" href="{{ url_for('siete.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'magia' %}
+                                <td><a class="pending_a" href="{{ url_for('magia.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'cassino' %}
+                                <td><a class="pending_a" href="{{ url_for('cassino.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                             {% endif %}
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
@@ -74,6 +110,18 @@
                         <tr>
                             {% if sala == 'cubatta' %}
                                 <td><a class="last_a" href="{{ url_for('cubatta.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'tribeca' %}
+                                <td><a class="last_a" href="{{ url_for('tribeca.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'Montreal' %}
+                                <td><a class="last_a" href="{{ url_for('Montreal.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'kavari' %}
+                                <td><a class="last_a" href="{{ url_for('kavari.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'siete' %}
+                                <td><a class="last_a" href="{{ url_for('siete.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'magia' %}
+                                <td><a class="last_a" href="{{ url_for('magia.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'cassino' %}
+                                <td><a class="last_a" href="{{ url_for('cassino.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             {% endif %}
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
@@ -86,6 +134,18 @@
                             {% if page != answered.page %}
                                 {% if sala == 'cubatta' %}
                                     <a href="{{ url_for('cubatta.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'tribeca' %}
+                                    <a href="{{ url_for('tribeca.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'montreal' %}
+                                    <a href="{{ url_for('montreal.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'kavari' %}
+                                    <a href="{{ url_for('kavari.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'siete' %}
+                                    <a href="{{ url_for('siete.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'magia' %}
+                                    <a href="{{ url_for('magia.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'cassino' %}
+                                    <a href="{{ url_for('cassino.audit_view', page=page) }}">{{ page }}</a>
                                 {% endif %}
                             {% else %}
                             <strong>{{ page }}</strong>

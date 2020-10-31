@@ -1,53 +1,44 @@
 # from Python
-from datetime import date, datetime
+# from datetime import date, datetime
 
 # from Flask
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 
 # from APP
-# from . import create_app
 from .models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas
-from .mail import send_mail_open, send_mail_close
+from .mail import send_mail_close
 
-
-# app = create_app()
-now = (date.today()).strftime('%d-%m-%Y')
-
-# @app.login_manager.unauthorized_handler
-# def unauthorized_callback():
-#     flash('Debe ingresar para ver ese contenido')
-#     return redirect('/auth/login')
 
 
 def entry_point(sala):
     if sala == 'cubatta':
         clain_db = Clain_cub
-        view = 'audit_view_cub'
+        view = 'cubatta.audit_view'
         answer_db = Answer_cub
     elif sala == 'tribeca':
         clain_db = Clain_tri
-        view = 'audit_view_tri'
+        view = 'tribeca.audit_view'
         answer_db = Answer_tri
     elif sala == 'montreal':
         clain_db = Clain_mon
-        view = 'audit_view_mon'
+        view = 'montreal.audit_view'
         answer_db = Answer_mon
     elif sala == 'kavari':
         clain_db = Clain_kav
-        view = 'audit_view_kav'
+        view = 'kavari.audit_viewv'
         answer_db = Answer_kav
     elif sala == 'siete':
         clain_db = Clain_sie
-        view = 'audit_view_sie'
+        view = 'siete.audit_view'
         answer_db = Answer_sie
     elif sala == 'magia':
         clain_db = Clain_mag
-        view = 'audit_view_mag'
+        view = 'magia.audit_view'
         answer_db = Answer_mag
     else:
         clain_db = Clain_cas
-        view = 'audit_view_cas'
+        view = 'cassino.audit_view'
         answer_db = Answer_cas
 
     datos = {
@@ -128,6 +119,8 @@ def audit_main(sala, request):
         q_in = None
     q_out = datos['clain_db'].query.filter(datos['clain_db'].answer_id != None)\
             .paginate(page, per_page=5)
+    if not q_out.items:
+        q_out = None
 
     reclamos = {
             'pendings': q_in,
@@ -177,7 +170,12 @@ def processed_main(id, sala):
         flash('Este reclamo no ha sido atendido')
         return redirect(url_for(datos['view']))
 
-    return render_template('detail.html', q=q)
+    data = {
+            'q': q,
+            'sala': sala,
+            }
+
+    return render_template('detail.html', **data)
 
 
 def search_view(name, d_search, clain):

@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 
 {% block head_content %}
-    <title>Detalle de reclamo || Cubatta</title>
+    {% if sala == 'cubatta' %}
+        <title>Detalle  de reclamo || Cubatta</title>
+    {% elif sala == 'tribeca' %}
+        <title>Detalle  de reclamo || tribeca</title>
+    {% elif sala == 'montreal' %}
+        <title>Detalle  de reclamo || Montreal</title> 
+    {% elif sala == 'kavari' %}
+        <title>Detalle  de reclamo || Kavari</title> 
+    {% elif sala == 'siete' %}
+        <title>Detalle  de reclamo || Siete</title> 
+    {% elif sala == 'magia' %}
+        <title>Detalle  de reclamo || Magia</title> 
+    {% elif sala == 'cassino' %}
+        <title>Detalle  de reclamo || Cassino</title> 
+    {% endif %}
 {% endblock %}
 
 {% block body_content %}
@@ -22,7 +36,21 @@
             <td>{{ q.name }}</td>
             <td>{{ q.email }}</td>
             <td class="de_td">{{ q.detail }}</td>
-            <td class="de_td">{{ q.answer.answer_con }}</td>                    
+            {% if sala == 'cubatta' %}
+                <td class="de_td">{{ q.answer_cub.answer_con }}</td>                    
+            {% elif sala == 'tribeca' %}
+                <td class="de_td">{{ q.answer_tri.answer_con }}</td>                    
+            {% elif sala == 'montreal' %}
+                <td class="de_td">{{ q.answer_mon.answer_con }}</td>                    
+            {% elif sala == 'kavari' %}
+                <td class="de_td">{{ q.answer_kav.answer_con }}</td>                    
+            {% elif sala == 'siete' %}
+                <td class="de_td">{{ q.answer_sie.answer_con }}</td>                    
+            {% elif sala == 'magia' %}
+                <td class="de_td">{{ q.answer_mag.answer_con }}</td>                    
+            {% elif sala == 'cassino' %}
+                <td class="de_td">{{ q.answer_cas.answer_con }}</td>                    
+            {% endif %}
         </tr>
     </table>
 
