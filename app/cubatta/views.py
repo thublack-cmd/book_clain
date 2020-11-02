@@ -14,6 +14,7 @@ from . import cubatta
 now = (date.today()).strftime('%d-%m-%Y')
 sala = 'cubatta'
 
+
 @cubatta.route('/cliente', methods=['POST', 'GET'])
 def client_view():
     if request.method == 'POST':

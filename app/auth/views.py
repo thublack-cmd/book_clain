@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 from flask_login import login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -60,7 +60,12 @@ def login():
 
                 login_user(user)
                 flash('Bienvenido')
-                return redirect(url_for('cubatta.audit_view'))
+
+                to_next = session['next']
+
+                print(to_next)
+
+                return redirect(to_next or url_for('cubatta.audit_view'))
             else: flash('Contrasena incorrecta')
         else: flash('Usuario no existe')
 
