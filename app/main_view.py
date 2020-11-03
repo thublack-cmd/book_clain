@@ -10,7 +10,6 @@ from .models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, C
 from .mail import send_mail_close
 
 
-
 def entry_point(sala):
     if sala == 'cubatta':
         clain_db = Clain_cub
@@ -194,5 +193,3 @@ def search_view(name, d_search, clain):
     else:
         q = 0
         return q
-
-# db.create_all()

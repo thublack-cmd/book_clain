@@ -12,13 +12,28 @@ from app.mail import send_mail_open
 from . import tribeca
 
 now = (date.today()).strftime('%d-%m-%Y')
+now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M:%S')
 sala = 'tribeca'
 
 @tribeca.route('/cliente', methods=['POST', 'GET'])
 def client_view():
     if request.method == 'POST':
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
+
+        if not request.form["amount"]:
+            amount_value = 0
+        else:
+            amount_value = request.form["amount"]
+
+        # add serial to table
+        last_clain = Clain_tri.query.order_by(Clain_tri.created_at.desc()).first()
+        if not last_clain:
+            serial = 'STR-1'
+        else:
+            serial = 'STR-' + str(last_clain.id)
+
         new_clain = Clain_tri(
+                serial=serial,
                 name=request.form["name"],
                 type_doc=request.form["type_doc"],
                 nro_doc=request.form["document"],
@@ -26,7 +41,7 @@ def client_view():
                 address=request.form["domicilio"],
                 date=d,
                 type_claim=request.form["type_obj"],
-                amount=request.form["amount"],
+                amount=amount_value,
                 detail=request.form["detail"],
                 )
         db.session.add(new_clain)
@@ -43,6 +58,7 @@ def client_view():
 
     data = {
             'dia': now,
+            'dia2': now2,
             'sala': sala,
             }
 

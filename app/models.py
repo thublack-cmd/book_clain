@@ -8,6 +8,7 @@ db = SQLAlchemy()
 class Clain_cub(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
@@ -40,6 +41,7 @@ class Answer_cub(db.Model):
 class Clain_tri(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
@@ -72,6 +74,7 @@ class Answer_tri(db.Model):
 class Clain_mon(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
@@ -104,6 +107,7 @@ class Answer_mon(db.Model):
 class Clain_kav(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
@@ -136,6 +140,7 @@ class Answer_kav(db.Model):
 class Clain_sie(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
@@ -168,6 +173,7 @@ class Answer_sie(db.Model):
 class Clain_mag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
@@ -200,6 +206,7 @@ class Answer_mag(db.Model):
 class Clain_cas(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
     name = db.Column(db.String(100), nullable=False)
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)

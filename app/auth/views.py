@@ -12,12 +12,9 @@ from .auth_db import get_user, user_data, user_model
 @login_required
 def signup():
     if request.method == 'POST':
+        print(request.form)
         username = request.form['username']
         password = request.form['password']
-        if request.form['sudo'] == 'on':
-            sudo = True
-        else:
-            sudo = False
 
         user_ver = get_user(username)
 
@@ -27,7 +24,7 @@ def signup():
             save_user = User(
                     username = username,
                     password = password_hash,
-                    is_superuser= sudo,
+                    is_superuser= 0,
                     first_name = request.form['first_name'],
                     last_name = request.form['last_name'],
                     )
@@ -36,7 +33,7 @@ def signup():
 
             flash('Registro exitoso')
 
-            return redirect('auth.signup')
+            return redirect('signup')
 
     return render_template('signup.html')
 
