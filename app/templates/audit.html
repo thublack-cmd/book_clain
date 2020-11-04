@@ -53,10 +53,29 @@
             <form action="{{ url_for('cassino.audit_view') }}" method="post" id="sh_form">
         {% endif %}
             <label for="search_id">
-                <input type="text" id="search_id" name="client" value="" placeholder="Cliente">
+                <input type="search" id="search_id" name="client" value="" placeholder="Cliente">
+            </label>
+            <!-- <label for="date_id"> -->
+            <!--     <input type="date" id="date_id" name="date" value=""> -->
+            <!-- </label> -->
+            <label for="month">
+                <select name="month" id="month">
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero</option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>                    
+                </select>
             </label>
             <label for="date_id">
-                <input type="date" id="date_id" name="date" value="">
+                <input type="number" id="date_id" name="date" value="">
             </label>
             <button class="search_btn" type="submit"></button>
         </form>

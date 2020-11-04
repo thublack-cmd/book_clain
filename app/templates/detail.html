@@ -30,25 +30,33 @@
             <th>Cliente</th>
             <th>Email</th>
             <th>Detalle</th>
+	    <th>Usuario</th>
             <th>Descargo</th>
         </tr>
         <tr>
-            <td>{{ q.name }}</td>
-            <td>{{ q.email }}</td>
+            <td class="small_td">{{ q.name }}</td>
+            <td class="small_td">{{ q.email }}</td>
             <td class="de_td">{{ q.detail }}</td>
             {% if sala == 'cubatta' %}
+                <td class="small_td">{{ q.answer_cub.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_cub.answer_con }}</td>                    
             {% elif sala == 'tribeca' %}
+                <td class="small_td">{{ q.answer_tri.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_tri.answer_con }}</td>                    
             {% elif sala == 'montreal' %}
+                <td class="small_td">{{ q.answer_mon.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_mon.answer_con }}</td>                    
             {% elif sala == 'kavari' %}
+                <td class="small_td">{{ q.answer_kav.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_kav.answer_con }}</td>                    
             {% elif sala == 'siete' %}
+                <td class="small_td">{{ q.answer_sie.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_sie.answer_con }}</td>                    
             {% elif sala == 'magia' %}
+                <td class="small_td">{{ q.answer_mag.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_mag.answer_con }}</td>                    
             {% elif sala == 'cassino' %}
+                <td class="user_td">{{ q.answer_cas.id_user }}</td>                    
                 <td class="de_td">{{ q.answer_cas.answer_con }}</td>                    
             {% endif %}
         </tr>

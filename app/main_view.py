@@ -1,9 +1,7 @@
-# from Python
-# from datetime import date, datetime
-
 # from Flask
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
+from sqlalchemy import extract
 
 # from APP
 from .models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas
@@ -25,7 +23,7 @@ def entry_point(sala):
         answer_db = Answer_mon
     elif sala == 'kavari':
         clain_db = Clain_kav
-        view = 'kavari.audit_viewv'
+        view = 'kavari.audit_view'
         answer_db = Answer_kav
     elif sala == 'siete':
         clain_db = Clain_sie
@@ -188,7 +186,9 @@ def search_view(name, d_search, clain):
         q = clain.query.filter(clain.name.contains(name))
         return q
     elif d_search:
-        q = clain.query.filter(clain.date.contains(d_search))
+        # q = clain.query.filter(clain.date.contains(d_search))
+        dia = str(d_search)
+        q = clain.query.filter(extract('day', clain.date) == dia)
         return q
     else:
         q = 0
