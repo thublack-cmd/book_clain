@@ -50,6 +50,8 @@ def entry_point(sala):
 def audit_main(sala, request):
 
     datos = entry_point(sala)
+    # Years available for search
+    dates = datos['clain_db'].query.with_entities(extract('year', datos['clain_db'].date).distinct())
 
     if request.method == 'POST':
         # Clain search module
@@ -76,6 +78,7 @@ def audit_main(sala, request):
                         'pendings': q_in,
                         'answered': q_out,
                         'sala': sala,
+                        'dates': dates,
                         }
 
                 return render_template('audit.html', **reclamos)
@@ -123,6 +126,7 @@ def audit_main(sala, request):
             'pendings': q_in,
             'answered': q_out,
             'sala': sala,
+            'dates': dates,
             }
 
     return render_template('audit.html', **reclamos)
@@ -188,7 +192,7 @@ def search_view(name, d_search, clain):
     elif d_search:
         # q = clain.query.filter(clain.date.contains(d_search))
         dia = str(d_search)
-        q = clain.query.filter(extract('day', clain.date) == dia)
+        q = clain.query.filter(extract('year', clain.date) == dia)
         return q
     else:
         q = 0

@@ -52,14 +52,13 @@
         {% elif sala == 'cassino' %}
             <form action="{{ url_for('cassino.audit_view') }}" method="post" id="sh_form">
         {% endif %}
+
             <label for="search_id">
                 <input type="search" id="search_id" name="client" value="" placeholder="Cliente">
             </label>
-            <!-- <label for="date_id"> -->
-            <!--     <input type="date" id="date_id" name="date" value=""> -->
-            <!-- </label> -->
             <label for="month">
-                <select name="month" id="month">
+                <select name="month" id="month" onchange="select_day(this.value);"> 
+                    <option hidden selected>Mes--</option>                
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
                     <option value="03">Marzo</option>
@@ -74,8 +73,18 @@
                     <option value="12">Diciembre</option>                    
                 </select>
             </label>
-            <label for="date_id">
-                <input type="number" id="date_id" name="date" value="">
+            <label>
+               <select name="day" id="day_dependent">
+                   <option hidden selected value="">Dia--</option>                   
+               </select>               
+            </label>            
+            <label for='year'>
+                <select name="year" id="year">
+                    <option hidden selected>Ano--</option>                    
+                {% for f in dates %}
+                    <option value="{{ f[0] }}">{{ f[0] }}</option>
+                {% endfor %}
+                </select>
             </label>
             <button class="search_btn" type="submit"></button>
         </form>
@@ -180,4 +189,36 @@
         </div>
     </section>
     
+    <script type="text/javascript">
+        function select_day(month) {
+            switch(month) {
+                        case "02":
+                            end = 28;
+                            break;
+                        case "04": 
+                        case "06":
+                        case "09":
+                        case "11":
+                            end = 30;
+                            break;
+                        default:
+                            end = 31;
+                            break;
+                    }
+            
+            document.getElementById('day_dependent').options.length = 0;
+
+			var optn = document.createElement("OPTION");
+			optn.text = '';
+			optn.value = '';
+            document.getElementById('day_dependent').options.add(optn)
+
+            for (var i=1; i<=end; i++) {
+                    var optn = document.createElement("OPTION");
+                    optn.text = i;
+                    optn.value = i;
+                    document.getElementById('day_dependent').options.add(optn)
+                }
+            }
+    </script>    
 {% endblock %}
