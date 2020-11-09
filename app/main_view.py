@@ -56,11 +56,13 @@ def audit_main(sala, request):
     if request.method == 'POST':
         # Clain search module
         if 'client' in request.form:
-            if request.form['client'] or request.form['date']:
+            if request.form['client'] or request.form['month'] or request.form['day'] or request.form['year']:
                 c_name = request.form['client']
-                date_sea = request.form["date"]
+                date_month = request.form["month"]
+                date_day = request.form["day"]
+                date_year = request.form["year"]
 
-                q_search = search_view(c_name, date_sea, datos['clain_db'])
+                q_search = search_view(c_name, date_month, date_day, date_year, datos['clain_db'])
 
                 if q_search.count() == 0:
                     q_in = None
@@ -179,11 +181,13 @@ def processed_main(id, sala):
     return render_template('detail.html', **data)
 
 
-def search_view(name, d_search, clain):
+def search_view(name, d_month, d_day, d_year, clain):
     '''
         Search module
         '''
-    if name and d_search:
+    date_large = str(d_month) + '-' + str(d_day) + '-' + str(d_year)
+
+    if name and d_day and d_month and d_year:
         q = clain.query.filter(clain.name.contains(name), clain.date.contains(d_search))
         return q
     elif name:
