@@ -215,8 +215,8 @@
 
             for (var i=1; i<=end; i++) {
                     var optn = document.createElement("OPTION");
-                    optn.text = i;
-                    optn.value = i;
+                    i < 10 ? optn.text = '0' + i:optn.text = i 
+                    i < 10 ? optn.value = '0' + i:optn.value = i 
                     document.getElementById('day_dependent').options.add(optn)
                 }
             }

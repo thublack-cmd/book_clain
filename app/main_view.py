@@ -185,19 +185,26 @@ def search_view(name, d_month, d_day, d_year, clain):
     '''
         Search module
         '''
-    date_large = str(d_month) + '-' + str(d_day) + '-' + str(d_year)
+    date_large = str(d_year) + '-' + str(d_month) + '-' + str(d_day)
 
     if name and d_day and d_month and d_year:
-        q = clain.query.filter(clain.name.contains(name), clain.date.contains(d_search))
+        q = clain.query.filter(clain.name.contains(name), clain.date.contains(date_large))
         return q
     elif name:
-        q = clain.query.filter(clain.name.contains(name))
-        return q
-    elif d_search:
-        # q = clain.query.filter(clain.date.contains(d_search))
-        dia = str(d_search)
-        q = clain.query.filter(extract('year', clain.date) == dia)
-        return q
-    else:
-        q = 0
-        return q
+        if (clain.query.filter(clain.serial == name)).count() != 0:
+            q = clain.query.filter(clain.serial == name)
+            return q
+        elif (clain.query.filter(clain.nro_doc == name)).count() != 0:
+            q = clain.query.filter(clain.nro_doc == name)
+            return q
+        elif (clain.query.filter(clain.name.contains(name))).count() != 0:
+            q = clain.query.filter(clain.name.contains(name))
+            return q
+    # elif d_search:
+    #     # q = clain.query.filter(clain.date.contains(d_search))
+    #     dia = str(d_search)
+    #     q = clain.query.filter(extract('year', clain.date) == dia)
+    #     return q
+    # else:
+    #     q = 0
+    #     return q
