@@ -15,6 +15,16 @@
         <title>Gestion de reclamaciones || Magia</title> 
     {% elif sala == 'cassino' %}
         <title>Gestion de reclamaciones || Cassino</title> 
+    {% elif sala == 'zarate' %}
+        <title>Gestion de reclamaciones || Uchukuta Zarate</title> 
+    {% elif sala == 'proceres' %}
+        <title>Gestion de reclamaciones || Uchukuta Proceres</title> 
+    {% elif sala == 'huacho' %}
+        <title>Gestion de reclamaciones || Uchukuta Huacho</title> 
+    {% elif sala == 'huarmey' %}
+        <title>Gestion de reclamaciones || Uchukuta Huarmey</title> 
+    {% elif sala == 'casma' %}
+        <title>Gestion de reclamaciones || Uchukuta Casma</title> 
     {% endif %}
 {% endblock %} 
 
@@ -51,6 +61,16 @@
             <form action="{{ url_for('magia.audit_view') }}" method="post" id="sh_form">
         {% elif sala == 'cassino' %}
             <form action="{{ url_for('cassino.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'zarate' %}
+            <form action="{{ url_for('zarate.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'proceres' %}
+            <form action="{{ url_for('proceres.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'huacho' %}
+            <form action="{{ url_for('huacho.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'huarmey' %}
+            <form action="{{ url_for('huarmey.audit_view') }}" method="post" id="sh_form">
+        {% elif sala == 'casma' %}
+            <form action="{{ url_for('casma.audit_view') }}" method="post" id="sh_form">
         {% endif %}
 
             <label for="search_id">
@@ -58,7 +78,7 @@
             </label>
             <label for="month">
                 <select name="month" id="month" onchange="select_day(this.value);"> 
-                    <option hidden selected>Mes--</option>                
+                    <option hidden selected value=''>Mes--</option>                
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
                     <option value="03">Marzo</option>
@@ -80,7 +100,7 @@
             </label>            
             <label for='year'>
                 <select name="year" id="year">
-                    <option hidden selected>Ano--</option>                    
+                    <option hidden selected value=''>Ano--</option>                    
                 {% for f in dates %}
                     <option value="{{ f[0] }}">{{ f[0] }}</option>
                 {% endfor %}
@@ -115,6 +135,16 @@
                                 <td><a class="pending_a" href="{{ url_for('magia.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                             {% elif sala == 'cassino' %}
                                 <td><a class="pending_a" href="{{ url_for('cassino.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'zarate' %}
+                                <td><a class="pending_a" href="{{ url_for('zarate.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'proceres' %}
+                                <td><a class="pending_a" href="{{ url_for('proceres.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'huacho' %}
+                                <td><a class="pending_a" href="{{ url_for('huacho.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'huarmey' %}
+                                <td><a class="pending_a" href="{{ url_for('huarmey.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'casma' %}
+                                <td><a class="pending_a" href="{{ url_for('casma.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                             {% endif %}
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
@@ -150,6 +180,16 @@
                                 <td><a class="last_a" href="{{ url_for('magia.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             {% elif sala == 'cassino' %}
                                 <td><a class="last_a" href="{{ url_for('cassino.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'zarate' %}
+                                <td><a class="last_a" href="{{ url_for('zarate.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'proceres' %}
+                                <td><a class="last_a" href="{{ url_for('proceres.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'huacho' %}
+                                <td><a class="last_a" href="{{ url_for('huacho.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'huarmey' %}
+                                <td><a class="last_a" href="{{ url_for('huarmey.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                            {% elif sala == 'casma' %}
+                                <td><a class="last_a" href="{{ url_for('casma.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                             {% endif %}
                             <td>{{ r.email }}</td>
                             <td class="detail_td">{{ r.detail }}</td>
@@ -174,6 +214,16 @@
                                     <a href="{{ url_for('magia.audit_view', page=page) }}">{{ page }}</a>
                                 {% elif sala == 'cassino' %}
                                     <a href="{{ url_for('cassino.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'zarate' %}
+                                    <a href="{{ url_for('zarate.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'proceres' %}
+                                    <a href="{{ url_for('proceres.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'huacho' %}
+                                    <a href="{{ url_for('huacho.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'huarmey' %}
+                                    <a href="{{ url_for('huarmey.audit_view', page=page) }}">{{ page }}</a>
+                                {% elif sala == 'casma' %}
+                                    <a href="{{ url_for('casma.audit_view', page=page) }}">{{ page }}</a>
                                 {% endif %}
                             {% else %}
                             <strong>{{ page }}</strong>

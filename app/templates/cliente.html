@@ -15,6 +15,16 @@
         <title>Libro de reclamaciones || Magia</title>
     {% elif sala == 'cassino' %}
         <title>Libro de reclamaciones || Cassino</title>
+    {% elif sala == 'zarate' %}
+        <title>Libro de reclamaciones || Uchukuta Zarate</title>
+    {% elif sala == 'proceres' %}
+        <title>Libro de reclamaciones || Uchukuta Proceres</title>
+    {% elif sala == 'huacho' %}
+        <title>Libro de reclamaciones || Uchukuta Huacho</title>
+    {% elif sala == 'huarmey' %}
+        <title>Libro de reclamaciones || Uchukuta Huarmey</title>
+    {% elif sala == 'casma' %}
+        <title>Libro de reclamaciones || Uchukuta Casma</title>
     {% endif %}
 {% endblock %}
 
@@ -83,6 +93,16 @@
             <form action="{{ url_for('magia.client_view') }}" method="post">
         {% elif sala == 'cassino' %}
             <form action="{{ url_for('cassino.client_view') }}" method="post">
+        {% elif sala == 'zarate' %}
+            <form action="{{ url_for('zarate.client_view') }}" method="post">
+        {% elif sala == 'proceres' %}
+            <form action="{{ url_for('proceres.client_view') }}" method="post">
+        {% elif sala == 'huacho' %}
+            <form action="{{ url_for('huacho.client_view') }}" method="post">
+        {% elif sala == 'huarmey' %}
+            <form action="{{ url_for('huarmey.client_view') }}" method="post">
+        {% elif sala == 'casma' %}
+            <form action="{{ url_for('casma.client_view') }}" method="post">
         {% endif %}
             <fieldset id="customer">
                 <div class="section_head">

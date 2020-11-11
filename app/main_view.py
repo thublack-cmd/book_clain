@@ -4,7 +4,8 @@ from flask_login import login_required, current_user
 from sqlalchemy import extract
 
 # from APP
-from .models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas
+# from .models import db, Clain_cub, Clain_tri, Clain_mon, Clain_kav, Clain_sie, Clain_mag, Clain_cas, Answer_cub, Answer_tri, Answer_mon, Answer_kav, Answer_sie, Answer_mag, Answer_cas, Clain_uchu_zarate, Answer_uchu_zarate, Clain_uchu_proceres, Answer_uchu_proceres
+from .models import *
 from .mail import send_mail_close
 
 
@@ -33,10 +34,30 @@ def entry_point(sala):
         clain_db = Clain_mag
         view = 'magia.audit_view'
         answer_db = Answer_mag
-    else:
+    elif sala == 'cassino':
         clain_db = Clain_cas
         view = 'cassino.audit_view'
         answer_db = Answer_cas
+    elif sala == 'zarate':
+        clain_db = Clain_uchu_zarate
+        view = 'zarate.audit_view'
+        answer_db = Answer_uchu_zarate
+    elif sala == 'proceres':
+        clain_db = Clain_uchu_proceres
+        view = 'proceres.audit_view'
+        answer_db = Answer_uchu_proceres
+    elif sala == 'huacho':
+        clain_db = Clain_uchu_huacho
+        view = 'huacho.audit_view'
+        answer_db = Answer_uchu_huacho
+    elif sala == 'huarmey':
+        clain_db = Clain_uchu_huarmey
+        view = 'huarmey.audit_view'
+        answer_db = Answer_uchu_huarmey
+    else:
+        clain_db = Clain_uchu_casma
+        view = 'casma.audit_view'
+        answer_db = Answer_uchu_casma
 
     datos = {
         'clain_db': clain_db,
@@ -64,7 +85,7 @@ def audit_main(sala, request):
 
                 q_search = search_view(c_name, date_month, date_day, date_year, datos['clain_db'])
 
-                if q_search.count() == 0:
+                if q_search == 0 or q_search.count() == 0:
                     q_in = None
                     q_out = None
                 else:
@@ -185,26 +206,79 @@ def search_view(name, d_month, d_day, d_year, clain):
     '''
         Search module
         '''
-    date_large = str(d_year) + '-' + str(d_month) + '-' + str(d_day)
 
-    if name and d_day and d_month and d_year:
-        q = clain.query.filter(clain.name.contains(name), clain.date.contains(date_large))
-        return q
-    elif name:
+    dia = str(d_day)
+    mes = str(d_month)
+    annio = str(d_year)
+    date_large = annio + '-' + mes + '-' + dia
+
+    ## Search by serial or DNI or client name, respectly more date
+    if name:
         if (clain.query.filter(clain.serial == name)).count() != 0:
-            q = clain.query.filter(clain.serial == name)
+            clain_query = clain.serial
+            q = info_client_search(clain, clain_query, name, date_large, dia, mes, annio)
             return q
+
         elif (clain.query.filter(clain.nro_doc == name)).count() != 0:
-            q = clain.query.filter(clain.nro_doc == name)
+            clain_query = clain.nro_doc
+            q = info_client_search(clain, clain_query, name, date_large, dia, mes, annio)
             return q
+
         elif (clain.query.filter(clain.name.contains(name))).count() != 0:
-            q = clain.query.filter(clain.name.contains(name))
+            clain_query = clain.name
+            q = info_client_search(clain, clain_query, name, date_large, dia, mes, annio)
             return q
-    # elif d_search:
-    #     # q = clain.query.filter(clain.date.contains(d_search))
-    #     dia = str(d_search)
-    #     q = clain.query.filter(extract('year', clain.date) == dia)
-    #     return q
-    # else:
-    #     q = 0
-    #     return q
+        else:
+            q = 0
+            return q
+
+    ## Search date complete
+    elif d_day and d_month and d_year:
+        q = clain.query.filter(clain.date.contains(date_large))
+        return q
+
+    ## Search month + year
+    elif d_month and d_year:
+        date_month_year = annio + '-' + mes
+        q = clain.query.filter(clain.date.contains(date_month_year))
+        return q
+
+    ## Search month + day
+    elif d_month and d_day:
+        date_month_day = mes + '-' + dia
+        q = clain.query.filter(clain.date.contains(date_month_day))
+        return q
+
+    ## Search by year
+    elif d_year:
+        q = clain.query.filter(extract('year', clain.date) == annio)
+        return q
+
+    else:
+        q = 0
+        return q
+
+
+def info_client_search(clain, clain_query, name, full_date, dia, mes, anio):
+    if dia and mes and anio:
+        print('serial mas fecha completa')
+        q = clain.query.filter(clain_query == name, clain.date.contains(full_date))
+        return q
+    elif mes and anio:
+        print('serial mes y ano')
+        date_month_year = anio + '-' + mes
+        q = clain.query.filter(clain_query == name, clain.date.contains(date_month_year))
+        return q
+    elif mes:
+        print('serial mes')
+        q = clain.query.filter(clain_query == name, extract('month', clain.date) == mes)
+        return q
+    elif anio:
+        print('serial y ano')
+        q = clain.query.filter(clain_query == name, extract('year', clain.date)  == anio)
+        return q
+    else:
+        print('serial')
+        q = clain.query.filter(clain_query == name)
+        return q
+

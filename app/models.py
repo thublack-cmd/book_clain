@@ -246,3 +246,173 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.last_name}, {self.first_name}>'
+
+class Clain_uchu_zarate(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.String(12), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(7), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer_uchu_zarate = db.relationship('Answer_uchu_zarate', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer_uchu_zarate.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_uchu_zarate(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+class Clain_uchu_proceres(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.String(12), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(7), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer_uchu_proceres = db.relationship('Answer_uchu_proceres', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer_uchu_proceres.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_uchu_proceres(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+class Clain_uchu_huacho(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.String(12), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(7), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer_uchu_huacho = db.relationship('Answer_uchu_huacho', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer_uchu_huacho.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_uchu_huacho(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+class Clain_uchu_huarmey(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.String(12), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(7), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer_uchu_huarmey = db.relationship('Answer_uchu_huarmey', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer_uchu_huarmey.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_uchu_huarmey(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
+class Clain_uchu_casma(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(3), nullable=True)
+    nro_doc = db.Column(db.String(12), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(7), nullable=False)
+    amount = db.Column(db.Integer)
+    detail = db.Column(db.String(500), nullable=False)
+    answer_uchu_casma = db.relationship('Answer_uchu_casma', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer_uchu_casma.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_uchu_casma(db.Model):
+
+    __bind_key__= 'uchukuta'
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con

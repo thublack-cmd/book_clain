@@ -15,6 +15,11 @@ from .kavari import kavari
 from .siete import siete
 from .magia import magia
 from .cassino import cassino
+from .uchukuta.zarate import zarate
+from .uchukuta.proceres import proceres
+from .uchukuta.huacho import huacho
+from .uchukuta.huarmey import huarmey
+from .uchukuta.casma import casma
 
 
 login_manager = LoginManager()
@@ -32,6 +37,11 @@ def create_app():
     app.register_blueprint(siete)
     app.register_blueprint(magia)
     app.register_blueprint(cassino)
+    app.register_blueprint(zarate)
+    app.register_blueprint(proceres)
+    app.register_blueprint(huacho)
+    app.register_blueprint(huarmey)
+    app.register_blueprint(casma)
 
     login_manager.init_app(app)
     db.init_app(app)
