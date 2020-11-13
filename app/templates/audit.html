@@ -1,274 +1,277 @@
 {% extends 'base.html' %}
 
 {% block head_content %} 
-    {% if sala == 'cubatta' %}
-        <title>Gestion de reclamaciones || Cubatta</title> 
-    {% elif sala == 'tribeca' %}
-        <title>Gestion de reclamaciones || Tribeca</title> 
-    {% elif sala == 'montreal' %}
-        <title>Gestion de reclamaciones || Montreal</title> 
-    {% elif sala == 'kavari' %}
-        <title>Gestion de reclamaciones || Kavari</title> 
-    {% elif sala == 'siete' %}
-        <title>Gestion de reclamaciones || Siete</title> 
-    {% elif sala == 'magia' %}
-        <title>Gestion de reclamaciones || Magia</title> 
-    {% elif sala == 'cassino' %}
-        <title>Gestion de reclamaciones || Cassino</title> 
-    {% elif sala == 'zarate' %}
-        <title>Gestion de reclamaciones || Uchukuta Zarate</title> 
-    {% elif sala == 'proceres' %}
-        <title>Gestion de reclamaciones || Uchukuta Proceres</title> 
-    {% elif sala == 'huacho' %}
-        <title>Gestion de reclamaciones || Uchukuta Huacho</title> 
-    {% elif sala == 'huarmey' %}
-        <title>Gestion de reclamaciones || Uchukuta Huarmey</title> 
-    {% elif sala == 'casma' %}
-        <title>Gestion de reclamaciones || Uchukuta Casma</title> 
-    {% endif %}
+  {% if sala == 'cubatta' %}
+    <title>Gestion de reclamaciones || Cubatta</title> 
+  {% elif sala == 'tribeca' %}
+    <title>Gestion de reclamaciones || Tribeca</title> 
+  {% elif sala == 'montreal' %}
+    <title>Gestion de reclamaciones || Montreal</title> 
+  {% elif sala == 'kavari' %}
+    <title>Gestion de reclamaciones || Kavari</title> 
+  {% elif sala == 'siete' %}
+    <title>Gestion de reclamaciones || Siete</title> 
+  {% elif sala == 'magia' %}
+    <title>Gestion de reclamaciones || Magia</title> 
+  {% elif sala == 'cassino' %}
+    <title>Gestion de reclamaciones || Cassino</title> 
+  {% elif sala == 'zarate' %}
+    <title>Gestion de reclamaciones || Uchukuta Zarate</title> 
+  {% elif sala == 'proceres' %}
+    <title>Gestion de reclamaciones || Uchukuta Proceres</title> 
+  {% elif sala == 'huacho' %}
+    <title>Gestion de reclamaciones || Uchukuta Huacho</title> 
+  {% elif sala == 'huarmey' %}
+    <title>Gestion de reclamaciones || Uchukuta Huarmey</title> 
+  {% elif sala == 'casma' %}
+    <title>Gestion de reclamaciones || Uchukuta Casma</title> 
+  {% endif %}
 {% endblock %} 
 
 {% block body_content %}
 
-    {% include 'nav.html' %}
+  {% include 'nav.html' %}
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 
-    <div class="encabezado">
-        <h1>Gestion de reclamos/quejas</h1>
-    </div>
+  <div class="title-container">
+    <h1 class="title-container__title">Gestion de reclamos/quejas</h1>
+  </div>
 
-    <section id="search_section">
-        {% if sala == 'cubatta' %}
-            <form action="{{ url_for('cubatta.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'tribeca' %}
-            <form action="{{ url_for('tribeca.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'montreal' %}
-            <form action="{{ url_for('montreal.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'kavari' %}
-            <form action="{{ url_for('kavari.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'siete' %}
-            <form action="{{ url_for('siete.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'magia' %}
-            <form action="{{ url_for('magia.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'cassino' %}
-            <form action="{{ url_for('cassino.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'zarate' %}
-            <form action="{{ url_for('zarate.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'proceres' %}
-            <form action="{{ url_for('proceres.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'huacho' %}
-            <form action="{{ url_for('huacho.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'huarmey' %}
-            <form action="{{ url_for('huarmey.audit_view') }}" method="post" id="sh_form">
-        {% elif sala == 'casma' %}
-            <form action="{{ url_for('casma.audit_view') }}" method="post" id="sh_form">
-        {% endif %}
+  <section class="search-container">
+    {% if sala == 'cubatta' %}
+      <form action="{{ url_for('cubatta.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'tribeca' %}
+      <form action="{{ url_for('tribeca.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'montreal' %}
+      <form action="{{ url_for('montreal.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'kavari' %}
+      <form action="{{ url_for('kavari.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'siete' %}
+      <form action="{{ url_for('siete.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'magia' %}
+      <form action="{{ url_for('magia.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'cassino' %}
+      <form action="{{ url_for('cassino.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'zarate' %}
+      <form action="{{ url_for('zarate.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'proceres' %}
+      <form action="{{ url_for('proceres.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'huacho' %}
+      <form action="{{ url_for('huacho.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'huarmey' %}
+      <form action="{{ url_for('huarmey.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'casma' %}
+      <form action="{{ url_for('casma.audit_view') }}" method="post" class="search-container__sh_form">
+    {% endif %}
 
-            <label for="search_id">
-                <input type="search" id="search_id" name="client" value="" placeholder="Cliente">
-            </label>
-            <label for="month">
-                <select name="month" id="month" onchange="select_day(this.value);"> 
-                    <option hidden selected value=''>Mes--</option>                
-                    <option value="01">Enero</option>
-                    <option value="02">Febrero</option>
-                    <option value="03">Marzo</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Mayo</option>
-                    <option value="06">Junio</option>
-                    <option value="07">Julio</option>
-                    <option value="08">Agosto</option>
-                    <option value="09">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Noviembre</option>
-                    <option value="12">Diciembre</option>                    
-                </select>
-            </label>
-            <label>
-               <select name="day" id="day_dependent">
-                   <option hidden selected value="">Dia--</option>                   
-               </select>               
-            </label>            
-            <label for='year'>
-                <select name="year" id="year">
-                    <option hidden selected value=''>Ano--</option>                    
-                {% for f in dates %}
-                    <option value="{{ f[0] }}">{{ f[0] }}</option>
-                {% endfor %}
-                </select>
-            </label>
-            <button class="search_btn" type="submit"></button>
-        </form>
+        <label for="search_id">
+          <input type="search" class="search-container__sh_form--input" id="search_id" name="client" value="" placeholder="Cliente">
+        </label>
+        <label for="month">
+          <select name="month" id="month" onchange="select_day(this.value);"> 
+            <option hidden selected value=''>Mes--</option>                
+            <option value="01">Enero</option>
+            <option value="02">Febrero</option>
+            <option value="03">Marzo</option>
+            <option value="04">Abril</option>
+            <option value="05">Mayo</option>
+            <option value="06">Junio</option>
+            <option value="07">Julio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>                    
+          </select>
+        </label>
+        <label>
+          <select name="day" id="day_dependent">
+            <option hidden selected value="">Dia--</option>                   
+          </select>               
+        </label>            
+        <label for='year'>
+          <select name="year" id="year">
+            <option hidden selected value=''>Ano--</option>                    
+          {% for f in dates %}
+            <option value="{{ f[0] }}">{{ f[0] }}</option>
+          {% endfor %}
+          </select>
+        </label>
+        <button class="search-container__search_btn" type="submit"></button>
+      </form>
     </section>
-    <section id="list_section">
-        <div id="pending">
-            <h3>Pendientes</h3>
-            {% if pendings %}
-                <table class="table_list">
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Email</th>
-                        <th class="detail_th">Detalle</th>
-                    </tr>
-                    {% for r in pendings %}
-                        <tr>
-                            {% if sala == 'cubatta' %}
-                                <td><a class="pending_a" href="{{ url_for('cubatta.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'tribeca' %}
-                                <td><a class="pending_a" href="{{ url_for('tribeca.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'montreal' %}
-                                <td><a class="pending_a" href="{{ url_for('montreal.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'kavari' %}
-                                <td><a class="pending_a" href="{{ url_for('kavari.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'siete' %}
-                                <td><a class="pending_a" href="{{ url_for('siete.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'magia' %}
-                                <td><a class="pending_a" href="{{ url_for('magia.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'cassino' %}
-                                <td><a class="pending_a" href="{{ url_for('cassino.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'zarate' %}
-                                <td><a class="pending_a" href="{{ url_for('zarate.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'proceres' %}
-                                <td><a class="pending_a" href="{{ url_for('proceres.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'huacho' %}
-                                <td><a class="pending_a" href="{{ url_for('huacho.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'huarmey' %}
-                                <td><a class="pending_a" href="{{ url_for('huarmey.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'casma' %}
-                                <td><a class="pending_a" href="{{ url_for('casma.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% endif %}
-                            <td>{{ r.email }}</td>
-                            <td class="detail_td">{{ r.detail }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% else %}
-                <h3>No hay entradas pendientes</h3>                
-            {% endif %}
-        </div>
-        <div id="last_five">
-            <h3>Ultimos 5</h3>
-            {% if answered %}
-                <table class="table_list">
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Email</th>
-                            <th>Detalle</th>
-                        </tr>
-                    {% for r in answered.items %}
-                        <tr>
-                            {% if sala == 'cubatta' %}
-                                <td><a class="last_a" href="{{ url_for('cubatta.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'tribeca' %}
-                                <td><a class="last_a" href="{{ url_for('tribeca.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'Montreal' %}
-                                <td><a class="last_a" href="{{ url_for('Montreal.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'kavari' %}
-                                <td><a class="last_a" href="{{ url_for('kavari.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'siete' %}
-                                <td><a class="last_a" href="{{ url_for('siete.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'magia' %}
-                                <td><a class="last_a" href="{{ url_for('magia.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'cassino' %}
-                                <td><a class="last_a" href="{{ url_for('cassino.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'zarate' %}
-                                <td><a class="last_a" href="{{ url_for('zarate.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'proceres' %}
-                                <td><a class="last_a" href="{{ url_for('proceres.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'huacho' %}
-                                <td><a class="last_a" href="{{ url_for('huacho.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'huarmey' %}
-                                <td><a class="last_a" href="{{ url_for('huarmey.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% elif sala == 'casma' %}
-                                <td><a class="last_a" href="{{ url_for('casma.processed_view', id=r.id) }}">{{ r.name }}</a></td>
-                            {% endif %}
-                            <td>{{ r.email }}</td>
-                            <td class="detail_td">{{ r.detail }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-                <div class=pagination>
-                    {% for page in answered.iter_pages() %}
-                        {% if page %}
-                            {% if page != answered.page %}
-                                {% if sala == 'cubatta' %}
-                                    <a href="{{ url_for('cubatta.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'tribeca' %}
-                                    <a href="{{ url_for('tribeca.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'montreal' %}
-                                    <a href="{{ url_for('montreal.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'kavari' %}
-                                    <a href="{{ url_for('kavari.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'siete' %}
-                                    <a href="{{ url_for('siete.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'magia' %}
-                                    <a href="{{ url_for('magia.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'cassino' %}
-                                    <a href="{{ url_for('cassino.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'zarate' %}
-                                    <a href="{{ url_for('zarate.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'proceres' %}
-                                    <a href="{{ url_for('proceres.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'huacho' %}
-                                    <a href="{{ url_for('huacho.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'huarmey' %}
-                                    <a href="{{ url_for('huarmey.audit_view', page=page) }}">{{ page }}</a>
-                                {% elif sala == 'casma' %}
-                                    <a href="{{ url_for('casma.audit_view', page=page) }}">{{ page }}</a>
-                                {% endif %}
-                            {% else %}
-                            <strong>{{ page }}</strong>
-                            {% endif %}
-                        {% else %}
-                            <span>…</span>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% else %}
-                <h3>No hay entradas solucionadas</h3>
-            {% endif %}
-        </div>
+
+    <section class="list-container">
+      <div class="list-container__pending">
+        <h3>Pendientes</h3>
+        {% if pendings %}
+          <table class="list-container__table_list">
+            <tr>
+              <th>Cliente</th>
+                <th>Email</th>
+                <th class="detail_th">Detalle</th>
+              </tr>
+                {% for r in pendings %}
+                  <tr>
+                    {% if sala == 'cubatta' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('cubatta.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'tribeca' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('tribeca.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'montreal' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('montreal.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'kavari' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('kavari.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'siete' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('siete.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'magia' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('magia.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'cassino' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('cassino.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'zarate' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('zarate.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'proceres' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('proceres.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'huacho' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('huacho.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'huarmey' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('huarmey.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'casma' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('casma.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% endif %}
+                    <td>{{ r.email }}</td>
+                    <td class="list-container--detail_td">{{ r.detail }}</td>
+                  </tr>
+                {% endfor %}
+          </table>
+        {% else %}
+          <h3>No hay entradas pendientes</h3>                
+        {% endif %}
+      </div>
+      <div class="list-container__last-table">
+        <h3>Ultimos 5</h3>
+        {% if answered %}
+          <table class="list-container__table_list">
+            <tr>
+              <th>Cliente</th>
+              <th>Email</th>
+              <th>Detalle</th>
+            </tr>
+            {% for r in answered.items %}
+              <tr>
+                {% if sala == 'cubatta' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('cubatta.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'tribeca' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('tribeca.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'Montreal' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('Montreal.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'kavari' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('kavari.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'siete' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('siete.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'magia' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('magia.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'cassino' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('cassino.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'zarate' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('zarate.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'proceres' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('proceres.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'huacho' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('huacho.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'huarmey' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('huarmey.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'casma' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('casma.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% endif %}
+                <td>{{ r.email }}</td>
+                <td class="list-container--detail_td">{{ r.detail }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+
+          <div class=pagination>
+            {% for page in answered.iter_pages() %}
+              {% if page %}
+                {% if page != answered.page %}
+                  {% if sala == 'cubatta' %}
+                    <a href="{{ url_for('cubatta.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'tribeca' %}
+                    <a href="{{ url_for('tribeca.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'montreal' %}
+                    <a href="{{ url_for('montreal.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'kavari' %}
+                    <a href="{{ url_for('kavari.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'siete' %}
+                    <a href="{{ url_for('siete.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'magia' %}
+                    <a href="{{ url_for('magia.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'cassino' %}
+                    <a href="{{ url_for('cassino.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'zarate' %}
+                    <a href="{{ url_for('zarate.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'proceres' %}
+                    <a href="{{ url_for('proceres.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'huacho' %}
+                    <a href="{{ url_for('huacho.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'huarmey' %}
+                    <a href="{{ url_for('huarmey.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'casma' %}
+                    <a href="{{ url_for('casma.audit_view', page=page) }}">{{ page }}</a>
+                  {% endif %}
+                {% else %}
+                  <strong>{{ page }}</strong>
+                {% endif %}
+              {% else %}
+                <span>…</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <h3>No hay entradas solucionadas</h3>
+        {% endif %}
+      </div>
     </section>
     
     <script type="text/javascript">
-        function select_day(month) {
-            switch(month) {
-                        case "02":
-                            end = 28;
-                            break;
-                        case "04": 
-                        case "06":
-                        case "09":
-                        case "11":
-                            end = 30;
-                            break;
-                        default:
-                            end = 31;
-                            break;
-                    }
-            
-            document.getElementById('day_dependent').options.length = 0;
-
-			var optn = document.createElement("OPTION");
-			optn.text = '';
-			optn.value = '';
-            document.getElementById('day_dependent').options.add(optn)
-
-            for (var i=1; i<=end; i++) {
-                    var optn = document.createElement("OPTION");
-                    i < 10 ? optn.text = '0' + i:optn.text = i 
-                    i < 10 ? optn.value = '0' + i:optn.value = i 
-                    document.getElementById('day_dependent').options.add(optn)
+      function select_day(month) {
+        switch(month) {
+                    case "02":
+                        end = 28;
+                        break;
+                    case "04": 
+                    case "06":
+                    case "09":
+                    case "11":
+                        end = 30;
+                        break;
+                    default:
+                        end = 31;
+                        break;
                 }
-            }
+        
+      document.getElementById('day_dependent').options.length = 0;
+
+      var optn = document.createElement("OPTION");
+      optn.text = '';
+      optn.value = '';
+
+      document.getElementById('day_dependent').options.add(optn)
+
+      for (var i=1; i<=end; i++) {
+          var optn = document.createElement("OPTION");
+          i < 10 ? optn.text = '0' + i:optn.text = i 
+          i < 10 ? optn.value = '0' + i:optn.value = i 
+          document.getElementById('day_dependent').options.add(optn)
+        }
+      }
     </script>    
 {% endblock %}

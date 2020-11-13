@@ -60,8 +60,6 @@ def login():
 
                 to_next = session['next']
 
-                print(to_next)
-
                 return redirect(to_next or url_for('cubatta.audit_view'))
             else: flash('Contrasena incorrecta')
         else: flash('Usuario no existe')

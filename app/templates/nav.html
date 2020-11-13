@@ -1,61 +1,61 @@
-<header>
-    <nav>
-        <picture>
-            {% if sala == 'cubatta' %}
-                <a href="{{ url_for('cubatta.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="Logo sala">
-                </a>                    
-            {% elif sala == 'tribeca' %}
-                <a href="{{ url_for('tribeca.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="Logo sala">
-                </a>                    
-            {% elif sala == 'montreal' %}
-                <a href="{{ url_for('montreal.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="Logo sala">
-                </a>                    
-            {% elif sala == 'kavari' %}
-                <a href="{{ url_for('kavari.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="Logo sala">
-                </a>                    
-            {% elif sala == 'siete' %}
-                <a href="{{ url_for('siete.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="Logo sala">
-                </a>                    
-            {% elif sala == 'magia' %}
-                <a href="{{ url_for('magia.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="Logo sala">
-                </a>                    
-            {% elif sala == 'cassino' %}
-                <a href="{{ url_for('cassino.audit_view') }}">
-                    <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="Logo sala">
-                </a>                    
-            {% endif %}
-        </picture>
-        <ul>
-            <p class="user_show">{{ session['_user_id'] }}</p>
-            <li class="dropdown">
-                <button class="dropbtn">Salas</button>
-                <div class="dropdown-content">
-                    <a href="{{ url_for('cubatta.audit_view') }}">Cubatta</a>
-                    <a href="{{ url_for('tribeca.audit_view') }}">Tribeca</a>
-                    <a href="{{ url_for('montreal.audit_view') }}">Montreal</a>
-                    <a href="{{ url_for('kavari.audit_view') }}">Kavari</a>
-                    <a href="{{ url_for('siete.audit_view') }}">La Siete</a>
-                    <a href="{{ url_for('magia.audit_view') }}">Magia</a>
-                    <a href="{{ url_for('cassino.audit_view') }}">Cassino</a>
-                </div>
-            </li>
-            <li class="dropdown">
-                <button class="dropbtn">Restaurantes</button>
-                <div class="dropdown-content">
-                    <a href="#">Zarate</a>
-                    <a href="#">Proceres</a>
-                    <a href="#">Huacho</a>
-                    <a href="#">Huarmey</a>
-                    <a href="#">Casma</a>
-                </div>
-            </li>
-            <li><a id="logout" href="{{ url_for('auth.logout') }}">Log out</a></li>
-        </ul>
-    </nav>
+<header class="header">
+  <nav>
+    <picture>
+      {% if sala == 'cubatta' %}
+        <a href="{{ url_for('cubatta.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="Logo sala">
+        </a>                    
+      {% elif sala == 'tribeca' %}
+        <a href="{{ url_for('tribeca.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="Logo sala">
+        </a>                    
+      {% elif sala == 'montreal' %}
+        <a href="{{ url_for('montreal.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="Logo sala">
+        </a>                    
+      {% elif sala == 'kavari' %}
+        <a href="{{ url_for('kavari.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="Logo sala">
+        </a>                    
+      {% elif sala == 'siete' %}
+        <a href="{{ url_for('siete.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="Logo sala">
+        </a>                    
+      {% elif sala == 'magia' %}
+        <a href="{{ url_for('magia.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="Logo sala">
+        </a>                    
+      {% elif sala == 'cassino' %}
+        <a href="{{ url_for('cassino.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="Logo sala">
+        </a>                    
+      {% endif %}
+    </picture>
+    <ul>
+      <p class="user_show">{{ session['_user_id'] }}</p>
+      <li class="dropdown">
+        <button class="dropbtn">Salas</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('cubatta.audit_view') }}">Cubatta</a>
+          <a href="{{ url_for('tribeca.audit_view') }}">Tribeca</a>
+          <a href="{{ url_for('montreal.audit_view') }}">Montreal</a>
+          <a href="{{ url_for('kavari.audit_view') }}">Kavari</a>
+          <a href="{{ url_for('siete.audit_view') }}">La Siete</a>
+          <a href="{{ url_for('magia.audit_view') }}">Magia</a>
+          <a href="{{ url_for('cassino.audit_view') }}">Cassino</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <button class="dropbtn">Restaurantes</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('zarate.audit_view') }}">Zarate</a>
+          <a href="{{ url_for('proceres.audit_view') }}">Proceres</a>
+          <a href="{{ url_for('huacho.audit_view') }}">Huacho</a>
+          <a href="{{ url_for('huarmey.audit_view') }}">Huarmey</a>
+          <a href="{{ url_for('casma.audit_view') }}">Casma</a>
+        </div>
+      </li>
+      <li><a id="logout" href="{{ url_for('auth.logout') }}">Log out</a></li>
+    </ul>
+  </nav>
 </header>

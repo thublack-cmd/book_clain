@@ -4,6 +4,6 @@
 
 from flask import Blueprint
 
-cassino = Blueprint('cassino', __name__, url_prefix='/cassino')
+cassino = Blueprint('cassino', __name__, url_prefix='/sala/cassino')
 
 from . import views

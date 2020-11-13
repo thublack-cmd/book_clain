@@ -1,87 +1,86 @@
 {% extends 'base.html' %}
 
 {% block head_content %}
-    {% if sala == 'cubatta' %}
-        <title>Descargo de reclamo || Cubatta</title>
-    {% elif sala == 'tribeca' %}
-        <title>Descargo de reclamo || tribeca</title>
-    {% elif sala == 'montreal' %}
-        <title>Descargo de reclamo || Montreal</title> 
-    {% elif sala == 'kavari' %}
-        <title>Descargo de reclamo || Kavari</title> 
-    {% elif sala == 'siete' %}
-        <title>Descargo de reclamo || Siete</title> 
-    {% elif sala == 'magia' %}
-        <title>Descargo de reclamo || Magia</title> 
-    {% elif sala == 'cassino' %}
-        <title>Descargo de reclamo || Cassino</title> 
-    {% elif sala == 'zarate' %}
-        <title>Descargo de reclamo || Uchukuta Zarate</title> 
-    {% elif sala == 'proceres' %}
-        <title>Descargo de reclamo || Uchukuta Proceres</title> 
-    {% elif sala == 'huacho' %}
-        <title>Descargo de reclamo || Uchukuta Huacho</title> 
-    {% elif sala == 'huarmey' %}
-        <title>Descargo de reclamo || Uchukuta Huarmey</title> 
-    {% elif sala == 'casma' %}
-        <title>Descargo de reclamo || Uchukuta Casma</title> 
-    {% endif %}
+  {% if sala == 'cubatta' %}
+    <title>Descargo de reclamo || Cubatta</title>
+  {% elif sala == 'tribeca' %}
+    <title>Descargo de reclamo || tribeca</title>
+  {% elif sala == 'montreal' %}
+    <title>Descargo de reclamo || Montreal</title> 
+  {% elif sala == 'kavari' %}
+    <title>Descargo de reclamo || Kavari</title> 
+  {% elif sala == 'siete' %}
+    <title>Descargo de reclamo || Siete</title> 
+  {% elif sala == 'magia' %}
+    <title>Descargo de reclamo || Magia</title> 
+  {% elif sala == 'cassino' %}
+    <title>Descargo de reclamo || Cassino</title> 
+  {% elif sala == 'zarate' %}
+    <title>Descargo de reclamo || Uchukuta Zarate</title> 
+  {% elif sala == 'proceres' %}
+    <title>Descargo de reclamo || Uchukuta Proceres</title> 
+  {% elif sala == 'huacho' %}
+    <title>Descargo de reclamo || Uchukuta Huacho</title> 
+  {% elif sala == 'huarmey' %}
+    <title>Descargo de reclamo || Uchukuta Huarmey</title> 
+  {% elif sala == 'casma' %}
+    <title>Descargo de reclamo || Uchukuta Casma</title> 
+  {% endif %}
 {% endblock %}
 
 {% block body_content %}
 
-    {% include 'nav.html' %}
+  {% include 'nav.html' %}
 
-    <div class="encabezado">
-        <h1>Descargo del reclamo {{ q.serial }}</h1>
-    </div>    
+  <div class="title-container">
+    <h1 class="title-container__title">Descargo del reclamo {{ q.serial }}</h1>
+  </div>    
 
-    <section id="sec_dis">
-        <table class="table_dis">
-            <tr>
-                <th>Cliente</th>
-                <th>Fecha</th>
-                <th>Detalle</th>
-            </tr>
-            <tr>
-                <td>{{q.name}}</td>
-                <td>{{q.date}}</td>
-                <td class="td_detail">{{q.detail}}</td>
-            </tr>
-        </table>
+  <section class="dis-container">
+    <table class="dis-container__table_dis">
+      <tr>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Detalle</th>
+      </tr>
+      <tr>
+        <td>{{q.name}}</td>
+        <td>{{q.date}}</td>
+        <td class="table-dis--td_detail">{{q.detail}}</td>
+      </tr>
+    </table>
 
-        {% if sala == 'cubatta' %}
-            <form id="dis_form" action="{{ url_for('cubatta.audit_view') }}" method="post">
-        {% elif sala == 'tribeca' %}
-            <form id="dis_form" action="{{ url_for('tribeca.audit_view') }}" method="post">
-        {% elif sala == 'montreal' %}
-            <form id="dis_form" action="{{ url_for('montreal.audit_view') }}" method="post">
-        {% elif sala == 'kavari' %}
-            <form id="dis_form" action="{{ url_for('kavari.audit_view') }}" method="post">
-        {% elif sala == 'siete' %}
-            <form id="dis_form" action="{{ url_for('siete.audit_view') }}" method="post">
-        {% elif sala == 'magia' %}
-            <form id="dis_form" action="{{ url_for('magia.audit_view') }}" method="post">
-        {% elif sala == 'cassino' %}
-            <form id="dis_form" action="{{ url_for('cassino.audit_view') }}" method="post">
-        {% elif sala == 'zarate' %}
-            <form id="dis_form" action="{{ url_for('zarate.audit_view') }}" method="post">
-        {% elif sala == 'proceres' %}
-            <form id="dis_form" action="{{ url_for('proceres.audit_view') }}" method="post">
-        {% elif sala == 'huacho' %}
-            <form id="dis_form" action="{{ url_for('huacho.audit_view') }}" method="post">
-        {% elif sala == 'huarmey' %}
-            <form id="dis_form" action="{{ url_for('huarmey.audit_view') }}" method="post">
-        {% elif sala == 'casma' %}
-            <form id="dis_form" action="{{ url_for('casma.audit_view') }}" method="post">
-        {% endif %}
-            <input type="hidden" name="id_clain" value="{{ q.id }}">
-            <label for="detail_answer">
-                <textarea name="detail_dis" id="detail_answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
-            </label>
-            
-        <button class="btn_send" type="submit">Registrar</button>
-        </form>
-    </section>
-    
+    {% if sala == 'cubatta' %}
+      <form class="dis-container__form" action="{{ url_for('cubatta.audit_view') }}" method="post">
+    {% elif sala == 'tribeca' %}
+      <form class="dis-container__form" action="{{ url_for('tribeca.audit_view') }}" method="post">
+    {% elif sala == 'montreal' %}
+      <form class="dis-container__form" action="{{ url_for('montreal.audit_view') }}" method="post">
+    {% elif sala == 'kavari' %}
+      <form class="dis-container__form" action="{{ url_for('kavari.audit_view') }}" method="post">
+    {% elif sala == 'siete' %}
+      <form class="dis-container__form" action="{{ url_for('siete.audit_view') }}" method="post">
+    {% elif sala == 'magia' %}
+      <form class="dis-container__form" action="{{ url_for('magia.audit_view') }}" method="post">
+    {% elif sala == 'cassino' %}
+      <form class="dis-container__form" action="{{ url_for('cassino.audit_view') }}" method="post">
+    {% elif sala == 'zarate' %}
+      <form class="dis-container__form" action="{{ url_for('zarate.audit_view') }}" method="post">
+    {% elif sala == 'proceres' %}
+      <form class="dis-container__form" action="{{ url_for('proceres.audit_view') }}" method="post">
+    {% elif sala == 'huacho' %}
+      <form class="dis-container__form" action="{{ url_for('huacho.audit_view') }}" method="post">
+    {% elif sala == 'huarmey' %}
+      <form class="dis-container__form" action="{{ url_for('huarmey.audit_view') }}" method="post">
+    {% elif sala == 'casma' %}
+      <form class="dis-container__form" action="{{ url_for('casma.audit_view') }}" method="post">
+    {% endif %}
+        <input type="hidden" name="id_clain" value="{{ q.id }}">
+
+        <textarea name="detail_dis" class="dis-container--answer" placeholder="Ingrese la resolucion del reclamo" required></textarea>
+        
+        <button class="dis-container--btn_send" type="submit">Registrar</button>
+      </form>
+  </section>
+  
 {% endblock %}

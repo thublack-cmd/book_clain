@@ -1,90 +1,90 @@
 {% extends 'base.html' %}
 
 {% block head_content %}
-    {% if sala == 'cubatta' %}
-        <title>Detalle  de reclamo || Cubatta</title>
-    {% elif sala == 'tribeca' %}
-        <title>Detalle  de reclamo || tribeca</title>
-    {% elif sala == 'montreal' %}
-        <title>Detalle  de reclamo || Montreal</title> 
-    {% elif sala == 'kavari' %}
-        <title>Detalle  de reclamo || Kavari</title> 
-    {% elif sala == 'siete' %}
-        <title>Detalle  de reclamo || Siete</title> 
-    {% elif sala == 'magia' %}
-        <title>Detalle  de reclamo || Magia</title> 
-    {% elif sala == 'cassino' %}
-        <title>Detalle  de reclamo || Cassino</title> 
-    {% elif sala == 'zarate' %}
-        <title>Detalle  de reclamo || Uchukuta Zarate</title> 
-    {% elif sala == 'proceres' %}
-        <title>Detalle  de reclamo || Uchukuta Proceres</title> 
-    {% elif sala == 'huacho' %}
-        <title>Detalle  de reclamo || Uchukuta Huacho</title> 
-    {% elif sala == 'huarmey' %}
-        <title>Detalle  de reclamo || Uchukuta Huarmey</title> 
-    {% elif sala == 'casma' %}
-        <title>Detalle  de reclamo || Uchukuta Casma</title> 
-    {% endif %}
+  {% if sala == 'cubatta' %}
+    <title>Detalle  de reclamo || Cubatta</title>
+  {% elif sala == 'tribeca' %}
+    <title>Detalle  de reclamo || tribeca</title>
+  {% elif sala == 'montreal' %}
+    <title>Detalle  de reclamo || Montreal</title> 
+  {% elif sala == 'kavari' %}
+    <title>Detalle  de reclamo || Kavari</title> 
+  {% elif sala == 'siete' %}
+    <title>Detalle  de reclamo || Siete</title> 
+  {% elif sala == 'magia' %}
+    <title>Detalle  de reclamo || Magia</title> 
+  {% elif sala == 'cassino' %}
+    <title>Detalle  de reclamo || Cassino</title> 
+  {% elif sala == 'zarate' %}
+    <title>Detalle  de reclamo || Uchukuta Zarate</title> 
+  {% elif sala == 'proceres' %}
+    <title>Detalle  de reclamo || Uchukuta Proceres</title> 
+  {% elif sala == 'huacho' %}
+    <title>Detalle  de reclamo || Uchukuta Huacho</title> 
+  {% elif sala == 'huarmey' %}
+    <title>Detalle  de reclamo || Uchukuta Huarmey</title> 
+  {% elif sala == 'casma' %}
+    <title>Detalle  de reclamo || Uchukuta Casma</title> 
+  {% endif %}
 {% endblock %}
 
 {% block body_content %}
 {% include 'nav.html' %}
 
-    <div class="encabezado">
-        <h1>Detalle del reclamo {{ q.serial }}</h1>
-    </div>    
+  <div class="title-container">
+    <h1 class="title-container__title">Detalle del reclamo {{ q.serial }}</h1>
+  </div>    
 
-    <table class="detail_table">
-        <tr>
-            <th>Cliente</th>
-            <th>Email</th>
-            <th>Detalle</th>
-	    <th>Usuario</th>
-            <th>Descargo</th>
-        </tr>
-        <tr>
-            <td class="small_td">{{ q.name }}</td>
-            <td class="small_td">{{ q.email }}</td>
-            <td class="de_td">{{ q.detail }}</td>
-            {% if sala == 'cubatta' %}
-                <td class="small_td">{{ q.answer_cub.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_cub.answer_con }}</td>                    
-            {% elif sala == 'tribeca' %}
-                <td class="small_td">{{ q.answer_tri.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_tri.answer_con }}</td>                    
-            {% elif sala == 'montreal' %}
-                <td class="small_td">{{ q.answer_mon.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_mon.answer_con }}</td>                    
-            {% elif sala == 'kavari' %}
-                <td class="small_td">{{ q.answer_kav.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_kav.answer_con }}</td>                    
-            {% elif sala == 'siete' %}
-                <td class="small_td">{{ q.answer_sie.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_sie.answer_con }}</td>                    
-            {% elif sala == 'magia' %}
-                <td class="small_td">{{ q.answer_mag.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_mag.answer_con }}</td>                    
-            {% elif sala == 'cassino' %}
-                <td class="user_td">{{ q.answer_cas.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_cas.answer_con }}</td>                    
-            {% elif sala == 'zarate' %}
-                <td class="user_td">{{ q.answer_uchu_zarate.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_uchu_zarate.answer_con }}</td>                    
-            {% elif sala == 'proceres' %}
-                <td class="user_td">{{ q.answer_uchu_proceres.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_uchu_proceres.answer_con }}</td>                    
-            {% elif sala == 'huacho' %}
-                <td class="user_td">{{ q.answer_uchu_huacho.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_uchu_huacho.answer_con }}</td>                    
-            {% elif sala == 'huarmey' %}
-                <td class="user_td">{{ q.answer_uchu_huarmey.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_uchu_huarmey.answer_con }}</td>                    
-            {% elif sala == 'casma' %}
-                <td class="user_td">{{ q.answer_uchu_casma.id_user }}</td>                    
-                <td class="de_td">{{ q.answer_uchu_casma.answer_con }}</td>                    
-            {% endif %}
-        </tr>
-    </table>
+  <table class="detail_table">
+    <tr>
+      <th>Cliente</th>
+      <th>Email</th>
+      <th>Detalle</th>
+      <th>Usuario</th>
+      <th>Descargo</th>
+    </tr>
+    <tr>
+      <td class="small_td">{{ q.name }}</td>
+      <td class="small_td">{{ q.email }}</td>
+      <td class="de_td">{{ q.detail }}</td>
+      {% if sala == 'cubatta' %}
+        <td class="small_td">{{ q.answer_cub.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_cub.answer_con }}</td>                    
+      {% elif sala == 'tribeca' %}
+        <td class="small_td">{{ q.answer_tri.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_tri.answer_con }}</td>                    
+      {% elif sala == 'montreal' %}
+        <td class="small_td">{{ q.answer_mon.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_mon.answer_con }}</td>                    
+      {% elif sala == 'kavari' %}
+        <td class="small_td">{{ q.answer_kav.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_kav.answer_con }}</td>                    
+      {% elif sala == 'siete' %}
+        <td class="small_td">{{ q.answer_sie.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_sie.answer_con }}</td>                    
+      {% elif sala == 'magia' %}
+        <td class="small_td">{{ q.answer_mag.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_mag.answer_con }}</td>                    
+      {% elif sala == 'cassino' %}
+        <td class="user_td">{{ q.answer_cas.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_cas.answer_con }}</td>                    
+      {% elif sala == 'zarate' %}
+        <td class="user_td">{{ q.answer_uchu_zarate.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_uchu_zarate.answer_con }}</td>                    
+      {% elif sala == 'proceres' %}
+        <td class="user_td">{{ q.answer_uchu_proceres.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_uchu_proceres.answer_con }}</td>                    
+      {% elif sala == 'huacho' %}
+        <td class="user_td">{{ q.answer_uchu_huacho.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_uchu_huacho.answer_con }}</td>                    
+      {% elif sala == 'huarmey' %}
+        <td class="user_td">{{ q.answer_uchu_huarmey.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_uchu_huarmey.answer_con }}</td>                    
+      {% elif sala == 'casma' %}
+        <td class="user_td">{{ q.answer_uchu_casma.id_user }}</td>                    
+        <td class="de_td">{{ q.answer_uchu_casma.answer_con }}</td>                    
+      {% endif %}
+    </tr>
+  </table>
 
 {% endblock %}

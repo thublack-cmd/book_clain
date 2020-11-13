@@ -1,178 +1,173 @@
 {% extends 'base.html' %}
 
 {% block head_content %}
-    {% if sala == 'cubatta' %}
-        <title>Libro de reclamaciones || Cubatta</title>
-    {% elif sala == 'tribeca' %}
-        <title>Libro de reclamaciones || Tribeca</title>
-    {% elif sala == 'montreal' %}
-        <title>Libro de reclamaciones || Montreal</title>
-    {% elif sala == 'kavari' %}
-        <title>Libro de reclamaciones || Kavari</title>
-    {% elif sala == 'siete' %}
-        <title>Libro de reclamaciones || Siete</title>
-    {% elif sala == 'magia' %}
-        <title>Libro de reclamaciones || Magia</title>
-    {% elif sala == 'cassino' %}
-        <title>Libro de reclamaciones || Cassino</title>
-    {% elif sala == 'zarate' %}
-        <title>Libro de reclamaciones || Uchukuta Zarate</title>
-    {% elif sala == 'proceres' %}
-        <title>Libro de reclamaciones || Uchukuta Proceres</title>
-    {% elif sala == 'huacho' %}
-        <title>Libro de reclamaciones || Uchukuta Huacho</title>
-    {% elif sala == 'huarmey' %}
-        <title>Libro de reclamaciones || Uchukuta Huarmey</title>
-    {% elif sala == 'casma' %}
-        <title>Libro de reclamaciones || Uchukuta Casma</title>
-    {% endif %}
+  {% if sala == 'cubatta' %}
+    <title>Libro de reclamaciones || Cubatta</title>
+  {% elif sala == 'tribeca' %}
+    <title>Libro de reclamaciones || Tribeca</title>
+  {% elif sala == 'montreal' %}
+    <title>Libro de reclamaciones || Montreal</title>
+  {% elif sala == 'kavari' %}
+    <title>Libro de reclamaciones || Kavari</title>
+  {% elif sala == 'siete' %}
+    <title>Libro de reclamaciones || Siete</title>
+  {% elif sala == 'magia' %}
+    <title>Libro de reclamaciones || Magia</title>
+  {% elif sala == 'cassino' %}
+    <title>Libro de reclamaciones || Cassino</title>
+  {% elif sala == 'zarate' %}
+    <title>Libro de reclamaciones || Uchukuta Zarate</title>
+  {% elif sala == 'proceres' %}
+    <title>Libro de reclamaciones || Uchukuta Proceres</title>
+  {% elif sala == 'huacho' %}
+    <title>Libro de reclamaciones || Uchukuta Huacho</title>
+  {% elif sala == 'huarmey' %}
+    <title>Libro de reclamaciones || Uchukuta Huarmey</title>
+  {% elif sala == 'casma' %}
+    <title>Libro de reclamaciones || Uchukuta Casma</title>
+  {% endif %}
 {% endblock %}
 
 {% block body_content %}
 
-    <header>
-        {% if sala == 'cubatta' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
-            </picture>
-        {% elif sala == 'tribeca' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="logo sala">
-            </picture>
-        {% elif sala == 'montreal' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="logo sala">
-            </picture>
-        {% elif sala == 'kavari' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="logo sala">
-            </picture>
-        {% elif sala == 'siete' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="logo sala">
-            </picture>
-        {% elif sala == 'magia' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="logo sala">
-            </picture>
-        {% elif sala == 'cassino' %}
-            <picture>
-                <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
-            </picture>
-        {% endif %}
+  <header class="header">
+    {% if sala == 'cubatta' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
+      </picture>
+    {% elif sala == 'tribeca' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="logo sala">
+      </picture>
+    {% elif sala == 'montreal' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="logo sala">
+      </picture>
+    {% elif sala == 'kavari' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="logo sala">
+      </picture>
+    {% elif sala == 'siete' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="logo sala">
+      </picture>
+    {% elif sala == 'magia' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="logo sala">
+      </picture>
+    {% elif sala == 'cassino' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
+      </picture>
+    {% endif %}
 
-        <span>Fecha: {{ dia }}</span>
-    </header>
+    <span class="header__date">Fecha: {{ dia }}</span>
+  </header>
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 
-    <div class="encabezado">
-        <h1>Libro de reclamaciones</h1>
-    </div>
+  <div class="title-container">
+    <h1 class="title-container__title">Libro de reclamaciones</h1>
+  </div>
 
-    <section id="form_section">
-        {% if sala == 'cubatta' %}
-            <form action="{{ url_for('cubatta.client_view') }}" method="post">
-        {% elif sala == 'tribeca' %}
-            <form action="{{ url_for('tribeca.client_view') }}" method="post">
-        {% elif sala == 'montreal' %}
-            <form action="{{ url_for('montreal.client_view') }}" method="post">
-        {% elif sala == 'kavari' %}
-            <form action="{{ url_for('kavari.client_view') }}" method="post">
-        {% elif sala == 'siete' %}
-            <form action="{{ url_for('siete.client_view') }}" method="post">
-        {% elif sala == 'magia' %}
-            <form action="{{ url_for('magia.client_view') }}" method="post">
-        {% elif sala == 'cassino' %}
-            <form action="{{ url_for('cassino.client_view') }}" method="post">
-        {% elif sala == 'zarate' %}
-            <form action="{{ url_for('zarate.client_view') }}" method="post">
-        {% elif sala == 'proceres' %}
-            <form action="{{ url_for('proceres.client_view') }}" method="post">
-        {% elif sala == 'huacho' %}
-            <form action="{{ url_for('huacho.client_view') }}" method="post">
-        {% elif sala == 'huarmey' %}
-            <form action="{{ url_for('huarmey.client_view') }}" method="post">
-        {% elif sala == 'casma' %}
-            <form action="{{ url_for('casma.client_view') }}" method="post">
-        {% endif %}
-            <fieldset id="customer">
-                <div class="section_head">
-                    <strong>Identificacion del cliente</strong>
-                </div>
-                <div>
-                    <label for="name_id"></label>
-                    <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value=""
-                        placeholder="Nombres" required>
-                </div>
-                <div class="document">
-                    <div>
-                        <input type="radio" id="dni" name="type_doc" value="DNI">
-                        <label for="dni">DNI</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="ce" name="type_doc" value="CE">
-                        <label for="ce">CE</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="ruc" name="type_doc" value="ruc">
-                        <label for="ruc">RUC</label>
-                    </div>
-                    <div id="nro_doc">
-                        <input type="number" autocomplete="off" name="document"  maxlength="10" value="" 
-                            placeholder="Nro de documento" required>
-                    </div>
-                </div>
-                <div>
-                    <label for="contact_id"></label>
-                    <input type="email" autocomplete="off" name="contact" id="contact_id" value=""
-                        placeholder="Correo electronico" class="input_in" required>
-                </div>
-                <div>
-                    <label for="domicilio_id"></label>
-                    <textarea name="domicilio" id="domicilio_id" 
-                        placeholder="Domicilio" required></textarea>
-                </div>
-            </fieldset>
-        
-            <fieldset id="reclamo">
-                <div class="section_head">
-                    <strong>Detalle de la reclamacion</strong>
-                </div>
-                <div id="cont_fecha">
-                    <label for="date_id">Fecha y hora de la ocurrencia:</label>
-                    <input type="datetime-local" name="date" max="{{ dia2 }}" id="date_id" value="" required>
-                </div>
-                <div>
-                    <div class="type_custo">
-                        <input type="radio" id="reclamo_id" name="type_obj" value="reclamo">
-                        <label for="reclamo_id">Reclamo</label>
-                    </div>
-                    <div class="type_custo">
-                        <input type="radio" id="queja" name="type_obj" value="queja">
-                        <label for="queja">Queja</label>
-                    </div>
-                </div>
-                <div id="amount">
-                    <label for="request_id"></label> 
-                    <input type="number" autocomplete="off" name="amount" id="request_id"
-                        placeholder="Monto reclamado" value="">
-                </div>
-                <div>
-                    <label for="detail_id"></label> 
-                    <textarea autocomplete="off" name="detail" id="detail_id" placeholder="Detalle"
-                        required></textarea>
-                </div>
-            </fieldset>
-            <button class="btn_client" type="submit">REGISTRAR</button> 
-        </form>
-    </section>
+  <section class="form-section">
+    {% if sala == 'cubatta' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('cubatta.client_view') }}" method="post">
+    {% elif sala == 'tribeca' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('tribeca.client_view') }}" method="post">
+    {% elif sala == 'montreal' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('montreal.client_view') }}" method="post">
+    {% elif sala == 'kavari' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('kavari.client_view') }}" method="post">
+    {% elif sala == 'siete' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('siete.client_view') }}" method="post">
+    {%elif sala == 'magia' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('magia.client_view') }}" method="post">
+    {% elif sala == 'cassino' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('cassino.client_view') }}" method="post">
+    {% elif sala == 'zarate' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('zarate.client_view') }}" method="post">
+    {% elif sala == 'proceres' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('proceres.client_view') }}" method="post">
+    {% elif sala == 'huacho' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('huacho.client_view') }}" method="post">
+    {% elif sala == 'huarmey' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('huarmey.client_view') }}" method="post">
+    {% elif sala == 'casma' %}
+      <form class="form-section__form form-section--elements"  action="{{ url_for('casma.client_view') }}" method="post">
+    {% endif %}
+
+        <fieldset class="fieldset-container">
+          <div class="form-section__customer">
+            <strong class="form-section__customer__title">Identificacion del cliente</strong>
+          </div>
+          <div class="fieldset-container__div">
+            <label for="name_id"></label>
+            <input type="text" class="input_in form-section--elements" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombres" required>
+          </div>
+          <div class="form-section__document fieldset-container__div">
+            <div class="fieldset-container__div">
+              <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI">
+              <label for="dni">DNI</label>
+            </div>
+            <div class="fieldset-container__div">
+              <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE">
+              <label for="ce">CE</label>
+            </div>
+            <div class="fieldset-container__div">
+              <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc">
+              <label for="ruc">RUC</label>
+            </div>
+            <div class="fieldset-container__div" id="nro_doc">
+              <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
+            </div>
+          </div>
+          <div class="fieldset-container__div">
+            <label for="contact_id"></label>
+            <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" class="input_in" required>
+          </div>
+          <div class="fieldset-container__div">
+            <label for="domicilio_id"></label>
+            <textarea class="form-section--elements textarea" name="domicilio" id="domicilio_id" placeholder="Domicilio" required></textarea>
+          </div>
+      </fieldset>
+    
+      <fieldset class="fieldset-container">
+        <div class="form-section__customer">
+          <strong class="form-section__customer__title">Detalle de la reclamacion</strong>
+        </div>
+        <div class="form-section__cont-fecha fieldset-container__div">
+          <label for="date_id">Fecha y hora de la ocurrencia:</label>
+          <input class="form-section--elements date-input" type="datetime-local" name="date" max="{{ dia2 }}" id="date_id" value="" required>
+        </div>
+        <div class="fieldset-container__div">
+          <div class="type_custo">
+            <input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
+            <label for="reclamo_id">Reclamo</label>
+          </div>
+          <div class="type_custo">
+            <input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja">
+            <label for="queja">Queja</label>
+          </div>
+        </div>
+        <div id="amount" class="fieldset-container__div">
+          <label for="request_id"></label> 
+          <input class="form-section--elements" type="number" autocomplete="off" name="amount" id="request_id" placeholder="Monto reclamado" value="">
+        </div>
+        <div class="fieldset-container__div">
+          <label for="detail_id"></label> 
+          <textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
+        </div>
+      </fieldset>
+      <button class="btn_client" type="submit">REGISTRAR</button> 
+    </form>
+  </section>
 {% endblock %}
