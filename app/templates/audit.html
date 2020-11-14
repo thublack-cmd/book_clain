@@ -73,40 +73,44 @@
       <form action="{{ url_for('casma.audit_view') }}" method="post" class="search-container__sh_form">
     {% endif %}
 
-        <label for="search_id">
-          <input type="search" class="search-container__sh_form--input" id="search_id" name="client" value="" placeholder="Cliente">
-        </label>
-        <label for="month">
-          <select name="month" id="month" onchange="select_day(this.value);"> 
-            <option hidden selected value=''>Mes--</option>                
-            <option value="01">Enero</option>
-            <option value="02">Febrero</option>
-            <option value="03">Marzo</option>
-            <option value="04">Abril</option>
-            <option value="05">Mayo</option>
-            <option value="06">Junio</option>
-            <option value="07">Julio</option>
-            <option value="08">Agosto</option>
-            <option value="09">Septiembre</option>
-            <option value="10">Octubre</option>
-            <option value="11">Noviembre</option>
-            <option value="12">Diciembre</option>                    
-          </select>
-        </label>
-        <label>
-          <select name="day" id="day_dependent">
-            <option hidden selected value="">Dia--</option>                   
-          </select>               
-        </label>            
-        <label for='year'>
-          <select name="year" id="year">
-            <option hidden selected value=''>Ano--</option>                    
-          {% for f in dates %}
-            <option value="{{ f[0] }}">{{ f[0] }}</option>
-          {% endfor %}
-          </select>
-        </label>
-        <button class="search-container__search_btn" type="submit"></button>
+				<div class="search-container__name-filter">
+					<label for="search_id">
+						<input type="search" class="search-container__sh_form--input" id="search_id" name="client" value="" placeholder="DNI, Nombre o Serial">
+					</label>
+				</div>
+				<div class="search-container__date-filter">
+					<label for="month">
+						<select class="date-filter--select" name="month" id="month" onchange="select_day(this.value);"> 
+							<option hidden selected value=''>Mes</option>                
+							<option value="01">Enero</option>
+							<option value="02">Febrero</option>
+							<option value="03">Marzo</option>
+							<option value="04">Abril</option>
+							<option value="05">Mayo</option>
+							<option value="06">Junio</option>
+							<option value="07">Julio</option>
+							<option value="08">Agosto</option>
+							<option value="09">Septiembre</option>
+							<option value="10">Octubre</option>
+							<option value="11">Noviembre</option>
+							<option value="12">Diciembre</option>                    
+						</select>
+					</label>
+					<label>
+						<select class="date-filter--select" name="day" id="day_dependent">
+							<option hidden selected value="">Dia</option>                   
+						</select>               
+					</label>            
+					<label for='year'>
+						<select class="date-filter--select" name="year" id="year">
+							<option hidden selected value=''>Año</option>                    
+						{% for f in dates %}
+							<option value="{{ f[0] }}">{{ f[0] }}</option>
+						{% endfor %}
+						</select>
+					</label>
+				</div>
+				<button class="search-container__search_btn" type="submit"></button>
       </form>
     </section>
 

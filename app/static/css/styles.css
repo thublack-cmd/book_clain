@@ -102,20 +102,29 @@ nav ul li {
 
 /* Audit view */
 .search-container {
-  display: inline-flex;
-  justify-content: space-around;
-  width: 40%;
-  margin: 4rem 0;
+  width: 35%;
+	height: 60px;
+  margin: 4rem 8rem;
+  background-color: rgba(0,0,0,0.4);
+	border-radius: 30px;
+	box-shadow: -5px 6px 14px -2px rgba(0,0,0,0.68);
 } 
 
 .search-container__sh_form {
   display: flex;
   justify-content: space-around;
-  width: 85%;
+  width: 100%;
+	height: 100%;
+	align-items: center;
+}
+
+.search-container__name-filter {
+	width: 40%;
 }
 
 .search-container__sh_form--input {
   height: 2.5rem;
+	width: 100%;
   background-color: transparent;
   color: white;
   font-size: 2rem;
@@ -126,20 +135,45 @@ nav ul li {
 .search-container__sh_form--input:focus,
 .search-container__sh_form--input:hover {
   outline: none;
+  border-bottom: 2px solid #00cc66;
 }
 
+.search-container__date-filter {
+	height: 2.5rem;
+	width: 40%;
+}
+
+.date-filter--select {
+	height: 100%;
+	background-color: transparent;
+	color: #00cc66;
+	font-size: 2rem;
+	font-weight: 200;
+	cursor: pointer;
+	border: none;
+  border-bottom: 0.8px solid #00cc66;
+}
+
+.date-filter--select:focus {
+	outline: none;
+}
+
+.date-filter--select option {
+	font-size: 1.7rem;
+	font-weight: 100;
+	background-color: rgba(0,0,0,0.85);
+}
+	
 .search-container__search_btn {
-  margin-left: 1rem;
-  color: white;
+  width: 4rem;
+  height: 2.5rem;
+  cursor: pointer;
   border: none;
   background-image: url(../images/search_icon.svg);
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  width: 4rem;
-  height: 2.5rem;
-  cursor: pointer;
 }
 
 .list-container {
@@ -337,22 +371,37 @@ nav ul li {
   flex-direction: column;
 }
 
+.form-section--elements {
+	background-color: transparent;
+	font-size: 2rem;
+	color: white;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.form-section__document input[type="radio"]:checked {
+	background-color: black;
+}
+
 .form-section--elements:focus {
   outline: none;
 }
 
 .form-section__customer {
-  background-color: #1D8F43;
-  width: 100%;
-  height: 50px;
-  margin: 0 0 4rem 0;
-  font-size: 3rem;
   display: inherit;
   justify-content: left;
+  width: 100%;
+  height: 50px;
+  margin: -10rem 0 0 0;
+	border-radius: 50px 50px 0 0;
+  font-size: 3rem;
+  background-color: #1D8F43;
 }
 
 .form-section__customer__title {
-  margin: auto 0 auto 2rem;
+  margin: auto 0 auto 5rem;
   text-align: left;
   color: white;
 }
@@ -367,6 +416,9 @@ nav ul li {
   height: 3rem;
   border: none;
   border-bottom: 0.8px solid #00cc66;
+	background-color: transparent;
+	color: white;
+	font-size: 2rem;
   padding: 1rem;
 }
 
@@ -381,29 +433,33 @@ nav ul li {
   padding: 1rem 2rem;
   border: none;
   border-bottom: 0.8px solid #00cc66;
+  background-color: transparent;
+	color: white;
+	font-size: 2rem;
+	font-weight: 400;
 }
 
 .fieldset-container {
-  width: 50%;
+  width: 35%;
+	height: 700px;
   font-size: 2rem;
-  padding-bottom: 5.5rem; 
   margin: 3rem auto;
   display: inherit;
   flex-direction: inherit;
+	justify-content: space-evenly;
   box-shadow: -2px 2px 39px -10px rgba(0,0,0,0.75);
   border: none;
   border-radius: 50px;
-  background-color: rgba(255,255,255,0.25);
+  background-color: rgba(0,0,0,0.40);
 }
 
 .fieldset-container__div {
   display: inherit;
   justify-content: center;
-  margin: 2rem 0;
 }
 
 .fieldset-container label {
-  color: #0E4520;
+  color: #00cc66;
 }
 
 .form-section__document {
@@ -415,7 +471,12 @@ nav ul li {
 }
 
 .type_custo {
-  width: 15%;
+  width: 20%;
+	margin-left: 40px;
+}
+
+.type_custo label {
+	font-size: 2.5rem;
 }
 
 .form-section__document label, .type_custo label {
