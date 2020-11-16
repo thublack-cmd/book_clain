@@ -58,6 +58,8 @@ def login():
                 login_user(user)
                 flash('Bienvenido')
 
+                session.permanent = True
+
                 to_next = session['next']
 
                 return redirect(to_next or url_for('cubatta.audit_view'))

@@ -29,6 +29,26 @@
         <a href="{{ url_for('cassino.audit_view') }}">
           <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="Logo sala">
         </a>                    
+      {% elif sala == 'zarate' %}
+        <a href="{{ url_for('zarate.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_uchu.png') }}" alt="Logo Uchukuta">
+        </a>                    
+      {% elif sala == 'proceres' %}
+        <a href="{{ url_for('proceres.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_uchu.png') }}" alt="Logo Uchukuta">
+        </a>                    
+      {% elif sala == 'huacho' %}
+        <a href="{{ url_for('huacho.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_uchu.png') }}" alt="Logo Uchukuta">
+        </a>                    
+      {% elif sala == 'huarmey' %}
+        <a href="{{ url_for('huarmey.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_uchu.png') }}" alt="Logo Uchukuta">
+        </a>                    
+      {% elif sala == 'casma' %}
+        <a href="{{ url_for('casma.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_uchu.png') }}" alt="Logo Uchukuta">
+        </a>                    
       {% endif %}
     </picture>
     <ul>

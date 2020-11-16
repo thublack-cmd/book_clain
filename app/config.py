@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 class Config:
     SECRET_KEY = "b'_5#y2LF4Q8z\n\xec]/"
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///../db.sqlite3'
@@ -7,6 +9,7 @@ class Config:
     }
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     USE_SESSION_FOR_NEXT = True
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=1)
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_DEFAULT_SENDER = 'central.salas@gmail.com'
