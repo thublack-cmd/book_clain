@@ -7,7 +7,7 @@
 
 html {
   font-size: 62.5%;  /* 10px */
-  background-color: #323232;
+  background-color: rgba(0,0,0,0.85);
 }
 
 a {
@@ -25,6 +25,16 @@ a {
   padding-right: 10px;
 }
 
+.header_nav {
+  padding: 1rem;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #000000;
+  color: #fdfdfd;
+}
+
 .dropbtn {
   background-color: black;
   color: #00cc66;
@@ -32,6 +42,7 @@ a {
   font-weight: bold;
   border: none;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -41,12 +52,14 @@ a {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
+
 .dropdown-content a:hover {
   background-color: black; 
   color: #00cc66;
@@ -334,21 +347,27 @@ nav ul li {
 .header {
   padding: 1rem;
   width: 100%;
-  height: 5rem;
+  height: 400px;
   display: inline-flex;
   justify-content: space-between;
+  align-items: flex-start;
   background-color: #000000;
   color: #fdfdfd;
 }
 
 .header__date {
-  font-size: 2rem;
-  margin: auto 0;
+  font-size: 3rem;
 }
 
 .title-container {
   width: 100%;
-  margin: 3.5rem 0;
+  margin-bottom: 70px;
+}
+
+.title-container-client {
+  width: 100%;
+  margin-top: -350px;
+  margin-bottom: 70px;
 }
 
 .title-container__title {
@@ -360,8 +379,17 @@ nav ul li {
   color: white;
 }
  
+.title-container__title-client {
+  width: 50%;
+  font-size: 5rem;
+  margin: 0 auto;
+  margin-top: 40px;
+  text-align: center;
+  color: white;
+}
+ 
 .form-section {
-  width: 100%;
+  width: 100vw;
  }
 
 .form-section__form {
@@ -371,10 +399,15 @@ nav ul li {
   flex-direction: column;
 }
 
+.form-section__main-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .form-section--elements {
-	background-color: transparent;
-	font-size: 2rem;
-	color: white;
+  background-color: transparent;
+  font-size: 2rem;
+  color: white;
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -382,7 +415,7 @@ nav ul li {
 }
 
 .form-section__document input[type="radio"]:checked {
-	background-color: black;
+  background-color: black;
 }
 
 .form-section--elements:focus {
@@ -390,12 +423,11 @@ nav ul li {
 }
 
 .form-section__customer {
-  display: inherit;
+  display: flex;
   justify-content: left;
   width: 100%;
   height: 50px;
-  margin: -10rem 0 0 0;
-	border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
   font-size: 3rem;
   background-color: #1D8F43;
 }
@@ -411,14 +443,19 @@ nav ul li {
   font-size: 2rem;
 }
 
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 .input_in {
   width: 60%;
   height: 3rem;
   border: none;
   border-bottom: 0.8px solid #00cc66;
-	background-color: transparent;
-	color: white;
-	font-size: 2rem;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
   padding: 1rem;
 }
 
@@ -434,28 +471,25 @@ nav ul li {
   border: none;
   border-bottom: 0.8px solid #00cc66;
   background-color: transparent;
-	color: white;
-	font-size: 2rem;
-	font-weight: 400;
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .fieldset-container {
   width: 35%;
-	height: 700px;
+  height: 550px;
   font-size: 2rem;
-  margin: 3rem auto;
-  display: inherit;
-  flex-direction: inherit;
-	justify-content: space-evenly;
   box-shadow: -2px 2px 39px -10px rgba(0,0,0,0.75);
   border: none;
   border-radius: 50px;
-  background-color: rgba(0,0,0,0.40);
+  background-color: #323232;
 }
 
 .fieldset-container__div {
-  display: inherit;
+  display: flex;
   justify-content: center;
+  margin-top: 60px;
 }
 
 .fieldset-container label {
@@ -467,16 +501,17 @@ nav ul li {
 }
 
 .form-section__document div {
-  width: 10%;
+  width: 15%;
 }
 
 .type_custo {
-  width: 20%;
-	margin-left: 40px;
+  width: 23%;
+  margin-left: 30px;
 }
 
 .type_custo label {
-	font-size: 2.5rem;
+  width: 20%;
+  font-size: 2.5rem;
 }
 
 .form-section__document label, .type_custo label {
@@ -496,6 +531,27 @@ nav ul li {
   border: none;
 }
 
+.dropdown_client--content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 1.8rem;
+  width: 290px;
+  height: 110px;
+  min-width: 100px;
+  border-radius: 15px;
+  box-shadow: -7px 11px 19px -4px rgba(0,0,0,0.75);
+  z-index: 1;
+  left: 64%;
+}
+ 
+.dropdown_client:hover .dropdown_client--content {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
 #nro_doc {
   width: 30%;
   height: 3rem;
@@ -512,34 +568,32 @@ nav ul li {
 }
 
 #amount {
-    width: 100%;
-    height: 3rem;
+  width: 100%;
+  height: 3rem;
  }
 
 #amount input {
-    width: 45%;
-    border: none;
-    border-bottom: 0.8px solid #00cc66;
-    padding-left: 1rem;
+  width: 45%;
+  border: none;
+  border-bottom: 0.8px solid #00cc66;
+  padding-left: 1rem;
  }
 
 .btn_client {
-  float: right;
   width: 15%;
   height: 4rem;
-  margin-bottom: 3rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 3rem auto;
   font-size: 2rem;
   color: #00cc66;
   font-weight: bold;
   box-shadow: -2px 2px 39px -10px rgba(0,0,0,0.75);
   transition: background-color 0.5s;
+  border-radius: 25px;
 }
 
 .btn_client:hover {
-    background-color: #1D8F43;
-    color: white;
+  background-color: #1D8F43;
+  color: white;
 }
 
  /* Login view */
@@ -560,7 +614,7 @@ nav ul li {
 
 .login_container__form input {
   width: 70%;
-  background-color: #323232;
+  background-color: transparent;
   color: white;
   font-size: 2rem;
   font-weight: lighter;

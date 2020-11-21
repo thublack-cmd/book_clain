@@ -33,7 +33,7 @@
   <header class="header">
     {% if sala == 'cubatta' %}
       <picture>
-        <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
+        <img src="{{ url_for('static', filename='images/logo_cubatta_cliente.png') }}" alt="logo sala">
       </picture>
     {% elif sala == 'tribeca' %}
       <picture>
@@ -74,8 +74,8 @@
     {% endif %}
   {% endwith %}
 
-  <div class="title-container">
-    <h1 class="title-container__title">Libro de reclamaciones</h1>
+  <div class="title-container-client">
+    <h1 class="title-container__title-client">LIBRO DE RECLAMACIONES</h1>
   </div>
 
   <section class="form-section">
@@ -105,69 +105,73 @@
       <form class="form-section__form form-section--elements"  action="{{ url_for('casma.client_view') }}" method="post">
     {% endif %}
 
-        <fieldset class="fieldset-container">
-          <div class="form-section__customer">
-            <strong class="form-section__customer__title">Identificacion del cliente</strong>
-          </div>
-          <div class="fieldset-container__div">
-            <label for="name_id"></label>
-            <input type="text" class="input_in form-section--elements" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombres" required>
-          </div>
-          <div class="form-section__document fieldset-container__div">
-            <div class="fieldset-container__div">
-              <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI">
-              <label for="dni">DNI</label>
-            </div>
-            <div class="fieldset-container__div">
-              <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE">
-              <label for="ce">CE</label>
-            </div>
-            <div class="fieldset-container__div">
-              <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc">
-              <label for="ruc">RUC</label>
-            </div>
-            <div class="fieldset-container__div" id="nro_doc">
-              <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
-            </div>
-          </div>
-          <div class="fieldset-container__div">
-            <label for="contact_id"></label>
-            <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
-          </div>
-          <div class="fieldset-container__div">
-            <label for="domicilio_id"></label>
-            <textarea class="form-section--elements textarea" name="domicilio" id="domicilio_id" placeholder="Domicilio" required></textarea>
-          </div>
-      </fieldset>
-    
-      <fieldset class="fieldset-container">
-        <div class="form-section__customer">
-          <strong class="form-section__customer__title">Detalle de la reclamacion</strong>
-        </div>
-        <div class="form-section__cont-fecha fieldset-container__div">
-          <label for="date_id">Fecha y hora de la ocurrencia:</label>
-          <input class="form-section--elements date-input" type="datetime-local" name="date" max="{{ dia2 }}" id="date_id" value="" required>
-        </div>
-        <div class="fieldset-container__div">
-          <div class="type_custo">
-            <input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
-            <label for="reclamo_id">Reclamo</label>
-          </div>
-          <div class="type_custo">
-            <input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja" checked>
-            <label for="queja">Queja</label>
-          </div>
-        </div>
-        <div id="amount" class="fieldset-container__div">
-          <label for="request_id"></label> 
-          <input class="form-section--elements" type="number" autocomplete="off" name="amount" id="request_id" placeholder="Monto reclamado" value="">
-        </div>
-        <div class="fieldset-container__div">
-          <label for="detail_id"></label> 
-          <textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
-        </div>
-      </fieldset>
-      <button class="btn_client" type="submit">REGISTRAR</button> 
-    </form>
+        <section class="form-section__main-container">
+            <fieldset class="fieldset-container">
+                <div class="form-section__customer">
+                  <strong class="form-section__customer__title">Identificación del cliente</strong>
+                </div>
+                <div class="fieldset-container__div">
+                  <label for="name_id"></label>
+                  <input type="text" class="input_in form-section--elements" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombres" required>
+                </div>
+                <div class="form-section__document fieldset-container__div">
+                  <div>
+                    <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI">
+                    <label for="dni">DNI</label>
+                  </div>
+                  <div>
+                    <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE">
+                    <label for="ce">CE</label>
+                  </div>
+                  <div>
+                    <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc">
+                    <label for="ruc">RUC</label>
+                  </div>
+                  <div class="fieldset-container__div" id="nro_doc">
+                    <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
+                  </div>
+                </div>
+                <div class="fieldset-container__div">
+                  <label for="contact_id"></label>
+                  <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
+                </div>
+                <div class="fieldset-container__div">
+                  <label for="domicilio_id"></label>
+                  <textarea class="form-section--elements textarea" name="domicilio" id="domicilio_id" placeholder="Domicilio" required></textarea>
+                </div>
+            </fieldset>
+        
+            <fieldset class="fieldset-container">
+              <div class="form-section__customer">
+                <strong class="form-section__customer__title">Detalle de la reclamación</strong>
+              </div>
+              <div class="form-section__cont-fecha fieldset-container__div">
+                <label for="date_id">Fecha y hora de la ocurrencia:</label>
+                <input class="form-section--elements date-input" type="datetime-local" name="date" max="{{ dia2 }}" id="date_id" value="" required>
+              </div>
+              <div class="fieldset-container__div">
+                <div class="type_custo dropdown_client">
+                  <input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
+                  <label for="reclamo_id">Reclamo</label>
+		  <div class="dropdown_client--content">Disconformidad relacionada a las maquinas tragamonedas o juegos.</div>
+                </div>
+                <div class="type_custo dropdown_client">
+                  <input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja" checked>
+                  <label for="queja">Queja</label>
+	          <div class="dropdown_client--content">Disconformidad no relacionada a las maquinas o juegos; sino, malestar o descontento respecto a la atención al público.</div>
+                </div>
+              </div>
+              <div id="amount" class="fieldset-container__div">
+                <label for="request_id"></label> 
+                <input class="form-section--elements" type="number" autocomplete="off" name="amount" id="request_id" placeholder="Monto reclamado" value="">
+              </div>
+              <div class="fieldset-container__div">
+                <label for="detail_id"></label> 
+                <textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
+              </div>
+            </fieldset>
+          </section>
+          <button class="btn_client" type="submit">REGISTRAR</button> 
+      </form>
   </section>
 {% endblock %}

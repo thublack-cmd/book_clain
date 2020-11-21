@@ -6,5 +6,5 @@
 *.pyc
 media/
 *.sqlite3
-.env
+.venv/
 __pycache__/
