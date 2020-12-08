@@ -477,7 +477,7 @@ nav ul li {
 }
 
 .fieldset-container {
-  width: 35%;
+  width: 38%;
   height: 550px;
   font-size: 2rem;
   box-shadow: -2px 2px 39px -10px rgba(0,0,0,0.75);
@@ -501,7 +501,7 @@ nav ul li {
 }
 
 .form-section__document div {
-  width: 15%;
+  width: 12%;
 }
 
 .type_custo {
@@ -553,7 +553,7 @@ nav ul li {
 }
 
 #nro_doc {
-  width: 30%;
+  width: 33%;
   height: 3rem;
   margin-left: 1rem;
   margin-top: auto;
