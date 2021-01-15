@@ -8,7 +8,7 @@ class Config:
     }
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     USE_SESSION_FOR_NEXT = True
-    PERMANENT_SESSION_LIFETIME = timedelta(minutes=1)
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=15)
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_DEFAULT_SENDER = 'central.salas@gmail.com'
