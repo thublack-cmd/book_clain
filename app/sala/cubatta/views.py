@@ -50,7 +50,10 @@ def client_view():
         data = {
                 'email': request.form['contact'],
                 'tipo': request.form['type_obj'],
+                'e_name': 'Sala Cubatta',
+                'e_sender': 'cubatta.sala@gmail.com'
                 }
+
         send_mail_open(**data)
 
         flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')

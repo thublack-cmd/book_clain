@@ -14,30 +14,44 @@ def entry_point(sala):
         clain_db = Clain_cub
         view = 'cubatta.audit_view'
         answer_db = Answer_cub
+        e_sender = 'cubatta.sala@gmail.com'
+        e_name = 'Sala Cubatta'
     elif sala == 'tribeca':
         clain_db = Clain_tri
         view = 'tribeca.audit_view'
         answer_db = Answer_tri
+        e_sender = 'tribeca.sala@gmail.com'
+        e_name = 'Sala Tribeca'
     elif sala == 'montreal':
         clain_db = Clain_mon
         view = 'montreal.audit_view'
         answer_db = Answer_mon
+        e_sender = 'montreal.sala@gmail.com'
+        e_name = 'Sala Montreal'
     elif sala == 'kavari':
         clain_db = Clain_kav
         view = 'kavari.audit_view'
         answer_db = Answer_kav
+        e_sender = 'kavari.sala@gmail.com'
+        e_name = 'Sala Kavari'
     elif sala == 'siete':
         clain_db = Clain_sie
         view = 'siete.audit_view'
         answer_db = Answer_sie
+        e_sender = 'lasiete.sala@gmail.com'
+        e_name = 'Sala La Siete'
     elif sala == 'magia':
         clain_db = Clain_mag
         view = 'magia.audit_view'
         answer_db = Answer_mag
+        e_sender = 'magia.sala1@gmail.com'
+        e_name = 'Sala Magia'
     elif sala == 'cassino':
         clain_db = Clain_cas
         view = 'cassino.audit_view'
         answer_db = Answer_cas
+        e_sender = 'cassino.sala@gmail.com'
+        e_name = 'Sala Cassino'
     elif sala == 'zarate':
         clain_db = Clain_uchu_zarate
         view = 'zarate.audit_view'
@@ -62,7 +76,9 @@ def entry_point(sala):
     datos = {
         'clain_db': clain_db,
         'view': view,
-        'answer_db': answer_db
+        'answer_db': answer_db,
+        'e_sender': e_sender,
+        'e_name': e_name
             }
 
     return datos
@@ -126,7 +142,9 @@ def audit_main(sala, request):
         data = {
                 'email': q.email,
                 'tipo': q.type_claim,
-                'resp': request.form['detail_dis']
+                'resp': request.form['detail_dis'],
+                'e_send': datos['e_sender'],
+                'e_name': datos['e_name']
                 }
         send_mail_close(**data)
 
