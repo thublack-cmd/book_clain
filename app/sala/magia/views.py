@@ -12,7 +12,7 @@ from app.mail import send_mail_open
 from . import magia
 
 now = (date.today()).strftime('%d-%m-%Y')
-now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M:%S')
+now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
 sala = 'magia'
 
 @magia.route('/cliente', methods=['POST', 'GET'])
@@ -50,6 +50,8 @@ def client_view():
         data = {
                 'email': request.form['contact'],
                 'tipo': request.form['type_obj'],
+                'e_name': 'Sala Magia',
+                'e_sender': 'magia.sala1@gmail.com'
                 }
         send_mail_open(**data)
 
