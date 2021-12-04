@@ -13,7 +13,6 @@ from . import cubatta
 
 now = (date.today()).strftime('%d-%m-%Y')
 #now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M:%S')
-now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
 sala = 'cubatta'
 
 @cubatta.route('/cliente', methods=['POST', 'GET'])
@@ -60,6 +59,7 @@ def client_view():
         flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
         return redirect(url_for('cubatta.client_view'))
 
+    now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
     data = {
             'dia': now,
             'dia2': now2,
