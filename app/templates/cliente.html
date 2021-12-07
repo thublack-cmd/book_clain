@@ -147,7 +147,7 @@
               </div>
               <div class="form-section__cont-fecha fieldset-container__div">
                 <label for="date_id">Fecha y hora de la ocurrencia:</label>
-                <input class="form-section--elements date-input" type="datetime-local" name="date" max="{{ dia2 }}" id="date_id" value="" required>
+                <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="" required>
               </div>
               <div class="fieldset-container__div">
                 <div class="type_custo dropdown_client">
@@ -174,4 +174,17 @@
           <button class="btn_client" type="submit">REGISTRAR</button> 
       </form>
   </section>
+
+	<script type="text/javascript">
+		f = new Date();
+		const ISOLocaleString = d => {
+       const pad = n => n < 10 ? '0'+n : n;
+       return d.getFullYear()+'-'
+            + pad(d.getMonth()+1)+'-'
+            + pad(d.getDate())+'T'
+            + pad(d.getHours())+':'
+            + pad(d.getMinutes())
+    }
+		document.getElementById('date_id').max = ISOLocaleString(f);
+	</script>
 {% endblock %}

@@ -11,8 +11,8 @@ class Config:
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=15)
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
-    MAIL_DEFAULT_SENDER = 'central.salas@gmail.com'
-    MAIL_USERNAME = 'central.salas@gmail.com'
+    MAIL_DEFAULT_SENDER = 'rsilva@losalamosgroup.com'
+    MAIL_USERNAME = 'rsilva@losalamosgroup.com'
     MAIL_PASSWORD = 'password'
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
