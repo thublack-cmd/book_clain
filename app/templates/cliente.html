@@ -173,9 +173,17 @@
           </section>
           <button class="btn_client" type="submit">REGISTRAR</button> 
       </form>
-  </section
-
+  </section>
   <script type="text/javascript">
-	  document.getElementById('date_id').max = new Date().toISOString();
+    f = new Date();
+    const ISOLocaleString = d => {
+       const pad = n => n < 10 ? '0'+n : n;    
+       return d.getFullYear()+'-'
+            + pad(d.getMonth()+1)+'-'
+            + pad(d.getDate())+'T'
+            + pad(d.getHours())+':'
+            + pad(d.getMinutes())
+    }
+    document.getElementById('date_id').max = ISOLocaleString(f);
   </script>
 {% endblock %}
