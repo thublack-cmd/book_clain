@@ -12,7 +12,7 @@ from app.mail import send_mail_open
 from . import cubatta
 
 now = (date.today()).strftime('%d-%m-%Y')
-#now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M:%S')
+now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
 sala = 'cubatta'
 
 @cubatta.route('/cliente', methods=['POST', 'GET'])

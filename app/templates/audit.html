@@ -121,9 +121,9 @@
           <table class="list-container__table_list">
             <tr>
               <th>Cliente</th>
-                <th>Email</th>
-                <th class="detail_th">Detalle</th>
-              </tr>
+              <th>Email</th>
+              <th>Detalle</th>
+            </tr>
                 {% for r in pendings %}
                   <tr>
                     {% if sala == 'cubatta' %}
@@ -152,7 +152,9 @@
                         <td><a class="list-container--pending_a" href="{{ url_for('casma.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                     {% endif %}
                     <td>{{ r.email }}</td>
-                    <td class="list-container--detail_td">{{ r.detail }}</td>
+                    <td class="list-container--detail_td dropdown_audit">...
+											 <span class="dropdown_audit--content">{{ r.detail }}</span>
+										</td>
                   </tr>
                 {% endfor %}
           </table>
@@ -167,7 +169,7 @@
             <tr>
               <th>Cliente</th>
               <th>Email</th>
-              <th>Detalle</th>
+              <th>Fecha y hora</th>
             </tr>
             {% for r in answered.items %}
               <tr>
@@ -197,7 +199,7 @@
                   <td><a class="list-container--last_a" href="{{ url_for('casma.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                 {% endif %}
                 <td>{{ r.email }}</td>
-                <td class="list-container--detail_td">{{ r.detail }}</td>
+								<td class="list-container--detail_td">{{ r.date }}</td>
               </tr>
             {% endfor %}
           </table>
