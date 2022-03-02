@@ -23,7 +23,7 @@ def send_mail_open(tipo, email, e_name, e_sender):
     #thr.start()
 
     # send email managers
-    msg = Message(f'Nuevo/a {tipo}', recipients=['jgozar@losalamosgroup.com'])
+    msg = Message(f'Nuevo/a {tipo}', recipients=['jgozar@losalamosgroup.com', 'mlarosaf@losalamosgroup.com', 'rsilva@losalamosgroup.com'])
     msg.body = ('Se ha registrado una nueva entrada en el libro de reclamaciones')
 
     thr = Thread(target=_send_async_email, args=[book._get_current_object(), msg])
@@ -44,7 +44,7 @@ def send_mail_close(tipo, email, resp, e_send, e_name):
     #thr.start()
 
     # send email managers
-    msg = Message(f'Nuevo/a {tipo}', recipients=['rsilva@losalamosgroup.com'])
+    msg = Message(f'Respuesta a {tipo}', recipients=['jgozar@losalamosgroup.com', 'mlarosaf@losalamosgroup.com', 'rsilva@losalamosgroup.com'])
     msg.body = ('Se ha respondido a esta entrada')
 
     thr = Thread(target=_send_async_email, args=[book._get_current_object(), msg])
