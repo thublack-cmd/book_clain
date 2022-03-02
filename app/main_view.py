@@ -143,8 +143,7 @@ def audit_main(sala, request):
                 'email': q.email,
                 'tipo': q.type_claim,
                 'resp': request.form['detail_dis'],
-                'e_send': datos['e_sender'],
-                'e_name': datos['e_name']
+                'sala': sala,
                 }
         send_mail_close(**data)
 

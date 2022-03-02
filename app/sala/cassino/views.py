@@ -50,8 +50,7 @@ def client_view():
         data = {
                 'email': request.form['contact'],
                 'tipo': request.form['type_obj'],
-                'e_name': 'Sala Cassino',
-                'e_sender': 'cassino.sala@gmail.com'
+                'sala': sala,
                 }
         send_mail_open(**data)
 
