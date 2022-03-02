@@ -126,7 +126,8 @@ def audit_main(sala, request):
         data = {
                 'email': q.email,
                 'tipo': q.type_claim,
-                'resp': request.form['detail_dis']
+                'resp': request.form['detail_dis'],
+                'sala': sala
                 }
         send_mail_close(**data)
 

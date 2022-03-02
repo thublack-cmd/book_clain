@@ -10,7 +10,7 @@ def _send_async_email(flask_app, msg):
     with flask_app.app_context():
         mail.send(msg)
 
-def send_mail_open(tipo, email):
+def send_mail_open(tipo, email, sala):
     '''
         Send email to client and managers in opened process
     '''
@@ -23,7 +23,7 @@ def send_mail_open(tipo, email):
     thr.start()
 
     # send email managers
-    msg = Message(f'Nuevo/a {tipo}', recipients=['jgozar@losalamosgroup.com'])
+    msg = Message(f'Nuevo/a {tipo} en {sala}', recipients=['rsilva@losalamosgroup.com'])
     msg.body = ('Se ha registrado una nueva entrada en el libro de reclamaciones')
 
     thr = Thread(target=_send_async_email, args=[book._get_current_object(), msg])
@@ -31,7 +31,7 @@ def send_mail_open(tipo, email):
     return thr
 
 
-def send_mail_close(tipo, email, resp):
+def send_mail_close(tipo, email, resp, sala):
     '''
         Send email to client and managers in close process
     '''
@@ -44,7 +44,7 @@ def send_mail_close(tipo, email, resp):
     thr.start()
 
     # send email managers
-    msg = Message(f'Nuevo/a {tipo}', recipients=['rsilva@losalamosgroup.com'])
+    msg = Message(f'respuesta a {tipo} de {sala}', recipients=['rsilva@losalamosgroup.com'])
     msg.body = ('Se ha respondido a esta entrada')
 
     thr = Thread(target=_send_async_email, args=[book._get_current_object(), msg])
