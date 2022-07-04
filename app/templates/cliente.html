@@ -112,18 +112,25 @@
                   <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido" required>
                 </div>
                 <div class="form-section__document fieldset-container__div tab">
-                  <div>
-                    <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI" checked>
-                    <label for="dni">DNI</label>
-                  </div>
-                  <div>
-                    <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE">
-                    <label for="ce">CE</label>
-                  </div>
-                  <div>
-                    <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc">
-                    <label for="ruc">RUC</label>
-                  </div>
+									<div>
+										<select>
+											<option value="DNI">DNI</option>
+											<option value="CE">Carnet de extranjeria</option>
+											<option value="ruc">RUC</option>
+										</select>
+									</div>
+                  <!-- <div> -->
+                  <!--   <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI" checked> -->
+                  <!--   <label for="dni">DNI</label> -->
+                  <!-- </div> -->
+                  <!-- <div> -->
+                  <!--   <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE"> -->
+                  <!--   <label for="ce">CE</label> -->
+                  <!-- </div> -->
+                  <!-- <div> -->
+                  <!--   <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc"> -->
+                  <!--   <label for="ruc">RUC</label> -->
+                  <!-- </div> -->
                   <div class="fieldset-container__div" id="nro_doc">
                     <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
                   </div>
