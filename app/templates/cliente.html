@@ -105,79 +105,62 @@
       <form class="form-section__form form-section--elements"  action="{{ url_for('casma.client_view') }}" method="post">
     {% endif %}
 
-        <!-- <section class="form-section__main-container"> -->
-            <fieldset class="fieldset-container">
-                <div class="fieldset-container__div tab">
-                  <label for="name_id"></label>
-                  <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido" required>
-                </div>
-                <div class="form-section__document fieldset-container__div tab">
-									<div>
-										<select>
-											<option value="DNI">DNI</option>
-											<option value="CE">Carnet de extranjeria</option>
-											<option value="ruc">RUC</option>
-										</select>
-									</div>
-                  <!-- <div> -->
-                  <!--   <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI" checked> -->
-                  <!--   <label for="dni">DNI</label> -->
-                  <!-- </div> -->
-                  <!-- <div> -->
-                  <!--   <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE"> -->
-                  <!--   <label for="ce">CE</label> -->
-                  <!-- </div> -->
-                  <!-- <div> -->
-                  <!--   <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc"> -->
-                  <!--   <label for="ruc">RUC</label> -->
-                  <!-- </div> -->
-                  <div class="fieldset-container__div" id="nro_doc">
-                    <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
-                  </div>
-                </div>
-                <div class="fieldset-container__div tab">
-                  <label for="contact_id"></label>
-                  <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
-                </div>
-                <div class="fieldset-container__div tab">
-                  <label for="domicilio_id"></label>
-                  <textarea class="form-section--elements textarea" name="domicilio" id="domicilio_id" placeholder="Domicilio" required></textarea>
-                </div>
-        
-              <div class="form-section__cont-fecha fieldset-container__div tab">
-                <label for="date_id">Fecha y hora de la ocurrencia:</label>
-                <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="" required>
-              </div>
-              <div class="fieldset-container__div tab">
-                <div class="type_custo dropdown_client">
-                  <input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
-                  <label for="reclamo_id">Reclamo</label>
-		  <div class="dropdown_client--content">Disconformidad relacionada a las maquinas tragamonedas o juegos.</div>
-                </div>
-                <div class="type_custo dropdown_client">
-                  <input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja" checked>
-                  <label for="queja">Queja</label>
-	          <div class="dropdown_client--content">Disconformidad no relacionada a las maquinas o juegos; sino, malestar o descontento respecto a la atención al público.</div>
-                </div>
-              </div>
-              <div id="amount" class="fieldset-container__div tab">
-                <label for="request_id"></label> 
-                <input class="form-section--elements" type="number" autocomplete="off" name="amount" id="request_id" placeholder="Monto reclamado" value="">
-              </div>
-              <div class="fieldset-container__div tab">
-                <label for="detail_id"></label> 
-                <textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
-              </div>
-							<div style="overflow:auto;">
-								<div style="float:right;">
-									<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-									<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-								</div>
+				<fieldset class="fieldset-container">
+          <div class="fieldset-container__div tab">
+						<div class="fieldset-container__document">
+              <label for="name_id"></label>
+              <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido" required>
+						</div>
+						<div class="fieldset-container__document">
+						  <select name="type_doc" class="sel-type">
+						    <option value="DNI">DNI</option>
+								<option value="CE">Carnet de extranjeria</option>
+								<option value="ruc">RUC</option>
+							</select>
+							<div id="nro_doc">
+								<input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
 							</div>
-            </fieldset>
-          </section>
-          <!-- <button class="btn_client" type="submit">REGISTRAR</button> -->
-      </form>
+						</div>
+						<div>
+              <label for="contact_id"></label>
+              <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
+						</div>
+          </div>
+
+					<div class="fieldset-container__div tab">
+						<div class="type_custo dropdown_client">
+							<input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
+							<label for="reclamo_id">Reclamo</label>
+								<div class="dropdown_client--content">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
+						</div>
+						<div class="type_custo dropdown_client">
+							<input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja" checked>
+							<label for="queja">Queja</label>
+								<div class="dropdown_client--content">Malestar o desagrado de algun producto o servicio.</div>
+						</div>
+					</div>
+
+					<div class="fieldset-container__div tab">
+						<div>
+						  <label for="date_id">Fecha y hora de la ocurrencia:</label>
+						  <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="" required>
+						</div>
+						<div>
+							<label for="detail_id"></label> 
+							<textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
+						</div>
+					</div>
+
+					<div style="overflow:auto;">
+						<div style="float:right;">
+							<button type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button>
+							<button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+						</div>
+					</div>
+				</fieldset>
+			</section>
+			<!-- <button class="btn_client" type="submit">REGISTRAR</button> -->
+		</form>
   </section>
 
 	<script type="text/javascript">
