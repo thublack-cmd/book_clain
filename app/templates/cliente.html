@@ -108,14 +108,15 @@
 				<fieldset class="fieldset-container">
           <div class="fieldset-container__div tab">
 						<div class="fieldset-container__document">
-              <label for="name_id"></label>
-              <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido" required>
+              <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido o Razon Social" required>
 						</div>
 						<div class="fieldset-container__document">
 						  <select name="type_doc" class="sel-type">
 						    <option value="DNI">DNI</option>
-								<option value="CE">Carnet de extranjeria</option>
-								<option value="ruc">RUC</option>
+								<option value="CE">CE</option>
+								<option value="RUC">RUC</option>
+								<option value="CPP">CPP</option>
+								<option value="PAS">PASAPORTE</option>
 							</select>
 							<div id="nro_doc">
 								<input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
@@ -129,14 +130,12 @@
 
 					<div class="fieldset-container__div tab">
 						<div class="type_custo dropdown_client">
-							<input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
-							<label for="reclamo_id">Reclamo</label>
-								<div class="dropdown_client--content">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
+							<input class="form-section--elements" type="button" name="type_obj" id="queja" value="Queja">
+								<div class="dropdown_client--content">Malestar o desagrado de algun producto o servicio.</div>
 						</div>
 						<div class="type_custo dropdown_client">
-							<input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja" checked>
-							<label for="queja">Queja</label>
-								<div class="dropdown_client--content">Malestar o desagrado de algun producto o servicio.</div>
+							<input class="form-section--elements" type="button" name="type_obj" id="reclamo_id" value="Reclamo">
+								<div class="dropdown_client--content">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
 						</div>
 					</div>
 
@@ -151,10 +150,10 @@
 						</div>
 					</div>
 
-					<div style="overflow:auto;">
-						<div style="float:right;">
-							<button type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button>
-							<button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+					<div class="nextprev-div" style="overflow:auto;">
+						<div class="nextprev-div" style="float:right;">
+							<button class="nextprev-button" type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button>
+							<button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
 						</div>
 					</div>
 				</fieldset>
@@ -191,11 +190,11 @@
 			}
 					 
 			if (n == (x.length - 1)) {
-				document.getElementById("nextBtn").innerHTML = "Submit";
+				document.getElementById("nextBtn").innerHTML = "Registrar";
 				subBtn = document.getElementById("nextBtn");
 				subBtn.setAttribute('type', 'submit');
 			} else {
-				document.getElementById("nextBtn").innerHTML = "Next";
+				document.getElementById("nextBtn").innerHTML = "Siguiente";
 			}
 					 
 			//... and run a function that will display the correct step indicator:
