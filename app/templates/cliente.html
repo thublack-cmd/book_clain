@@ -80,29 +80,29 @@
 
   <section class="form-section">
     {% if sala == 'cubatta' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('cubatta.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('cubatta.client_view') }}" method="post">
     {% elif sala == 'tribeca' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('tribeca.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('tribeca.client_view') }}" method="post">
     {% elif sala == 'montreal' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('montreal.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('montreal.client_view') }}" method="post">
     {% elif sala == 'kavari' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('kavari.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('kavari.client_view') }}" method="post">
     {% elif sala == 'siete' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('siete.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('siete.client_view') }}" method="post">
     {%elif sala == 'magia' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('magia.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('magia.client_view') }}" method="post">
     {% elif sala == 'cassino' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('cassino.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('cassino.client_view') }}" method="post">
     {% elif sala == 'zarate' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('zarate.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('zarate.client_view') }}" method="post">
     {% elif sala == 'proceres' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('proceres.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('proceres.client_view') }}" method="post">
     {% elif sala == 'huacho' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('huacho.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('huacho.client_view') }}" method="post">
     {% elif sala == 'huarmey' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('huarmey.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('huarmey.client_view') }}" method="post">
     {% elif sala == 'casma' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('casma.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('casma.client_view') }}" method="post">
     {% endif %}
 
 				<fieldset class="fieldset-container">
@@ -145,8 +145,8 @@
 						  <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="" required>
 						</div>
 						<div>
-							<label for="detail_id"></label> 
-							<textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
+							<label for="detail_id">Detalle del acontecimiento</label> 
+							<textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id"  required></textarea>
 						</div>
 					</div>
 
@@ -205,7 +205,7 @@
 			// This function will figure out which tab to display
 			var x = document.getElementsByClassName("tab");
 			// Exit the function if any field in the current tab is invalid:
-			//if (n == 1 && !validateForm()) return false;
+			if (n == 1 && !validateForm()) return false;
 			// Hide the current tab:
 			x[currentTab].style.display = "none";
 			// Increase or decrease the current tab by 1:
@@ -236,9 +236,9 @@
 		    }
 		  }
 		  // If the valid status is true, mark the step as finished and valid:
-		  if (valid) {
-		    document.getElementsByClassName("step")[currentTab].className += " finish";
-		  }
+		  //if (valid) {
+		  //  document.getElementsByClassName("step")[currentTab].className += " finish";
+		  //}
 		  return valid; // return the valid status
 		}
 		

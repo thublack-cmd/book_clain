@@ -18,6 +18,7 @@ sala = 'cassino'
 @cassino.route('/cliente', methods=['POST', 'GET'])
 def client_view():
     if request.method == 'POST':
+        breakpoint();
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
 
         # if not request.form["amount"]:
