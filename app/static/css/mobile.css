@@ -512,42 +512,71 @@
 	/* 	display: inline; */
 	/* } */
 
-	.type_custo {
-		display: inline;
-		width: 50%;
+	/* .type_custo { */
+	/* 	display: inline; */
+	/* 	width: 50%; */
+	/* } */
+
+  #queja span {
+    display: inline;
+    width: 140px;
+    height: 60px;
+    padding: 10px 28px;
+    border-radius: 6px;
+    color: #000000;
+    background-color: #FFF9F9;
+  }
+
+  #queja input[type="radio"]:checked + span {
+    background-color: gold;
+    border: 2px solid #FFDA00;
+    /* color: white; */
+  }
+
+  #reclamo_id span {
+    display: inline;
+    padding: 10px;
+    border-radius: 6px;
+    color: #000000;
+    background-color: #D0D3D9;
+  }
+
+  #reclamo_id input[type="radio"]:checked + span {
+    background-color: #EBD766;
+    border: 2px solid #EBD766;
+  }
+
+  input[type="radio"] {
+    -webkit-appearance: none;
+  }
+
+  .dropdown_client {
+    display: inline-block;
+    margin-top: 60px;
+    margin-left: 0.9rem;
+  }
+
+	.dropdown_client--content {
+		display: none;
+		position: absolute;
+		background-color: rgba(0,0,0,0.9);
+		color: white;
+		font-size: 1.8rem;
+		width: 290px;
+		height: 110px;
+		margin-top: 20px;
+		min-width: 100px;
+		border-radius: 15px;
+		box-shadow: -7px 11px 19px -4px rgba(0,0,0,0.75);
+		z-index: 1;
 	}
 
-	#reclamo_id {
-		width: 140px;
-		height: 60px;
-		border: 2px solid #000000;
-		border-radius: 6px;
-
-		font-weight: 900;
-		color: #000000;
-		background-color: #D0D3D9;
+	.dropdown_client:hover .dropdown_client--content {
+		display: flex;
+		text-align: center;
+		align-items: center;
+    justify-content: center;
 	}
-
-	#reclamo_id:focus {
-		background-color: #EBD766;
-		border: 2px solid #EBD766;
-	}
-
-	#queja {
-		width: 140px;
-		height: 60px;
-		border-radius: 6px;
-
-		font-weight: 900;
-		color: #000000;
-		background-color: #FFF9F9;
-	}
-
-	#queja:focus {
-		background-color: #FFDA00;
-		border: 2px solid #FFDA00;
-	}
-
 
 	/* .form-section__document label, .type_custo label { */
 	/* 	padding-left: 0.7rem; */
@@ -566,27 +595,6 @@
 		margin-bottom: 65px;
 		background-color: white;
 		font-size: 1.7rem;
-	}
-
-	.dropdown_client--content {
-		display: none;
-		position: absolute;
-		background-color: rgba(0,0,0,0.9);
-		color: white;
-		font-size: 1.8rem;
-		width: 290px;
-		height: 110px;
-		margin-top: 20px;
-		min-width: 100px;
-		border-radius: 15px;
-		box-shadow: -7px 11px 19px -4px rgba(0,0,0,0.75);
-		z-index: 1;
-	}
-	 
-	.dropdown_client:hover .dropdown_client--content {
-		display: flex;
-		text-align: center;
-		align-items: center;
 	}
 
 	/* .dropdown_audit { */
@@ -644,7 +652,7 @@
 	}
 
 	#nro_doc input {
-		border: none;
+		/* border: none; */
 		padding: 0 0 0 1rem;
 		height: 100%;
 		width: 100%;
