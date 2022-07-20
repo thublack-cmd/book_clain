@@ -392,7 +392,7 @@ class Clain_uchu_casma(db.Model):
     type_doc = db.Column(db.String(3), nullable=True)
     nro_doc = db.Column(db.String(12), nullable=False)
     email = db.Column(db.String(120), nullable=False)
-    address = db.Column(db.String(500), nullable=False)
+    address = db.Column(db.String(500))
     date = db.Column(db.DateTime, nullable=False)
     type_claim = db.Column(db.String(7), nullable=False)
     amount = db.Column(db.Integer)

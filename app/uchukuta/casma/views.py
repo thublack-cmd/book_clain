@@ -18,6 +18,7 @@ sala = 'casma'
 @casma.route('/cliente', methods=['POST', 'GET'])
 def client_view():
     if request.method == 'POST':
+        print("entro en el view")
         breakpoint();
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
 
@@ -52,7 +53,7 @@ def client_view():
                 'email': request.form['contact'],
                 'tipo': request.form['type_obj'],
                 }
-        send_mail_open(**data)
+        # send_mail_open(**data)
 
         flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
         return redirect(url_for('casma.client_view'))

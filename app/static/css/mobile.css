@@ -584,18 +584,6 @@
 		z-index: 1;
 	}
 
-	/* .form-section__document label, .type_custo label { */
-	/* 	padding-left: 0.7rem; */
-	/* } */
-
-	/* .form-section__cont-fecha { */
-	/* 	height: 3rem; */
-	/* } */
-
-	/* .form-section__cont_fecha label { */
-	/* 	margin: auto 0; */
-	/* } */
-
 	.date-input {
 		width: 100%;
 		margin-bottom: 65px;
@@ -641,10 +629,9 @@
 		border: 3px solid #FF4538;
   }
 
-  span.invalid_radio {
-		border: 3px solid #FF4538;
-  }
-
+	.invalid {
+		border: 3px solid red;
+	} 
 
 	.sel-type {
 		width: auto;
