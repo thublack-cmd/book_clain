@@ -59,6 +59,22 @@
       <picture>
         <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
       </picture>
+    {% elif sala == 'proceres' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_proceres.png') }}" alt="logo uchukuta">
+      </picture>
+    {% elif sala == 'huacho' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_huacho.png') }}" alt="logo uchukuta">
+      </picture>
+    {% elif sala == 'huarmey' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_huarmey.png') }}" alt="logo uchukuta">
+      </picture>
+    {% elif sala == 'casma' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo uchukuta">
+      </picture>
     {% endif %}
 
     <span class="header__date">Fecha: {{ dia }}</span>
@@ -93,8 +109,6 @@
       <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('magia.client_view') }}" method="post">
     {% elif sala == 'cassino' %}
       <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('cassino.client_view') }}" method="post">
-    {% elif sala == 'zarate' %}
-      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('zarate.client_view') }}" method="post">
     {% elif sala == 'proceres' %}
       <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('proceres.client_view') }}" method="post">
     {% elif sala == 'huacho' %}
@@ -129,30 +143,21 @@
           </div>
 
 					<div class="fieldset-container__div tab">
-						<div class="dropdown_client">
-							<p id="queja">
-								<label><input type="radio" name="type_obj" value="queja"><span>QUEJA</span></label>
-							</p>
-							<div class="dropdown_client--content">Malestar o desagrado de algun producto o servicio.</div>
-						</div>
-						<div class="dropdown_client">
-							<p id="reclamo_id">
-								<label><input type="radio" name="type_obj" value="reclamo"><span>RECLAMO</span></label>
-							</p>
-							<div class="dropdown_client--content">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
+						<div class="center_div">
+							<div class="dropdown_client" id="queja_over">
+								<p id="queja">
+									<label><input type="radio" name="type_obj" value="queja"><span>QUEJA</span></label>
+								</p>
+							</div>
+							<div class="dropdown_client" id="reclamo_over">
+								<p id="reclamo_id">
+									<label><input type="radio" name="type_obj" value="reclamo"><span>RECLAMO</span></label>
+								</p>
+							</div>
+								<div class="dropdown_client--content" id="pop-queja">Malestar o desagrado de algun producto o servicio.</div>
+								<div class="dropdown_client--content" id="pop-reclamo">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
 						</div>
 					</div>
-					
-					<!-- <div class="fieldset-container__div tab"> -->
-					<!-- 	<div class="type_custo dropdown_client"> -->
-					<!-- 		<input class="form-section--elements" type="button" name="type_obj" id="queja" value="Queja"> -->
-					<!-- 			<div class="dropdown_client--content">Malestar o desagrado de algun producto o servicio.</div> -->
-					<!-- 	</div> -->
-					<!-- 	<div class="type_custo dropdown_client"> -->
-					<!-- 		<input class="form-section--elements" type="button" name="type_obj" id="reclamo_id" value="Reclamo"> -->
-					<!-- 			<div class="dropdown_client--content">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div> -->
-					<!-- 	</div> -->
-					<!-- </div> -->
 
 					<div class="fieldset-container__div tab">
 						<div>
@@ -160,7 +165,7 @@
 						  <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="" required>
 						</div>
 						<div>
-							<label for="detail_id">Detalle del acontecimiento</label> 
+							<label for="detail_id">Detalle de la ocurrencia:</label> 
 							<textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id"  required></textarea>
 						</div>
 					</div>
@@ -178,6 +183,7 @@
   </section>
 
 	<script type="text/javascript">
+
 		f = new Date();
 		const ISOLocaleString = d => {
 			const pad = n => n < 10 ? '0'+n : n;
@@ -243,9 +249,17 @@
 		  // A loop that checks every input field in the current tab:
 		  for (i = 0; i < y.length; i++) {
 		    // If a field is empty...
-		    if (y[i].value == "") {
+		    if (y[i].value == "" || currentTab === 1) {
 		      // add an "invalid" class to the field:
-		      y[i].className += " invalid";
+					if (currentTab === 1) { 
+						for (a = 0; a < y.length, a++) {
+						  if (y[a].checked == false) {
+								y[a].className += "invalid_radio";
+							}
+						}
+					}else {
+						y[i].className += "invalid";
+					}
 		      // and set the current valid status to false
 		      valid = false;
 		    }
@@ -266,5 +280,27 @@
 		  //... and adds the "active" class on the current step:
 		  x[n].className += " active";
 		}
+
+    document.getElementById("queja_over").addEventListener("mouseover", quejaOver);
+    document.getElementById("queja_over").addEventListener("mouseout", quejaOut);
+    document.getElementById("reclamo_over").addEventListener("mouseover", reclamoOver);
+    document.getElementById("reclamo_over").addEventListener("mouseout", reclamoOut);
+
+
+		function quejaOver() {
+		  document.getElementById("pop-queja").style.display = "flex";
+		}
+		function quejaOut() {
+		  document.getElementById("pop-queja").style.display = "none";
+		}
+
+		function reclamoOver() {
+		  document.getElementById("pop-reclamo").style.display = "flex";
+		}
+		function reclamoOut() {
+		  document.getElementById("pop-reclamo").style.display = "none";
+		}
+
+
 	</script>
 {% endblock %}
