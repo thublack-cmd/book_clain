@@ -119,45 +119,45 @@
       <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('casma.client_view') }}" method="post">
     {% endif %}
 
-				<fieldset class="fieldset-container">
+        <fieldset class="fieldset-container">
           <div class="fieldset-container__div tab">
-						<div class="fieldset-container__document">
+            <div class="fieldset-container__document">
               <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido o Razon Social" required>
-						</div>
-						<div class="fieldset-container__document">
-						  <select name="type_doc" class="sel-type">
-						    <option value="DNI">DNI</option>
-								<option value="CE">CE</option>
-								<option value="RUC">RUC</option>
-								<option value="CPP">CPP</option>
-								<option value="PAS">PASAPORTE</option>
-							</select>
-							<div id="nro_doc">
-								<input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
-							</div>
-						</div>
-						<div>
+	          </div>
+            <div class="fieldset-container__document">
+              <select name="type_doc" class="sel-type">
+	              <option value="DNI">DNI</option>
+                <option value="CE">CE</option>
+                <option value="RUC">RUC</option>
+                <option value="CPP">CPP</option>
+                <option value="PAS">PASAPORTE</option>
+	            </select>
+	            <div id="nro_doc">
+	              <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
+	            </div>
+            </div>
+            <div>
               <label for="contact_id"></label>
               <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
-						</div>
+	          </div>
           </div>
 
-					<div class="fieldset-container__div tab">
-						<div class="center_div">
-							<div class="dropdown_client" id="queja_over">
-								<p id="queja">
-									<label><input type="radio" name="type_obj" value="queja"><span>QUEJA</span></label>
-								</p>
-							</div>
-							<div class="dropdown_client" id="reclamo_over">
-								<p id="reclamo_id">
-									<label><input type="radio" name="type_obj" value="reclamo"><span>RECLAMO</span></label>
-								</p>
-							</div>
-								<div class="dropdown_client--content" id="pop-queja">Malestar o desagrado de algun producto o servicio.</div>
-								<div class="dropdown_client--content" id="pop-reclamo">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
-						</div>
-					</div>
+	        <div class="fieldset-container__div tab">
+	          <div class="center_div">
+	            <div class="dropdown_client" id="queja_over">
+	              <p id="queja">
+                  <label><input type="radio" name="type_obj" value="queja"><span>QUEJA</span></label>
+	              </p>
+	            </div>
+              <div class="dropdown_client" id="reclamo_over">
+	              <p id="reclamo_id">
+	                <label><input type="radio" name="type_obj" value="reclamo"><span>RECLAMO</span></label>
+                </p>
+	            </div>
+	            <div class="dropdown_client--content" id="pop-queja">Malestar o desagrado de algun producto o servicio.</div>
+	            <div class="dropdown_client--content" id="pop-reclamo">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
+	          </div>
+	        </div>
 
 					<div class="fieldset-container__div tab">
 						<div>
@@ -213,8 +213,8 @@
 			if (n == (x.length - 1)) {
 				console.log("entro aqui")
 				document.getElementById("nextBtn").innerHTML = "Registrar";
-				subBtn = document.getElementById("nextBtn");
-				subBtn.setAttribute('type', 'submit');
+				//subBtn = document.getElementById("nextBtn");
+				//subBtn.setAttribute('type', 'submit');
 			} else {
 				document.getElementById("nextBtn").innerHTML = "Siguiente";
 			}
@@ -240,56 +240,54 @@
 			showTab(currentTab);
 		}
 
-		function validateForm() {
-		  // This function deals with validation of the form fields
-		  var x, y, i, valid = true;
-		  x = document.getElementsByClassName("tab");
-		  y = x[currentTab].getElementsByTagName("input");
-			z = x[currentTab].getElementsByTagName("textarea");
-		  // A loop that checks every input field in the current tab:
-		  for (i = 0; i < y.length; i++) {
-				if (currentTab == 1) { 
-					if (y[0].checked == false && y[1].checked == false) {
-						w = x[currentTab].getElementsByTagName("span");
-						w[i].className += "invalid";
-						// and set the current valid status to false
-						valid = false;
-					}
-		    // If a field is empty...
-				}else if (y[i].value == "") {
-		      // add an "invalid" class to the field:
-					y[i].className += " invalid";
-						if (currentTab == 2 && z[0].value == "") {
-							z[0].className += " invalid";
-							valid = false;
-						}
-		      // and set the current valid status to false
-		      valid = false;
-				}
-			}
-		  return valid; // return the valid status
-		}
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      z = x[currentTab].getElementsByTagName("textarea");
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        if (currentTab == 1) { 
+          if (y[0].checked == false && y[1].checked == false) {
+            w = x[currentTab].getElementsByTagName("span");
+            w[i].className += "invalid";
+            // and set the current valid status to false
+            valid = false;
+          }
+        // If a field is empty...
+        }else if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          if (currentTab == 2 && z[0].value == "") {
+            z[0].className += " invalid";
+            valid = false;
+          }
+          // and set the current valid status to false
+          valid = false;
+        }
+      }
+      return valid; // return the valid status
+    }
 
     document.getElementById("queja_over").addEventListener("mouseover", quejaOver);
     document.getElementById("queja_over").addEventListener("mouseout", quejaOut);
     document.getElementById("reclamo_over").addEventListener("mouseover", reclamoOver);
     document.getElementById("reclamo_over").addEventListener("mouseout", reclamoOut);
 
+    function quejaOver() {
+      document.getElementById("pop-queja").style.display = "flex";
+    }
+    function quejaOut() {
+      document.getElementById("pop-queja").style.display = "none";
+    }
 
-		function quejaOver() {
-		  document.getElementById("pop-queja").style.display = "flex";
-		}
-		function quejaOut() {
-		  document.getElementById("pop-queja").style.display = "none";
-		}
-
-		function reclamoOver() {
-		  document.getElementById("pop-reclamo").style.display = "flex";
-		}
-		function reclamoOut() {
-		  document.getElementById("pop-reclamo").style.display = "none";
-		}
-
+    function reclamoOver() {
+      document.getElementById("pop-reclamo").style.display = "flex";
+    }
+    function reclamoOut() {
+      document.getElementById("pop-reclamo").style.display = "none";
+    }
 
 	</script>
 {% endblock %}

@@ -96,13 +96,14 @@
 
 	/* Flash message styles */
 	.flashes {
-		height: 3.2rem;
+		/* height: 3.2rem; */
+		width: 100%;
 		list-style: none;
-		margin: 1.5rem 1rem;
+		/* margin: 1.5rem 1rem; */
 	}
 
 	.flashes li {
-		width: 30%;
+		width: 90vw;
 		height: 100%;
 		background-color: white;
 		color: #4FF054;
@@ -111,6 +112,7 @@
 		border-radius: 1.5rem 5rem 3rem;
 		text-align: center;
 		padding-top: 0.4rem;
+		margin: auto;
 	}
 
 	/* Audit view */
