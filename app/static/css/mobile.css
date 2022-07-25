@@ -96,7 +96,6 @@
 
 	/* Flash message styles */
 	.flashes {
-		/* height: 3.2rem; */
 		width: 100%;
 		list-style: none;
 		/* margin: 1.5rem 1rem; */
@@ -105,13 +104,13 @@
 	.flashes li {
 		width: 90vw;
 		height: 100%;
-		background-color: white;
-		color: #4FF054;
-		font-size: 2rem;
-		border: 2px solid green;
+		background-color: #ffffff;
+		color: black;
+		font-size: 1.6rem;
 		border-radius: 1.5rem 5rem 3rem;
 		text-align: center;
 		padding-top: 0.4rem;
+		padding-bottom : 0.4rem;
 		margin: auto;
 	}
 
@@ -381,6 +380,8 @@
 	}
 
 	.header picture {
+		display: flex;
+		justify-content: center;
 		width: 60%;
 		height: 80%;
 	}
@@ -388,6 +389,7 @@
 	.header img {
 		width: 100%;
 		height: 100%;
+		max-width: 240px;
 	}
 
 	.header__date {
@@ -402,7 +404,7 @@
 
 	.title-container-client {
 		width: 100%;
-		margin-bottom: 70px;
+		margin-bottom: 30px;
 	}
 
 	.title-container__title {
@@ -418,17 +420,19 @@
 		width: 80%;
 		font-size: 3rem;
 		margin: 0 auto;
-		margin-top: 40px;
+		margin-top: 10px;
 		text-align: center;
 		color: white;
 	}
 	 
 	.form-section {
 		width: 100vw;
+		height: calc(100vh - 325px);
 	}
 
 	.form-section__form {
 		width: inherit;
+		height: inherit;
 	}
 
 	.form-section--elements {
@@ -497,8 +501,9 @@
 	  display: flex;
 		align-items: center;
 		flex-direction: column;
+		justify-content: space-between;
 		width: 100%;
-		/* height: 400px; */
+		height: inherit;
 		border: 0px;
 	}
 
@@ -563,10 +568,16 @@
     -webkit-appearance: none;
   }
 
+	.center_div {
+		display: flex;
+		justify-content: space-evenly;
+		margin-top: 50px;
+	}
+
   .dropdown_client {
     display: inline-block;
-    margin-top: 60px;
-    margin-left: 0.9rem;
+    /* margin-top: 60px; */
+    /* margin-left: 0.9rem; */
   }
 
 	.dropdown_client--content {
@@ -579,7 +590,7 @@
 		font-size: 1.8rem;
 		width: 290px;
 		height: 110px;
-		margin-top: 60px;
+		margin-top: 40px;
 		min-width: 100px;
 		border-radius: 15px;
 		box-shadow: -7px 11px 19px -4px rgba(0,0,0,0.75);
@@ -588,7 +599,7 @@
 
 	.date-input {
 		width: 100%;
-		margin-bottom: 65px;
+		margin-bottom: 30px;
 		background-color: white;
 		font-size: 1.7rem;
 	}
@@ -622,7 +633,7 @@
 	.tab {
 		display: none;
 		width: 80%;
-		height: 350px;
+		/* height: 250px; */
 		max-width: 320px;
 	}
 

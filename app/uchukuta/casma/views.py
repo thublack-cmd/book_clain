@@ -18,8 +18,6 @@ sala = 'casma'
 @casma.route('/cliente', methods=['POST', 'GET'])
 def client_view():
     if request.method == 'POST':
-        print("entro en el view")
-        breakpoint();
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
 
         # if not request.form["amount"]:
