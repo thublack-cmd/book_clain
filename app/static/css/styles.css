@@ -634,6 +634,10 @@
 		font-weight: bold;
 	}
 
+  .nextprev-button:focus {
+    outline: none;
+  }
+
 	 /* Login view */
 	.login_container {
 		display: flex;
