@@ -77,7 +77,7 @@
       </picture>
     {% endif %}
 
-    <span class="header__date">Fecha: {{ dia }}</span>
+    <!-- <span class="header__date">Fecha: {{ dia }}</span> -->
   </header>
 
   {% with messages = get_flashed_messages() %}
@@ -197,6 +197,7 @@
 
 		var currentTab = 0; // Current tab is set to be the first tab (0)
 		showTab(currentTab); // Display the current tab
+		emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
 
 		function showTab(n) {
 			// This function will display the specified tab of the form...
@@ -211,10 +212,7 @@
 			}
 					 
 			if (n == (x.length - 1)) {
-				console.log("entro aqui")
 				document.getElementById("nextBtn").innerHTML = "Registrar";
-				//subBtn = document.getElementById("nextBtn");
-				//subBtn.setAttribute('type', 'submit');
 			} else {
 				document.getElementById("nextBtn").innerHTML = "Siguiente";
 			}
@@ -231,7 +229,6 @@
 			currentTab = currentTab + n;
 			// if you have reached the end of the form...
 			if (currentTab >= x.length) {
-				console.log("entro");
 				// ... the form gets submitted:
 				document.getElementById("regForm").submit();
 				return false;
@@ -242,13 +239,14 @@
 
     function validateForm() {
       // This function deals with validation of the form fields
-      var x, y, i, valid = true;
+      var x, y, i, valid = true, empty = true, docu = true, mailE = true;
       x = document.getElementsByClassName("tab");
       y = x[currentTab].getElementsByTagName("input");
       z = x[currentTab].getElementsByTagName("textarea");
       // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
-        if (currentTab == 1) { 
+        if (currentTab == 1) {
+				//Claim type validation
           if (y[0].checked == false && y[1].checked == false) {
             w = x[currentTab].getElementsByTagName("span");
             w[i].className += "invalid";
@@ -259,13 +257,37 @@
         }else if (y[i].value == "") {
           // add an "invalid" class to the field:
           y[i].className += " invalid";
-          if (currentTab == 2 && z[0].value == "") {
-            z[0].className += " invalid";
-            valid = false;
-          }
+	        empty = false;
           // and set the current valid status to false
           valid = false;
-        }
+				//Document validation
+	      }else if (currentTab == 0 && ((y[1].value).length > 11 || (y[1].value).length < 8)) {
+	        //y[0].classList.remove("invalid");   
+	        y[1].className += " invalid";
+	        docu = false;
+	        valid = false;
+				//email validation
+	      }else if (currentTab == 0 && emailRegex.test(y[2].value) == false){
+	        y[2].className += " invalid";
+	        mailE = false;
+	        valid = false;
+	      }else if (currentTab == 2 && z[0].value == "") {
+          z[0].className += " invalid";
+          valid = false;
+	      }
+	      if (currentTab == 0) {
+	        if (empty == true) {
+	          y[0].classList.remove("invalid");
+	        }
+          if (docu == true) {
+	          y[1].classList.remove("invalid");
+	        }
+	        if (mailE == true) {
+	          y[2].classList.remove("invalid");
+	        }
+        }else if (currentTab == 2 && empty == true) {
+          y[0].classList.remove("invalid");
+	      }
       }
       return valid; // return the valid status
     }

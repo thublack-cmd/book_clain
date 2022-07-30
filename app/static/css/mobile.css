@@ -449,16 +449,6 @@
 		outline: none;
 	}
 
-	/* .form-section__customer { */
-	/* 	display: flex; */
-	/* 	justify-content: left; */
-	/* 	width: 100%; */
-	/* 	height: 50px; */
-	/* 	border-radius: 50px 50px 0 0; */
-	/* 	font-size: 3rem; */
-	/* 	background-color: #1D8F43; */
-	/* } */
-
 	.form-section__customer__title {
 		margin: auto 0 auto 5rem;
 		text-align: left;
