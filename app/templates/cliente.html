@@ -121,6 +121,9 @@
 
         <fieldset class="fieldset-container">
           <div class="fieldset-container__div tab">
+            <span>PRUEBA</span>
+          </div>
+          <div class="fieldset-container__div tab">
             <div class="fieldset-container__document">
               <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido o Razon Social" required>
 	          </div>
@@ -205,7 +208,7 @@
 			x[n].style.display = "block";
 				 
 			//... and fix the Previous/Next buttons:
-			if (n == 0) {
+			if (n == 0 || currentTab == 1) {
 				document.getElementById("prevBtn").style.display = "none";
 			} else {
 				document.getElementById("prevBtn").style.display = "inline";
@@ -213,9 +216,11 @@
 					 
 			if (n == (x.length - 1)) {
 				document.getElementById("nextBtn").innerHTML = "Registrar";
-			} else {
-				document.getElementById("nextBtn").innerHTML = "Siguiente";
-			}
+			} else if (currentTab == 0) {
+        document.getElementById("nextBtn").innerHTML = "Comenzar"
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Siguiente";
+      }
 		}
 
 		function nextPrev(n) {
@@ -243,9 +248,10 @@
       x = document.getElementsByClassName("tab");
       y = x[currentTab].getElementsByTagName("input");
       z = x[currentTab].getElementsByTagName("textarea");
+
       // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
-        if (currentTab == 1) {
+        if (currentTab == 2) {
 				//Claim type validation
           if (y[0].checked == false && y[1].checked == false) {
             w = x[currentTab].getElementsByTagName("span");
@@ -261,21 +267,21 @@
           // and set the current valid status to false
           valid = false;
 				//Document validation
-	      }else if (currentTab == 0 && ((y[1].value).length > 11 || (y[1].value).length < 8)) {
+	      }else if (currentTab == 1 && ((y[1].value).length > 11 || (y[1].value).length < 8)) {
 	        //y[0].classList.remove("invalid");   
 	        y[1].className += " invalid";
 	        docu = false;
 	        valid = false;
 				//email validation
-	      }else if (currentTab == 0 && emailRegex.test(y[2].value) == false){
+	      }else if (currentTab == 1 && emailRegex.test(y[2].value) == false){
 	        y[2].className += " invalid";
 	        mailE = false;
 	        valid = false;
-	      }else if (currentTab == 2 && z[0].value == "") {
+	      }else if (currentTab == 3 && z[0].value == "") {
           z[0].className += " invalid";
           valid = false;
 	      }
-	      if (currentTab == 0) {
+	      if (currentTab == 1) {
 	        if (empty == true) {
 	          y[0].classList.remove("invalid");
 	        }
@@ -285,12 +291,17 @@
 	        if (mailE == true) {
 	          y[2].classList.remove("invalid");
 	        }
-        }else if (currentTab == 2 && empty == true) {
+        }else if (currentTab == 3 && empty == true) {
           y[0].classList.remove("invalid");
 	      }
       }
       return valid; // return the valid status
     }
+
+    function validateDate () {
+      t = document.getElementsByClassName("tab");
+      dateTime = t[3].getElementById("date_id").value();
+    } 
 
     document.getElementById("queja_over").addEventListener("mouseover", quejaOver);
     document.getElementById("queja_over").addEventListener("mouseout", quejaOut);
