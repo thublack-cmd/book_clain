@@ -98,19 +98,21 @@ nav ul li {
     height: 3.2rem;
     list-style: none;
     margin: 1.5rem 1rem;
+    max-height: 4rem;
 }
 
 .flashes li {
     width: 30%;
     height: 100%;
-    background-color: #4FF054;
-    opacity: 0.8;
-    color: white;
+    background-color: black;
+    color: #4FF054;
     font-size: 2rem;
-    border: 2px solid green;
+    font-weight: bolder;
+    border: 2px solid rgba(0,0,0,0.4);
     border-radius: 1.5rem 5rem 3rem;
     text-align: center;
     padding-top: 0.4rem;
+    overflow-wrap: break-word;
 }
 
 /* Audit view */
@@ -212,7 +214,8 @@ nav ul li {
   font-weight: lighter;
   max-width: 180px;
   text-align: center;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
+  overflow-wrap: break-word;
 }
 
 .list-container--pending_a {
@@ -334,14 +337,16 @@ nav ul li {
   font-size: 2rem;
   color: white;
   font-weight: lighter;
-  text-align: justify;
-  padding: 1rem 0;
+  padding: 1rem 1.5rem;
 }
 .de_td {
-  max-width: 400px;
+  max-width: 290px;
+  text-align: justify;
 }
 .small_td {
   max-width: 120px;
+  overflow-wrap: break-word;
+  text-align: center;
 }
 
 .collapsible {
