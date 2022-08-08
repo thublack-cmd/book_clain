@@ -59,9 +59,24 @@
       <picture>
         <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
       </picture>
+    {% elif sala == 'proceres' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_proceres.png') }}" alt="logo uchukuta">
+      </picture>
+    {% elif sala == 'huacho' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_huacho.png') }}" alt="logo uchukuta">
+      </picture>
+    {% elif sala == 'huarmey' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_huarmey.png') }}" alt="logo uchukuta">
+      </picture>
+    {% elif sala == 'casma' %}
+      <picture>
+        <img src="{{ url_for('static', filename='images/logo_uchukuta.png') }}" alt="logo uchukuta">
+      </picture>
     {% endif %}
 
-    <span class="header__date">Fecha: {{ dia }}</span>
   </header>
 
   {% with messages = get_flashed_messages() %}
@@ -80,110 +95,253 @@
 
   <section class="form-section">
     {% if sala == 'cubatta' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('cubatta.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('cubatta.client_view') }}" method="post">
     {% elif sala == 'tribeca' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('tribeca.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('tribeca.client_view') }}" method="post">
     {% elif sala == 'montreal' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('montreal.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('montreal.client_view') }}" method="post">
     {% elif sala == 'kavari' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('kavari.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('kavari.client_view') }}" method="post">
     {% elif sala == 'siete' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('siete.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('siete.client_view') }}" method="post">
     {%elif sala == 'magia' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('magia.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('magia.client_view') }}" method="post">
     {% elif sala == 'cassino' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('cassino.client_view') }}" method="post">
-    {% elif sala == 'zarate' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('zarate.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('cassino.client_view') }}" method="post">
     {% elif sala == 'proceres' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('proceres.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('proceres.client_view') }}" method="post">
     {% elif sala == 'huacho' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('huacho.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('huacho.client_view') }}" method="post">
     {% elif sala == 'huarmey' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('huarmey.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('huarmey.client_view') }}" method="post">
     {% elif sala == 'casma' %}
-      <form class="form-section__form form-section--elements"  action="{{ url_for('casma.client_view') }}" method="post">
+      <form class="form-section__form form-section--elements" id="regForm" action="{{ url_for('casma.client_view') }}" method="post">
     {% endif %}
 
-        <section class="form-section__main-container">
-            <fieldset class="fieldset-container">
-                <div class="form-section__customer">
-                  <strong class="form-section__customer__title">Identificación del cliente</strong>
-                </div>
-                <div class="fieldset-container__div">
-                  <label for="name_id"></label>
-                  <input type="text" class="input_in form-section--elements" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombres" required>
-                </div>
-                <div class="form-section__document fieldset-container__div">
-                  <div>
-                    <input class="form-section--elements" type="radio" id="dni" name="type_doc" value="DNI" checked>
-                    <label for="dni">DNI</label>
-                  </div>
-                  <div>
-                    <input class="form-section--elements" type="radio" id="ce" name="type_doc" value="CE">
-                    <label for="ce">CE</label>
-                  </div>
-                  <div>
-                    <input class="form-section--elements" type="radio" id="ruc" name="type_doc" value="ruc">
-                    <label for="ruc">RUC</label>
-                  </div>
-                  <div class="fieldset-container__div" id="nro_doc">
-                    <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
-                  </div>
-                </div>
-                <div class="fieldset-container__div">
-                  <label for="contact_id"></label>
-                  <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
-                </div>
-                <div class="fieldset-container__div">
-                  <label for="domicilio_id"></label>
-                  <textarea class="form-section--elements textarea" name="domicilio" id="domicilio_id" placeholder="Domicilio" required></textarea>
-                </div>
-            </fieldset>
-        
-            <fieldset class="fieldset-container">
-              <div class="form-section__customer">
-                <strong class="form-section__customer__title">Detalle de la reclamación</strong>
-              </div>
-              <div class="form-section__cont-fecha fieldset-container__div">
-                <label for="date_id">Fecha y hora de la ocurrencia:</label>
-                <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="" required>
-              </div>
-              <div class="fieldset-container__div">
-                <div class="type_custo dropdown_client">
-                  <input class="form-section--elements" type="radio" id="reclamo_id" name="type_obj" value="reclamo">
-                  <label for="reclamo_id">Reclamo</label>
-		  <div class="dropdown_client--content">Disconformidad relacionada a las maquinas tragamonedas o juegos.</div>
-                </div>
-                <div class="type_custo dropdown_client">
-                  <input class="form-section--elements" type="radio" id="queja" name="type_obj" value="queja" checked>
-                  <label for="queja">Queja</label>
-	          <div class="dropdown_client--content">Disconformidad no relacionada a las maquinas o juegos; sino, malestar o descontento respecto a la atención al público.</div>
-                </div>
-              </div>
-              <div id="amount" class="fieldset-container__div">
-                <label for="request_id"></label> 
-                <input class="form-section--elements" type="number" autocomplete="off" name="amount" id="request_id" placeholder="Monto reclamado" value="">
-              </div>
-              <div class="fieldset-container__div">
-                <label for="detail_id"></label> 
-                <textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id" placeholder="Detalle" required></textarea>
-              </div>
-            </fieldset>
-          </section>
-          <button class="btn_client" type="submit">REGISTRAR</button> 
-      </form>
+        <fieldset class="fieldset-container">
+          <div class="fieldset-container__div tab">
+            <span>PRUEBA</span>
+          </div>
+          <div class="fieldset-container__div tab">
+            <div class="fieldset-container__document">
+              <input type="text" class="input_in" autocomplete="off" name="name" id="name_id" value="" placeholder="Nombre y apellido o Razon Social" required>
+	          </div>
+            <div class="fieldset-container__document">
+              <select name="type_doc" class="sel-type">
+	              <option value="DNI">DNI</option>
+                <option value="CE">CE</option>
+                <option value="RUC">RUC</option>
+                <option value="CPP">CPP</option>
+                <option value="PAS">PASAPORTE</option>
+	            </select>
+	            <div id="nro_doc">
+	              <input class="form-section--elements" type="number" autocomplete="off" name="document"  maxlength="10" value="" placeholder="Nro de documento" required>
+	            </div>
+            </div>
+            <div>
+              <label for="contact_id"></label>
+              <input class="form-section--elements input_in" type="email" autocomplete="off" name="contact" id="contact_id" value="" placeholder="Correo electronico" required>
+	          </div>
+          </div>
+
+	        <div class="fieldset-container__div tab">
+	          <div class="center_div">
+	            <div class="dropdown_client" id="queja_over">
+	              <p id="queja">
+                  <label><input type="radio" name="type_obj" value="queja"><span>QUEJA</span></label>
+	              </p>
+	            </div>
+              <div class="dropdown_client" id="reclamo_over">
+	              <p id="reclamo_id">
+	                <label><input type="radio" name="type_obj" value="reclamo"><span>RECLAMO</span></label>
+                </p>
+	            </div>
+	            <div class="dropdown_client--content" id="pop-queja">Malestar o desagrado de algun producto o servicio.</div>
+	            <div class="dropdown_client--content" id="pop-reclamo">Inconformidad con la prestacion de servicios e/o incumplimiento de lo ofrecido.</div>
+	          </div>
+	        </div>
+
+					<div class="fieldset-container__div tab">
+						<div>
+						  <label for="date_id">Fecha y hora de la ocurrencia:</label>
+						  <input class="form-section--elements date-input" type="datetime-local" name="date" id="date_id" value="">
+						</div>
+						<div>
+							<label for="detail_id">Detalle de la ocurrencia:</label> 
+							<textarea class="form-section--elements textarea" autocomplete="off" name="detail" id="detail_id"></textarea>
+						</div>
+					</div>
+
+					<div class="nextprev-div" style="overflow:auto;">
+						<div class="nextprev-div" style="float:right;">
+							<button class="nextprev-button" type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button>
+							<button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+						</div>
+					</div>
+				</fieldset>
+			</section>
+		</form>
   </section>
-      <script type="text/javascript">
-          f = new Date();
-	  const ISOLocaleString = d => {
-          const pad = n => n < 10 ? '0'+n : n;
-          return d.getFullYear()+'-'
-            + pad(d.getMonth()+1)+'-'
-            + pad(d.getDate())+'T'
-            + pad(d.getHours())+':'
-            + pad(d.getMinutes())
+
+	<script type="text/javascript">
+
+		f = new Date();
+		const ISOLocaleString = d => {
+			const pad = n => n < 10 ? '0'+n : n;
+			return d.getFullYear()+'-'
+						+ pad(d.getMonth()+1)+'-'
+						+ pad(d.getDate())+'T'
+						+ pad(d.getHours())+':'
+						+ pad(d.getMinutes())
+		}
+		document.getElementById('date_id').max = ISOLocaleString(f);
+
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+		emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
+		const mediaQuery = window.matchMedia('(max-width: 820px)')
+
+    if (mediaQuery.matches) {
+	    p = document.getElementsByTagName("img");
+      p[0].src="/static/images/logo_uchukuta_small.png";
+    }
+
+		function showTab(n) {
+			// This function will display the specified tab of the form...
+			var x = document.getElementsByClassName("tab");
+			var j = document.getElementsByClassName("form-section");
+			x[n].style.display = "block";
+				 
+			//... and fix the Previous/Next buttons:
+			if (n == 0 || currentTab == 1) {
+				document.getElementById("prevBtn").style.display = "none";
+			} else {
+				document.getElementById("prevBtn").style.display = "inline";
+			}
+					 
+			if (n == (x.length - 1)) {
+				document.getElementById("nextBtn").innerHTML = "Registrar";
+			} else if (currentTab == 0) {
+        document.getElementById("nextBtn").innerHTML = "Comenzar";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Siguiente";
+        j[0].style.height = "calc(100vh - 425px)";
       }
-	  document.getElementById('date_id').max = ISOLocaleString(f);
-      </script>
+		}
+
+		function nextPrev(n) {
+			// This function will figure out which tab to display
+			var x = document.getElementsByClassName("tab");
+			// Exit the function if any field in the current tab is invalid:
+			if (n == 1 && !validateForm()) return false;
+			// Hide the current tab:
+			x[currentTab].style.display = "none";
+			// Increase or decrease the current tab by 1:
+			currentTab = currentTab + n;
+			// if you have reached the end of the form...
+			if (currentTab >= x.length) {
+				// ... the form gets submitted:
+				document.getElementById("regForm").submit();
+				return false;
+			}
+			// check datetime
+      if (currentTab == 1 && !validateDate()) {
+        if (window.confirm("Actualice (F5) para continuar")) {
+          window.location.reload();
+        }else {
+          window.location.reload();
+        }
+      }else {
+			  // Otherwise, display the correct tab:
+			  showTab(currentTab);
+      }
+		}
+
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true, empty = true, docu = true, mailE = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      z = x[currentTab].getElementsByTagName("textarea");
+
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        if (currentTab == 2) {
+				//Claim type validation
+          if (y[0].checked == false && y[1].checked == false) {
+            w = x[currentTab].getElementsByTagName("span");
+            w[i].className += "invalid";
+            // and set the current valid status to false
+            valid = false;
+          }
+        // If a field is empty...
+        }else if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+	        empty = false;
+          // and set the current valid status to false
+          valid = false;
+				//Document validation
+	      }else if (currentTab == 1 && ((y[1].value).length > 11 || (y[1].value).length < 8)) {
+	        //y[0].classList.remove("invalid");   
+	        y[1].className += " invalid";
+	        docu = false;
+	        valid = false;
+				//email validation
+	      }else if (currentTab == 1 && emailRegex.test(y[2].value) == false){
+	        y[2].className += " invalid";
+	        mailE = false;
+	        valid = false;
+	      }else if (currentTab == 3 && z[0].value == "") {
+          z[0].className += " invalid";
+          valid = false;
+	      }
+	      if (currentTab == 1) {
+	        if (empty == true) {
+	          y[0].classList.remove("invalid");
+	        }
+          if (docu == true) {
+	          y[1].classList.remove("invalid");
+	        }
+	        if (mailE == true) {
+	          y[2].classList.remove("invalid");
+	        }
+        }else if (currentTab == 3 && empty == true) {
+          y[0].classList.remove("invalid");
+	      }
+      }
+      return valid; // return the valid status
+    }
+
+    function validateDate() {
+      t = document.getElementsByClassName("tab");
+      dateTime = t[3].getElementsByClassName("date-input");
+      console.log(dateTime[0].max);
+      if (dateTime[0].max == ISOLocaleString(new Date())) {
+        return true;
+      }else {
+        return false;
+	    }
+    } 
+
+    document.getElementById("queja_over").addEventListener("mouseover", quejaOver);
+    document.getElementById("queja_over").addEventListener("mouseout", quejaOut);
+    document.getElementById("reclamo_over").addEventListener("mouseover", reclamoOver);
+    document.getElementById("reclamo_over").addEventListener("mouseout", reclamoOut);
+
+    function quejaOver() {
+      document.getElementById("pop-queja").style.display = "flex";
+    }
+    function quejaOut() {
+      document.getElementById("pop-queja").style.display = "none";
+    }
+
+    function reclamoOver() {
+      document.getElementById("pop-reclamo").style.display = "flex";
+    }
+    function reclamoOut() {
+      document.getElementById("pop-reclamo").style.display = "none";
+    }
+
+	</script>
 {% endblock %}
