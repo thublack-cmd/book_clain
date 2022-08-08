@@ -51,7 +51,7 @@ def client_view():
                 'email': request.form['contact'],
                 'tipo': request.form['type_obj'],
                 }
-        send_mail_open(**data)
+        # send_mail_open(**data)
 
         flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
         return redirect(url_for('huarmey.client_view'))
