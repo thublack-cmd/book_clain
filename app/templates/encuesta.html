@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tablet.css') }}">
+    {% if sala == 'cubatta' %}
+      <title>Encuesta || Cubatta</title>
+    {% elif sala == 'tribeca' %}
+      <title>Encuesta || Tribeca</title>
+    {% elif sala == 'montreal' %}
+      <title>Encuesta || Montreal</title>
+    {% elif sala == 'kavari' %}
+      <title>Encuesta || Kavari</title>
+    {% elif sala == 'siete' %}
+      <title>Encuesta || Siete</title>
+    {% elif sala == 'magia' %}
+      <title>Encuesta || Magia</title>
+    {% elif sala == 'cassino' %}
+      <title>Encuesta || Cassino</title>
+    {% endif %}
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <span>icono de hamburguesa</span>
+        <span>ENCUESTA DE SATISFACCION</span>
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div>
+      <label for="file">File progress:</label>
+      <progress id="file" max="100" value="70"> 70% </progress>
+    </div>
+
+    <section>
+      <form id="regForm" action="{{ url_for('cubatta.client_view') }}" method="post">
+        <fieldset>
+          <div class="tab">
+            {% if sala == 'cubatta' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_cubatta_cliente.png') }}" alt="logo sala">
+              </picture>
+            {% elif sala == 'tribeca' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="logo sala">
+              </picture>
+            {% elif sala == 'montreal' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="logo sala">
+              </picture>
+            {% elif sala == 'kavari' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="logo sala">
+              </picture>
+            {% elif sala == 'siete' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="logo sala">
+              </picture>
+            {% elif sala == 'magia' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="logo sala">
+              </picture>
+            {% elif sala == 'cassino' %}
+              <picture>
+                <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
+              </picture>
+            {% endif %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
+            </picture>
+          </div>
+
+	        <div class="tab">
+	        </div>
+
+          <div class="tab">
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+	<script type="text/javascript">
+		f = new Date();
+		const ISOLocaleString = d => {
+			const pad = n => n < 10 ? '0'+n : n;
+			return d.getFullYear()+'-'
+						+ pad(d.getMonth()+1)+'-'
+						+ pad(d.getDate())+'T'
+						+ pad(d.getHours())+':'
+						+ pad(d.getMinutes())
+		}
+		document.getElementById('date_id').max = ISOLocaleString(f);
+
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+		emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
+		const mediaQuery = window.matchMedia('(max-width: 820px)')
+
+    if (mediaQuery.matches) {
+	    p = document.getElementsByTagName("img");
+      p[0].src="/static/images/logo_uchukuta_small.png";
+    }
+
+		function showTab(n) {
+			// This function will display the specified tab of the form...
+			var x = document.getElementsByClassName("tab");
+			var j = document.getElementsByClassName("form-section");
+			x[n].style.display = "block";
+				 
+			//... and fix the Previous/Next buttons:
+			if (n == 0 || currentTab == 1) {
+				document.getElementById("prevBtn").style.display = "none";
+			} else {
+				document.getElementById("prevBtn").style.display = "inline";
+			}
+					 
+			if (n == (x.length - 1)) {
+				document.getElementById("nextBtn").innerHTML = "Registrar";
+			} else if (currentTab == 0) {
+        document.getElementById("nextBtn").innerHTML = "Comenzar";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Siguiente";
+        j[0].style.height = "calc(100vh - 425px)";
+      }
+		}
+
+		function nextPrev(n) {
+			// This function will figure out which tab to display
+			var x = document.getElementsByClassName("tab");
+			// Exit the function if any field in the current tab is invalid:
+			if (n == 1 && !validateForm()) return false;
+			// Hide the current tab:
+			x[currentTab].style.display = "none";
+			// Increase or decrease the current tab by 1:
+			currentTab = currentTab + n;
+			// if you have reached the end of the form...
+			if (currentTab >= x.length) {
+				// ... the form gets submitted:
+				document.getElementById("regForm").submit();
+				return false;
+			}
+			// check datetime
+      if (currentTab == 1 && !validateDate()) {
+        if (window.confirm("Actualice (F5) para continuar")) {
+          window.location.reload();
+        }else {
+          window.location.reload();
+        }
+      }else {
+			  // Otherwise, display the correct tab:
+			  showTab(currentTab);
+      }
+		}
+
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true, empty = true, docu = true, mailE = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      z = x[currentTab].getElementsByTagName("textarea");
+
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        if (currentTab == 2) {
+				//Claim type validation
+          if (y[0].checked == false && y[1].checked == false) {
+            w = x[currentTab].getElementsByTagName("span");
+            w[i].className += "invalid";
+            // and set the current valid status to false
+            valid = false;
+          }
+        // If a field is empty...
+        }else if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+	        empty = false;
+          // and set the current valid status to false
+          valid = false;
+				//Document validation
+	      }else if (currentTab == 1 && ((y[1].value).length > 11 || (y[1].value).length < 8)) {
+	        //y[0].classList.remove("invalid");   
+	        y[1].className += " invalid";
+	        docu = false;
+	        valid = false;
+				//email validation
+	      }else if (currentTab == 1 && emailRegex.test(y[2].value) == false){
+	        y[2].className += " invalid";
+	        mailE = false;
+	        valid = false;
+	      }else if (currentTab == 3 && z[0].value == "") {
+          z[0].className += " invalid";
+          valid = false;
+	      }
+	      if (currentTab == 1) {
+	        if (empty == true) {
+	          y[0].classList.remove("invalid");
+	        }
+          if (docu == true) {
+	          y[1].classList.remove("invalid");
+	        }
+	        if (mailE == true) {
+	          y[2].classList.remove("invalid");
+	        }
+        }else if (currentTab == 3 && empty == true) {
+          y[0].classList.remove("invalid");
+	      }
+      }
+      return valid; // return the valid status
+    }
+
+    function validateDate() {
+      t = document.getElementsByClassName("tab");
+      dateTime = t[3].getElementsByClassName("date-input");
+      console.log(dateTime[0].max);
+      if (dateTime[0].max == ISOLocaleString(new Date())) {
+        return true;
+      }else {
+        return false;
+	    }
+    } 
+	</script>
+  </body>
+</html>

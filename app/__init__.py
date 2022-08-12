@@ -20,6 +20,7 @@ from .uchukuta.proceres import proceres
 from .uchukuta.huacho import huacho
 from .uchukuta.huarmey import huarmey
 from .uchukuta.casma import casma
+from .encuestas import encuesta
 
 
 login_manager = LoginManager()
@@ -42,6 +43,7 @@ def create_app():
     app.register_blueprint(huacho)
     app.register_blueprint(huarmey)
     app.register_blueprint(casma)
+    app.register_blueprint(encuesta)
 
     login_manager.init_app(app)
     db.init_app(app)
