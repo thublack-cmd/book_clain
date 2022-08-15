@@ -21,96 +21,105 @@
     {% endif %}
   </head>
   <body>
-    <header class="header">
-      <div>
-        <span>icono de hamburguesa</span>
-        <span>ENCUESTA DE SATISFACCION</span>
+    <section class="survey">
+      <header class="header">
+        <span class="icon-header"></span>
+        <span class="text-header">ENCUESTA DE SATISFACCION</span>
+      </header>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <div class="progressBar">
+        <progress id="file" max="10" value="3"> </progress>
+        <label for="file">3 / 10</label>
       </div>
-    </header>
 
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul class=flashes>
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-
-    <div>
-      <label for="file">File progress:</label>
-      <progress id="file" max="100" value="70"> 70% </progress>
-    </div>
-
-    <section>
       <form id="regForm" action="{{ url_for('cubatta.client_view') }}" method="post">
-        <fieldset>
-          <div class="tab">
-            {% if sala == 'cubatta' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_cubatta_cliente.png') }}" alt="logo sala">
-              </picture>
-            {% elif sala == 'tribeca' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="logo sala">
-              </picture>
-            {% elif sala == 'montreal' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="logo sala">
-              </picture>
-            {% elif sala == 'kavari' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="logo sala">
-              </picture>
-            {% elif sala == 'siete' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="logo sala">
-              </picture>
-            {% elif sala == 'magia' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="logo sala">
-              </picture>
-            {% elif sala == 'cassino' %}
-              <picture>
-                <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
-              </picture>
-            {% endif %}
+        <div class="tab">
+          {% if sala == 'cubatta' %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_cubatta_cliente.png') }}" alt="logo sala">
+            </picture>
+          {% elif sala == 'tribeca' %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_tribeca.png') }}" alt="logo sala">
+            </picture>
+          {% elif sala == 'montreal' %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_montreal.png') }}" alt="logo sala">
+            </picture>
+          {% elif sala == 'kavari' %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_kavari.png') }}" alt="logo sala">
+            </picture>
+          {% elif sala == 'siete' %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_siete.png') }}" alt="logo sala">
+            </picture>
+          {% elif sala == 'magia' %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/logo_magia.png') }}" alt="logo sala">
+            </picture>
+          {% elif sala == 'cassino' %}
             <picture>
               <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
             </picture>
-          </div>
+          {% endif %}
+            <picture>
+              <img src="{{ url_for('static', filename='images/cubatta_survey.png') }}" alt="logo sala">
+            </picture>
+            <span>Reclama tu ticket promocional al finalizar</span>
+        </div>
 
-	        <div class="tab">
-	        </div>
+	      <div class="tab">
+	      </div>
 
-          <div class="tab">
-          </div>
-        </fieldset>
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
+
+        <div class="tab">
+        </div>
       </form>
+	    <div class="nextprev-div">
+	      <button class="nextprev-button" type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button>
+	      <button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+	    </div>
     </section>
 
 	<script type="text/javascript">
-		f = new Date();
-		const ISOLocaleString = d => {
-			const pad = n => n < 10 ? '0'+n : n;
-			return d.getFullYear()+'-'
-						+ pad(d.getMonth()+1)+'-'
-						+ pad(d.getDate())+'T'
-						+ pad(d.getHours())+':'
-						+ pad(d.getMinutes())
-		}
-		document.getElementById('date_id').max = ISOLocaleString(f);
 
-		var currentTab = 0; // Current tab is set to be the first tab (0)
-		showTab(currentTab); // Display the current tab
-		emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
-		const mediaQuery = window.matchMedia('(max-width: 820px)')
-
-    if (mediaQuery.matches) {
-	    p = document.getElementsByTagName("img");
-      p[0].src="/static/images/logo_uchukuta_small.png";
-    }
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+    emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
 
 		function showTab(n) {
 			// This function will display the specified tab of the form...
@@ -218,17 +227,6 @@
       }
       return valid; // return the valid status
     }
-
-    function validateDate() {
-      t = document.getElementsByClassName("tab");
-      dateTime = t[3].getElementsByClassName("date-input");
-      console.log(dateTime[0].max);
-      if (dateTime[0].max == ISOLocaleString(new Date())) {
-        return true;
-      }else {
-        return false;
-	    }
-    } 
 	</script>
   </body>
 </html>
