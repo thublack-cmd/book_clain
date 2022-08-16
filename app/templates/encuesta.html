@@ -76,16 +76,102 @@
             <picture>
               <img src="{{ url_for('static', filename='images/cubatta_survey.png') }}" alt="logo sala">
             </picture>
-            <span>Reclama tu ticket promocional al finalizar</span>
+            <span class="prom-info">Reclama tu ticket promocional al finalizar</span>
         </div>
 
 	      <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>1.</span> <span>¿Cómo calificarías tu experiencia general en nuestra sala tragamonedas?</span></div>
+            <hr>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+              Totalmente satisfactorio
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+              Bueno
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+              Regular
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+             Malo
+            </label>
+          </div>
 	      </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>2.</span> <span>¿Nuestros servicios superaron sus expectativas?</span></div>
+            <hr>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+              Totalmente
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+              Si
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+              A penas
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">
+             No
+            </label>
+          </div>
         </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>2.</span> <span>Considerando tu experiencia con nosotros, ¿qué probabilidades hay de que nos recomiendes a un amigo o familiar?</span></div>
+            <hr>
+            <div class="horizontal-div">
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                1
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                2
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                3
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                4
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                5
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                6
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                7
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                8
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                9
+              </label>
+              <label class="container">
+                <input type="radio" checked="checked" name="radio">
+                10
+              </label>
+            </div>
+          </div>
         </div>
 
         <div class="tab">
@@ -110,8 +196,8 @@
         </div>
       </form>
 	    <div class="nextprev-div">
-	      <button class="nextprev-button" type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button>
-	      <button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+	      <!-- <button class="nextprev-button" type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button> -->
+	      <button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">COMENZAR</button>
 	    </div>
     </section>
 
@@ -121,22 +207,22 @@
     showTab(currentTab); // Display the current tab
     emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
 
-		function showTab(n) {
-			// This function will display the specified tab of the form...
-			var x = document.getElementsByClassName("tab");
-			var j = document.getElementsByClassName("form-section");
-			x[n].style.display = "block";
-				 
-			//... and fix the Previous/Next buttons:
-			if (n == 0 || currentTab == 1) {
-				document.getElementById("prevBtn").style.display = "none";
-			} else {
-				document.getElementById("prevBtn").style.display = "inline";
-			}
-					 
-			if (n == (x.length - 1)) {
-				document.getElementById("nextBtn").innerHTML = "Registrar";
-			} else if (currentTab == 0) {
+  function showTab(n) {
+    // This function will display the specified tab of the form...
+    var x = document.getElementsByClassName("tab");
+	  var j = document.getElementsByClassName("form-section");
+	  x[n].style.display = "block";
+ 
+	  //... and fix the Previous/Next buttons:
+    //if (n == 0 || currentTab == 1) {
+	    //document.getElementById("prevBtn").style.display = "none";
+      //} else {
+	      //document.getElementById("prevBtn").style.display = "inline";
+	    //}
+ 
+      if (n == (x.length - 1)) {
+	      document.getElementById("nextBtn").innerHTML = "Registrar";
+      } else if (currentTab == 0) {
         document.getElementById("nextBtn").innerHTML = "Comenzar";
       } else {
         document.getElementById("nextBtn").innerHTML = "Siguiente";
@@ -144,33 +230,24 @@
       }
 		}
 
-		function nextPrev(n) {
-			// This function will figure out which tab to display
-			var x = document.getElementsByClassName("tab");
-			// Exit the function if any field in the current tab is invalid:
-			if (n == 1 && !validateForm()) return false;
-			// Hide the current tab:
-			x[currentTab].style.display = "none";
-			// Increase or decrease the current tab by 1:
-			currentTab = currentTab + n;
-			// if you have reached the end of the form...
-			if (currentTab >= x.length) {
-				// ... the form gets submitted:
-				document.getElementById("regForm").submit();
-				return false;
-			}
-			// check datetime
-      if (currentTab == 1 && !validateDate()) {
-        if (window.confirm("Actualice (F5) para continuar")) {
-          window.location.reload();
-        }else {
-          window.location.reload();
-        }
-      }else {
-			  // Otherwise, display the correct tab:
-			  showTab(currentTab);
+	  function nextPrev(n) {
+	    // This function will figure out which tab to display
+	    var x = document.getElementsByClassName("tab");
+	    // Exit the function if any field in the current tab is invalid:
+	    //if (n == 1 && !validateForm()) return false;
+	    // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form...
+      if (currentTab >= x.length) {
+        // ... the form gets submitted:
+	      document.getElementById("regForm").submit();
+	      return false;
+	    }
+	    // Otherwise, display the correct tab:
+	    showTab(currentTab);
       }
-		}
 
     function validateForm() {
       // This function deals with validation of the form fields
