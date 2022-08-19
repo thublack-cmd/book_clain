@@ -46,6 +46,10 @@ html {
   margin-top: 0.3rem;
 }
 
+.none-display {
+  display: none;
+}
+
 .progressBar {
   display: flex;
   width: 28rem;
@@ -60,7 +64,7 @@ html {
   color: #FF1C6B;
 }
 
-#file {
+#sur-step {
   width: inherit;
 }
 
@@ -108,8 +112,20 @@ picture {
 }
 
 .question-cont span:nth-child(2) {
+  margin-top: auto;
+  margin-bottom: auto;
   margin-left: 42px;
   font-size: 31.7px;
+}
+
+.wrap-contain {
+  display: flex;
+  flex-flow: column wrap-reverse;
+  max-height: 200px;
+}
+
+.wrap-contain .container {
+  margin-left: 80px;
 }
 
 hr {
@@ -137,12 +153,95 @@ input[type="radio"]:checked {
   accent-color: orangered;
 }
 
-/* input[type="radio"]:focus { */
-/*   accent-color: orangered; */
-/* } */
-
 .horizontal-div {
   display: flex;
+  margin-left: 15px;
+}
+
+.hori-container {
+  font-family: "DM Sans";
+  font-size: 22px;
+  margin-top: 45px;
+  margin-left: 20px;
+}
+
+.hori-container input[type="radio"] {
+  width: 32px;
+  height: 29px;
+  margin-right: 15px;
+  margin-top: 20px;
+  transform: translateX(-0.6em);
+}
+
+input[type="checkbox"] {
+  width: 32px;
+  height: 29px;
+  margin-right: 15px;
+  transform: translateY(0.5em);
+}
+
+input[type="checkbox"]:checked {
+  accent-color: orangered;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table input[type="checkbox"] {
+  width: 20px;
+  margin-right: 0;
+  height: 29px;
+  transform: translateX(3.2em);
+}
+
+.first-th {
+  height: 25px;
+  width: 40%;
+}
+
+.all-th {
+  width: 15%;
+  height: 25px;
+  font-family: Inter;
+  font-size: 14px;
+}
+
+.td-head {
+  font-family: Inter;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+td {
+  background-color: rgba(0,0,0,0.03);
+  border-bottom: 2px solid white;
+}
+
+textarea {
+  width: 500px;
+  font-family: "DM Sans";
+  font-size: 20px;
+  margin-top: 40px;
+  resize: none;
+  border: none;
+  border-bottom: 1.5px solid #9a9a9a;
+  padding: 0 15px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.validate-message {
+  position: absolute;
+  right: 50rem;
+  bottom: 15rem;
+}
+
+.validate-message span {
+  font-size: 18px;
+  color: red;
 }
 
 .nextprev-div {

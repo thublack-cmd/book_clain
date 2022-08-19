@@ -37,9 +37,9 @@
         {% endif %}
       {% endwith %}
 
-      <div class="progressBar">
-        <progress id="file" max="10" value="3"> </progress>
-        <label for="file">3 / 10</label>
+      <div class="none-display">
+        <progress id="sur-step" max="9" value="0"> </progress>
+        <label for="sur-step">1 / 9</label>
       </div>
 
       <form id="regForm" action="{{ url_for('cubatta.client_view') }}" method="post">
@@ -84,20 +84,20 @@
             <div class="question-cont"><span>1.</span> <span>¿Cómo calificarías tu experiencia general en nuestra sala tragamonedas?</span></div>
             <hr>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
-              Totalmente satisfactorio
+              <input type="radio" name="question1" value="Muy bueno">
+              Muy Bueno
             </label>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
+              <input type="radio" name="question1" value="Bueno">
               Bueno
             </label>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
+              <input type="radio" name="question1" value="Regular">
               Regular
             </label>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
-             Malo
+              <input type="radio" name="question1" value="Malo">
+              Malo
             </label>
           </div>
 	      </div>
@@ -107,19 +107,19 @@
             <div class="question-cont"><span>2.</span> <span>¿Nuestros servicios superaron sus expectativas?</span></div>
             <hr>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
+              <input type="radio" name="question2" value="Totalmente">
               Totalmente
             </label>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
+              <input type="radio" name="question2" value="Si">
               Si
             </label>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
+              <input type="radio" name="question2" value="A penas">
               A penas
             </label>
             <label class="container">
-              <input type="radio" checked="checked" name="radio">
+              <input type="radio" name="question2" value="No">
              No
             </label>
           </div>
@@ -127,76 +127,217 @@
 
         <div class="tab">
           <div class="tab-inner">
-            <div class="question-cont"><span>2.</span> <span>Considerando tu experiencia con nosotros, ¿qué probabilidades hay de que nos recomiendes a un amigo o familiar?</span></div>
+            <div class="question-cont"><span>3.</span> <span>Considerando tu experiencia con nosotros, ¿qué probabilidades hay de que nos recomiendes a un amigo o familiar?</span></div>
             <hr>
             <div class="horizontal-div">
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                1
+              <label class="hori-container">1
+                <input type="radio" name="question3" value="1">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                2
+              <label class="hori-container">2
+                <input type="radio" name="question3" value="2">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                3
+              <label class="hori-container">3
+                <input type="radio" name="question3" value="3">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                4
+              <label class="hori-container">4
+                <input type="radio" name="question3" value="4">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                5
+              <label class="hori-container">5
+                <input type="radio" name="question3" value="5">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                6
+              <label class="hori-container">6
+                <input type="radio" name="question3" value="6">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                7
+              <label class="hori-container">7
+                <input type="radio" name="question3" value="7">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                8
+              <label class="hori-container">8
+                <input type="radio" name="question3" value="8">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                9
+              <label class="hori-container">9
+                <input type="radio" name="question3" value="9">
               </label>
-              <label class="container">
-                <input type="radio" checked="checked" name="radio">
-                10
+              <label class="hori-container">10
+                <input type="radio" name="question3" value="10">
               </label>
             </div>
           </div>
         </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>4.</span> <span>¿Cómo calificarías nuestras máquinas?</span></div>
+            <hr>
+            <label class="container">
+              <input type="checkbox" name="question4" value="Divertidas">
+              Divertidas
+            </label>
+            <label class="container">
+              <input type="checkbox" name="question4" value="Agradables">
+              Agradables
+            </label>
+            <label class="container">
+              <input type="checkbox" name="question4" value="Aburridas">
+              Aburridas
+            </label>
+            <label class="container">
+              <input type="checkbox" name="question4" value="Defectuosas">
+              Defectuosas
+            </label>
+          </div>
         </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>5.</span> <span>¿Cómo calificarías nuestros servicios en las siguientes áreas?</span></div>
+            <hr>
+            <table>
+              <tr>
+                <th class="first-th"></th>
+                <th class="all-th">Muy satisfecho</th>
+                <th class="all-th">Satisfecho</th>
+                <th class="all-th">Neutro</th>
+                <th class="all-th">Insatisfecho</th>
+              </tr>
+              <tr>
+                <td class="td-head">Atencion del personal</td>
+                <td><input type="checkbox" name="question5" value="Muy satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Neutro"></td>
+                <td><input type="checkbox" name="question5" value="Insatisfecho"></td>
+              </tr>
+              <tr>
+                <td class="td-head">Trato del personal</td>
+                <td><input type="checkbox" name="question5" value="Muy satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Neutro"></td>
+                <td><input type="checkbox" name="question5" value="Insatisfecho"></td>
+              </tr>
+              <tr>
+                <td class="td-head">Experiencia de las máquinas</td>
+                <td><input type="checkbox" name="question5" value="Muy satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Neutro"></td>
+                <td><input type="checkbox" name="question5" value="Insatisfecho"></td>
+              </tr>
+              <tr>
+                <td class="td-head">Servicio de cortesia</td>
+                <td><input type="checkbox" name="question5" value="Muy satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Neutro"></td>
+                <td><input type="checkbox" name="question5" value="Insatisfecho"></td>
+              </tr>
+              <tr>
+                <td class="td-head">Orientacion del personal</td>
+                <td><input type="checkbox" name="question5" value="Muy satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Neutro"></td>
+                <td><input type="checkbox" name="question5" value="Insatisfecho"></td>
+              </tr>
+              <tr>
+                <td class="td-head">Fachada</td>
+                <td><input type="checkbox" name="question5" value="Muy satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Satisfecho"></td>
+                <td><input type="checkbox" name="question5" value="Neutro"></td>
+                <td><input type="checkbox" name="question5" value="Insatisfecho"></td>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>6.</span> <span>¿Cuáles son las tres características que más te gustan de nuestra sala?</span></div>
+            <hr>
+            <div class="wrap-contain">
+              <label class="container">
+                <input type="checkbox" name="question6" value="Cordialidad">
+                Cordialidad
+              </label>
+              <label class="container">
+                <input type="checkbox" name="question6" value="Escucha activa">
+                Escucha activa
+              </label>
+              <label class="container">
+                <input type="checkbox" name="question6" value="Decorativos">
+                Decorativos
+              </label>
+              <label class="container">
+                <input type="checkbox" name="question6" value="Publicidad">
+                Publicidad
+              </label>
+              <label class="container">
+                <input type="checkbox" name="question6" value="Sorteos">
+                Sorteos
+              </label>
+              <label class="container">
+                <input type="checkbox" name="question6" value="Premios">
+                Premios
+              </label>
+            </div>
+          </div>
         </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>7.</span> <span>¿Qué tan receptivo ha sido nuestro equipo de servicio al cliente a tus preguntas y preocupaciones?</span></div>
+            <hr>
+            <label class="container">
+              <input type="radio" name="question7" value="Muy receptivos">
+              Muy receptivos
+            </label>
+            <label class="container">
+              <input type="radio" name="question7" value="Moderadamente recereceptivos">
+              Moderadamente receptivos
+            </label>
+            <label class="container">
+              <input type="radio" name="question7" value="Poco receptivos">
+              Poco receptivos
+            </label>
+            <label class="container">
+              <input type="radio" name="question7" value="Nada receptivos">
+              Nada Receptivos
+            </label>
+          </div>
         </div>
 
         <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>8.</span> <span>¿Cuáles son las probabilidades de que vuelvas a nuestras salas?</span></div>
+            <hr>
+            <label class="container">
+              <input type="radio" name="question8" value="Muy Probable">
+              Muy probable 
+            </label>
+            <label class="container">
+              <input type="radio" name="question8" value="Probable">
+              Probable
+            </label>
+            <label class="container">
+              <input type="radio" name="question8" value="Poco Probable">
+              Poco probable
+            </label>
+            <label class="container">
+              <input type="radio" name="question8" value="Improbable">
+              Improbable
+            </label>
+          </div>
         </div>
 
         <div class="tab">
-        </div>
-
-        <div class="tab">
+          <div class="tab-inner">
+            <div class="question-cont"><span>9.</span> <span>¿Tienes algún otro comentario o sugerencia para nosotros?</span></div>
+            <hr>
+            <label class="container">
+              <textarea rows="2" cols="50" placeholder="Su respuesta"></textarea>
+            </label>
+          </div>
         </div>
       </form>
+      <div class="none-display">
+        <span>Debe seleccionar al menos una opcion</span>
+      </div>
 	    <div class="nextprev-div">
-	      <!-- <button class="nextprev-button" type="button" id="prevBtn" onclick="nextPrev(-1)">Volver</button> -->
 	      <button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">COMENZAR</button>
 	    </div>
     </section>
@@ -205,38 +346,45 @@
 
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
-    emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
 
-  function showTab(n) {
-    // This function will display the specified tab of the form...
-    var x = document.getElementsByClassName("tab");
-	  var j = document.getElementsByClassName("form-section");
-	  x[n].style.display = "block";
- 
-	  //... and fix the Previous/Next buttons:
-    //if (n == 0 || currentTab == 1) {
-	    //document.getElementById("prevBtn").style.display = "none";
-      //} else {
-	      //document.getElementById("prevBtn").style.display = "inline";
-	    //}
+    function showTab(n) {
+      // This function will display the specified tab of the form...
+      var x = document.getElementsByClassName("tab");
+	    x[n].style.display = "block";
+
+      // Adjust sala logo in fisrt view
+      if (currentTab == 0) {
+        x[currentTab].style.marginTop = "-50px";
+      } else {
+        x[currentTab].style.marginTop = "0px";
+      }
  
       if (n == (x.length - 1)) {
-	      document.getElementById("nextBtn").innerHTML = "Registrar";
+	      document.getElementById("nextBtn").innerHTML = "REGISTRAR";
       } else if (currentTab == 0) {
-        document.getElementById("nextBtn").innerHTML = "Comenzar";
+        document.getElementById("nextBtn").innerHTML = "COMENZAR";
       } else {
-        document.getElementById("nextBtn").innerHTML = "Siguiente";
-        j[0].style.height = "calc(100vh - 425px)";
+        document.getElementById("nextBtn").innerHTML = "SIGUIENTE";
       }
-		}
+	  }
 
 	  function nextPrev(n) {
 	    // This function will figure out which tab to display
 	    var x = document.getElementsByClassName("tab");
+      var progressBar = document.getElementsByClassName("none-display");
+      var step = document.getElementById("sur-step");
+      var label = document.getElementsByTagName("label");
 	    // Exit the function if any field in the current tab is invalid:
-	    //if (n == 1 && !validateForm()) return false;
+	    if (n == 1 && !validateForm()) return false;
 	    // Hide the current tab:
       x[currentTab].style.display = "none";
+
+      if (currentTab == 0) {
+        progressBar[0].className += " progressBar";
+        progressBar[0].classList.remove("none-display");
+      }
+      step.value = step.value + 1;
+      label[0].innerHTML = currentTab + 1 + " / 9  PUNTÚA TU EXPERIENCIA";
       // Increase or decrease the current tab by 1:
       currentTab = currentTab + n;
       // if you have reached the end of the form...
@@ -251,56 +399,30 @@
 
     function validateForm() {
       // This function deals with validation of the form fields
-      var x, y, i, valid = true, empty = true, docu = true, mailE = true;
+      var x, y, i, valid = true;
+      var progressBar = document.getElementsByClassName("none-display");
+      var validate = document.getElementsByClassName("validate-message");
       x = document.getElementsByClassName("tab");
       y = x[currentTab].getElementsByTagName("input");
-      z = x[currentTab].getElementsByTagName("textarea");
 
       // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
-        if (currentTab == 2) {
-				//Claim type validation
-          if (y[0].checked == false && y[1].checked == false) {
-            w = x[currentTab].getElementsByTagName("span");
-            w[i].className += "invalid";
-            // and set the current valid status to false
-            valid = false;
-          }
-        // If a field is empty...
-        }else if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-	        empty = false;
+        // If almost a checkbox is checked...
+        if (y[i].checked) {
           // and set the current valid status to false
+          if (validate[0]) {
+            validate[0].className += " none-display";
+            validate[0].classList.remove("validate-message");
+          }
+          valid = true;
+          return valid;
+        } else {
+          if (progressBar[0]) {
+            progressBar[0].className += " validate-message";
+            progressBar[0].classList.remove("none-display");
+          }
           valid = false;
-				//Document validation
-	      }else if (currentTab == 1 && ((y[1].value).length > 11 || (y[1].value).length < 8)) {
-	        //y[0].classList.remove("invalid");   
-	        y[1].className += " invalid";
-	        docu = false;
-	        valid = false;
-				//email validation
-	      }else if (currentTab == 1 && emailRegex.test(y[2].value) == false){
-	        y[2].className += " invalid";
-	        mailE = false;
-	        valid = false;
-	      }else if (currentTab == 3 && z[0].value == "") {
-          z[0].className += " invalid";
-          valid = false;
-	      }
-	      if (currentTab == 1) {
-	        if (empty == true) {
-	          y[0].classList.remove("invalid");
-	        }
-          if (docu == true) {
-	          y[1].classList.remove("invalid");
-	        }
-	        if (mailE == true) {
-	          y[2].classList.remove("invalid");
-	        }
-        }else if (currentTab == 3 && empty == true) {
-          y[0].classList.remove("invalid");
-	      }
+        }
       }
       return valid; // return the valid status
     }
