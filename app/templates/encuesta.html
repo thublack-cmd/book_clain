@@ -324,7 +324,7 @@
 
 	<script type="text/javascript">
 
-    var currentTab = 0;// Current tab is set to be the first tab (0)
+    var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
 
     function showTab(n) {
@@ -414,13 +414,13 @@
           }
         } else if (currentTab == 6) {
           if (y[i].checked && checkedCon < 4) {
-            checkedCon += 1;  
+            checkedCon ++;  
             if (progressBar[0]) {
               progressBar[0].className += " validate-message";
               progressBar[0].classList.remove("none-display");
             }
             valid = false;
-          }else if (y[i].checked && checkedCon == 4) {
+          } else if (y[i].checked && checkedCon == 4) {
             if (validate[0]) {
               validate[0].className += " none-display";
               validate[0].classList.remove("validate-message");
@@ -433,7 +433,6 @@
               progressBar[0].classList.remove("none-display");
             }
             valid = false;
-            return valid;
           }
         } else if (y[i].checked) {
           // and set the current valid status to false
@@ -455,18 +454,16 @@
       return valid; // return the valid status
     }
 
-    //function validateMulti (acum, progressBar, validate, t, i, checkedCon) {
-    //  if (acum[i].checked && checkedCon < t) {
-    //    console.log("menor a 4");
-    //    checkedCon = checkedCon + 1;  
+    //function validateMulti (y, progressBar, validate, t, i, checkedCon) {
+    //  if (y[i].checked && checkedCon < 3) {
+    //    console.log("menor a 4 " + i);
     //    if (progressBar[0]) {
     //      progressBar[0].className += " validate-message";
     //      progressBar[0].classList.remove("none-display");
     //    }
-    //    console.log(checkedCon)
+    //    console.log(checkedCon);
     //    valid = false;
-    //    return valid;
-    //  }else if (acum[i].checked && checkedCon == t) {
+    //  } else if (y[i].checked && checkedCon == 3) {
     //    console.log("igual a 4");
     //    if (validate[0]) {
     //      validate[0].className += " none-display";
@@ -474,23 +471,32 @@
     //    }
     //    valid = true;
     //    return valid;
+    //  } else {
+    //    console.log("ninguno marcadoi " + checkedCon);
+    //    if (progressBar[0]) {
+    //      progressBar[0].className += " validate-message";
+    //      progressBar[0].classList.remove("none-display");
+    //    }
+    //    valid = false;
     //  }
+    //  return valid;
     //}
-    function showValidate (validate) {
-      if (validate[0]) {
-        validate[0].className += " none-display";
-        validate[0].classList.remove("validate-message");
-      }
-      return true;
-    }
 
-    function showProgress (progressBar) {
-      if (progressBar[0]) {
-        progressBar[0].className += " validate-message";
-        progressBar[0].classList.remove("none-display");
-      }
-      return true;
-    }
+    //function showValidate (validate) {
+    //  if (validate[0]) {
+    //    validate[0].className += " none-display";
+    //    validate[0].classList.remove("validate-message");
+    //  }
+    //  return true;
+    //}
+
+    //function showProgress (progressBar) {
+    //  if (progressBar[0]) {
+    //    progressBar[0].className += " validate-message";
+    //    progressBar[0].classList.remove("none-display");
+    //  }
+    //  return true;
+    //}
 	</script>
   </body>
 </html>

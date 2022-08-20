@@ -8,6 +8,7 @@ from .auth.auth_db import user_model
 from .models import db
 from .mail import mail
 from .auth import auth
+from .encuestas.cubatta import cubatta
 from .sala.cubatta import cubatta
 from .sala.tribeca import tribeca
 from .sala.montreal import montreal
@@ -20,7 +21,7 @@ from .uchukuta.proceres import proceres
 from .uchukuta.huacho import huacho
 from .uchukuta.huarmey import huarmey
 from .uchukuta.casma import casma
-from .encuestas import encuesta
+# from .encuestas import encuesta
 
 
 login_manager = LoginManager()
