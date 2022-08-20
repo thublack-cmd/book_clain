@@ -9,13 +9,13 @@ from flask_login import login_required
 from app.main_view import audit_main, discharge_main, processed_main
 from app.models import db, Clain_cub
 from app.mail import send_mail_open
-from . import encuesta
+from . import ecubatta
 
 now = (date.today()).strftime('%d-%m-%Y')
 now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
-sala = 'encuesta'
+sala = 'cubatta'
 
-@encuesta.route('/', methods=['POST', 'GET'])
+@ecubatta.route('/', methods=['POST', 'GET'])
 def client_view():
 
     data = {

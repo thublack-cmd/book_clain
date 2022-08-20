@@ -8,7 +8,7 @@ from .auth.auth_db import user_model
 from .models import db
 from .mail import mail
 from .auth import auth
-from .encuestas.cubatta import cubatta
+from .encuestas.cubatta import ecubatta
 from .sala.cubatta import cubatta
 from .sala.tribeca import tribeca
 from .sala.montreal import montreal
