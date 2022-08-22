@@ -44,7 +44,7 @@ def create_app():
     app.register_blueprint(huacho)
     app.register_blueprint(huarmey)
     app.register_blueprint(casma)
-    app.register_blueprint(encuesta)
+    app.register_blueprint(ecubatta)
 
     login_manager.init_app(app)
     db.init_app(app)
