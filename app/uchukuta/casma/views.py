@@ -20,11 +20,6 @@ def client_view():
     if request.method == 'POST':
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
 
-        # if not request.form["amount"]:
-        #     amount_value = 0
-        # else:
-        #     amount_value = request.form["amount"]
-
         # add serial to table
         last_clain = Clain_uchu_casma.query.order_by(Clain_uchu_casma.created_at.desc()).first()
         if not last_clain:
@@ -38,10 +33,8 @@ def client_view():
                 type_doc=request.form["type_doc"],
                 nro_doc=request.form["document"],
                 email=request.form["contact"],
-                # address=request.form["domicilio"],
                 date=d,
                 type_claim=request.form["type_obj"],
-                # amount=amount_value,
                 detail=request.form["detail"],
                 )
         db.session.add(new_clain)
@@ -50,8 +43,9 @@ def client_view():
         data = {
                 'email': request.form['contact'],
                 'tipo': request.form['type_obj'],
+                'sala': sala,
                 }
-        # send_mail_open(**data)
+        send_mail_open(**data)
 
         flash(f'Registro exitoso, en breve le responderemos al correo {request.form["contact"]}')
         return redirect(url_for('casma.client_view'))
