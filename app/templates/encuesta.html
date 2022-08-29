@@ -24,16 +24,17 @@
     <section class="survey">
       <header class="header">
         <span class="icon-header"></span>
-        <span class="text-header">ENCUESTA DE SATISFACCION</span>
+        <span class="text-header">ENCUESTA DE SATISFACCIÓN</span>
       </header>
 
       {% with messages = get_flashed_messages() %}
         {% if messages %}
-          <ul class=flashes>
+          <div class=flashes onclick="closeMessage()">
             {% for message in messages %}
-              <li>{{ message }}</li>
+              <img src="{{ url_for('static', filename='images/qr.png') }}" alt="qr">
+              <span>Gracias por tu contribución.<br> Reclama con el código QR tu ticket promocional.</span>
             {% endfor %}
-          </ul>
+          </div>
         {% endif %}
       {% endwith %}
 
@@ -42,11 +43,11 @@
         <label for="sur-step">1 / 9</label>
       </div>
 
-      <form id="regForm" action="{{ url_for('cubatta.client_view') }}" method="post">
+      <form id="regForm" action="{{ url_for('ecubatta.client_view') }}" method="post">
         <div class="tab">
           {% if sala == 'cubatta' %}
             <picture>
-              <img src="{{ url_for('static', filename='images/logo_cubatta_cliente.png') }}" alt="logo sala">
+              <img src="{{ url_for('static', filename='images/cubatta_survey.png') }}" alt="logo sala">
             </picture>
           {% elif sala == 'tribeca' %}
             <picture>
@@ -73,9 +74,6 @@
               <img src="{{ url_for('static', filename='images/logo_cassino.png') }}" alt="logo sala">
             </picture>
           {% endif %}
-            <picture>
-              <img src="{{ url_for('static', filename='images/cubatta_survey.png') }}" alt="logo sala">
-            </picture>
             <span class="prom-info">Reclama tu ticket promocional al finalizar</span>
         </div>
 
@@ -112,7 +110,7 @@
             </label>
             <label class="container">
               <input type="radio" name="question2" value="Si">
-              Si
+              Sí
             </label>
             <label class="container">
               <input type="radio" name="question2" value="A penas">
@@ -127,18 +125,18 @@
 
         <div class="tab">
           <div class="tab-inner">
-            <div class="question-cont"><span>3.</span> <span>Considerando tu experiencia con nosotros, ¿nos recomendarias con un amigo o familiar?</span></div>
+            <div class="question-cont"><span>3.</span> <span>Considerando tu experiencia con nosotros, ¿nos recomendarías con un amigo o familiar?</span></div>
             <hr>
             <label class="container">
-              <input type="radio" name="question2" value="Si">
-              Si
+              <input type="radio" name="question3" value="Si">
+              Sí
             </label>
             <label class="container">
-              <input type="radio" name="question2" value="No">
+              <input type="radio" name="question3" value="No">
               No
             </label>
             <label class="container">
-              <input type="radio" name="question2" value="Tal vez">
+              <input type="radio" name="question3" value="Tal vez">
               Tal vez
             </label>
           </div>
@@ -245,14 +243,14 @@
                 <td><input type="radio" name="question6-3" value="Deficiente"></td>
               </tr>
               <tr>
-                <td class="td-head">Decoracion</td>
+                <td class="td-head">Decoración</td>
                 <td><input type="radio" name="question6-4" value="Muy bueno"></td>
                 <td><input type="radio" name="question6-4" value="Bueno"></td>
                 <td><input type="radio" name="question6-4" value="Regular"></td>
                 <td><input type="radio" name="question6-4" value="Deficiente"></td>
               </tr>
               <tr>
-                <td class="td-head">Musica</td>
+                <td class="td-head">Música</td>
                 <td><input type="radio" name="question6-5" value="Muy bueno"></td>
                 <td><input type="radio" name="question6-5" value="Bueno"></td>
                 <td><input type="radio" name="question6-5" value="Regular"></td>
@@ -309,13 +307,13 @@
             <div class="question-cont"><span>9.</span> <span>¿Tienes algún otro comentario o sugerencia para nosotros?</span></div>
             <hr>
             <label class="container">
-              <textarea rows="2" cols="50" placeholder="Su respuesta"></textarea>
+              <textarea rows="2" cols="50" placeholder="Su respuesta" name="question9" onkeyup="textAreaAdjust(this)"></textarea>
             </label>
           </div>
         </div>
       </form>
       <div class="none-display">
-        <span>Debe seleccionar al menos una opcion</span>
+        <span>Debe seleccionar al menos una opción</span>
       </div>
 	    <div class="nextprev-div">
 	      <button class="nextprev-button" type="button" id="nextBtn" onclick="nextPrev(1)">COMENZAR</button>
@@ -326,6 +324,11 @@
 
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
+
+    function textAreaAdjust(element) {
+      element.style.height = "1px";
+      element.style.height = (25+element.scrollHeight) + "px";
+    }
 
     function showTab(n) {
       // This function will display the specified tab of the form...
@@ -452,6 +455,12 @@
         }
       }
       return valid; // return the valid status
+    }
+
+    function closeMessage() {
+      pop = document.getElementsByClassName("flashes");
+
+      pop[0].style.display = "none";
     }
 
     //function validateMulti (y, progressBar, validate, t, i, checkedCon) {
