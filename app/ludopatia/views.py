@@ -11,11 +11,17 @@ from app.models import db, Clain_cub
 from app.mail import send_mail_open
 from . import ludopatia
 
-import gspread
+import gspread, pygame
 
 now = (date.today()).strftime('%d-%m-%Y')
 now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
 sala = 'cubatta'
+
+# Inicializacion de librerias para el sonido
+pygame.init()
+pygame.mixer.init()
+dont_access = pygame.mixer.Sound("./app/static/alerta1.wav")
+access = pygame.mixer.Sound("./app/static/BIENVENIDA.wav")
 
 gc = gspread.service_account()
 
@@ -25,19 +31,17 @@ def client_view():
         answer = request.form
         sh = gc.open("Ludopatia-DB")
 
-        for i in range(1, 500):
-            value = sh.worksheet("Cubatta").get('A' + str(i))
-            if bool(value) == False:
-                sh.worksheet("Cubatta").update('A' + str(i) + ':P' + str(i),
-                        [[answer["question1"], answer["question2"], answer["question3"], answer["question4"], answer["question5-1"], answer["question5-2"], answer["question5-3"], answer["question5-4"], answer["question6-1"], answer["question6-2"], answer["question6-3"], answer["question6-4"], answer["question6-5"], answer["question7"], answer["question8"], answer["question9"]]])
-                break
-
-        flash(f'Registro exitoso')
-        return redirect(url_for('ecubatta.client_view'))
+        cell = sh.worksheet("MINCETUR_DB").find("41338207")
+        if bool(cell):
+            flash("PROHIBIDO EL INGRESO", 'error')
+            pygame.mixer.Sound.play(dont_access)
+            return redirect(url_for('ludopatia.client_view'))
+        else:
+            flash("BIENVENIDO A LA SALA")
+            pygame.mixer.Sound.play(access)
+            return redirect(url_for('ludopatia.client_view'))
 
     data = {
-            'dia': now,
-            'dia2': now2,
             'sala': sala,
             }
 
