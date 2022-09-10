@@ -36,8 +36,6 @@ def client_view():
         return redirect(url_for('ecubatta.client_view'))
 
     data = {
-            'dia': now,
-            'dia2': now2,
             'sala': sala,
             }
 

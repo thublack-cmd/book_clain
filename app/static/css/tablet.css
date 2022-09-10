@@ -52,17 +52,18 @@ html {
   justify-content: space-evenly;
   align-items: center;
   z-index : 1;
-  width: 800px;
+  width: 840px;
   height: 650px;
   position: absolute;
   background-color: white;
-  top: 110px;
+  top: 100px;
   left: 110px;
 }
 
 .flashes img {
   height: 252px;
   width: 274px;
+  margin: -200px 0;
 }
 
 .flashes span {
@@ -242,8 +243,8 @@ textarea:focus {
 
 .nextprev-div {
   position: absolute;
-  right: 20rem;
-  bottom: 8rem;
+  right: 8rem;
+  top: 45rem;
 }
 
 .nextprev-button {

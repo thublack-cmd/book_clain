@@ -76,7 +76,7 @@
         </div>
 
         <div class="input-container">
-          <input class="input-number" id="tbInput" type="number"> 
+          <input class="input-number" id="tbInput" type="number" name="input-num">
           <button class="icon-keypad" type="button" onclick="showKeypad()">
         </div>
         <table class="none-display">
@@ -101,15 +101,38 @@
 	        </tr>
         </table>
         <div class="send-button-container">
-          <button class="send-button" type="submit" id="nextBtn">CONSULTAR</button>
+          <button class="send-button" type="button" id="nextBtn" onclick="validateDNI()">CONSULTAR</button>
         </div>
       </form>
       <div class="none-display">
-        <span>Debe seleccionar al menos una opción</span>
+        <span>Ingrese un numero entre 8 a 10 caracteres</span>
       </div>
     </section>
 
 	<script type="text/javascript">
+    var tbInput = document.getElementById("tbInput");
+
+    function validateDNI(){
+      if(tbInput.value.length < 8 || tbInput.value.length > 10){
+        var invalidMsg = document.getElementsByClassName("none-display");
+        if (invalidMsg[1]) {
+          invalidMsg[1].classList.add("invalidMsg");
+          invalidMsg[1].classList.remove("none-display");
+          return false;
+        } else {
+          invalidMsg = document.getElementsByClassName("invalidMsg");
+          invalidMsg[0].classList.add("animated");
+
+          setTimeout(function() {
+            invalidMsg[0].classList.remove("animated");
+          }, 1000)
+        }
+      } else {
+        document.getElementById("regForm").submit();
+        return true;
+      }
+    }
+
     function showKeypad() {
       no_keypad = document.getElementsByClassName("none-display");
       keypad = document.getElementsByClassName("table_teclado");
@@ -124,12 +147,12 @@
     }
 
     function input(e) {
-      var tbInput = document.getElementById("tbInput");
+      //var tbInput = document.getElementById("tbInput");
       tbInput.value = tbInput.value + e.innerHTML;
     }
 
     function del() {
-      var tbInput = document.getElementById("tbInput");
+      //var tbInput = document.getElementById("tbInput");
       tbInput.value = tbInput.value.substr(0, tbInput.value.length - 1);
     }
 

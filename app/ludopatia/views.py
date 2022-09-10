@@ -13,8 +13,6 @@ from . import ludopatia
 
 import gspread, pygame
 
-now = (date.today()).strftime('%d-%m-%Y')
-now2 = (datetime.utcnow()).strftime('%Y-%m-%dT%H:%M')
 sala = 'cubatta'
 
 # Inicializacion de librerias para el sonido
@@ -31,7 +29,15 @@ def client_view():
         answer = request.form
         sh = gc.open("Ludopatia-DB")
 
-        cell = sh.worksheet("MINCETUR_DB").find("41338207")
+        for i in range(1, 500):
+            now = (date.today()).strftime('%d/%m/%Y')
+            now2 = (datetime.utcnow()).strftime('%H:%M:%S')
+            value = sh.worksheet("CLIENTES_CUBATTA").get('A' + str(i))
+            if bool(value) == False:
+                sh.worksheet("CLIENTES_CUBATTA").update('A' + str(i) + ':C' + str(i), [[now, now2,answer["input-num"]]])
+                break
+
+        cell = sh.worksheet("MINCETUR_DB").find(answer["input-num"])
         if bool(cell):
             flash("PROHIBIDO EL INGRESO", 'error')
             pygame.mixer.Sound.play(dont_access)
