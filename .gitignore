@@ -4,6 +4,7 @@
 *.sql
 *.png
 *.pyc
+*.wav
 media/
 *.sqlite3
 .env/

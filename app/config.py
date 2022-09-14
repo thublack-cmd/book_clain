@@ -4,7 +4,8 @@ class Config:
     SECRET_KEY = "b'_5#y2LF4Q8z\n\xec]/"
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite3'
     SQLALCHEMY_BINDS = {
-        'uchukuta': 'sqlite:///db.sqlite3'
+        'uchukuta': 'sqlite:///db.sqlite3',
+        'ludopatia': 'sqlite:///db.sqlite3'
     }
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     USE_SESSION_FOR_NEXT = True

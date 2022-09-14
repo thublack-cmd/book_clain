@@ -416,3 +416,24 @@ class Answer_uchu_casma(db.Model):
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
+
+class Ludopatia_db(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    num_reg = db.Column(db.Integer, nullable=False)
+    nro_dni = db.Column(db.Integer, nullable=False)
+    name_dni = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_dni
+
+class ingreso_cubatta(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime)
+    nro_document = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document

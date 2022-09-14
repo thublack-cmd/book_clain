@@ -1,0 +1,263 @@
+@media (max-width: 850px){
+  /* Main section - Ludo  */
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+
+  html {
+    font-size: 62.5%;
+    background-color: rgba(0,0,0,1);
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/fondo.gif);
+  }
+
+  body {
+    height: inherit;
+    width: inherit;
+  }
+
+  .none-display {
+    display: none;
+  }
+
+  .invalidMsg {
+    position: absolute;
+    top: 320px;
+    background-color: white;
+    border-radius: 0px 64px 64px 64px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .animated {
+    animation: shake 0.5s;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+  .message-container {
+    width: 570px;
+    height: 400px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+  }
+
+  .message-container span {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .error {
+    background-color: rgba(230,19,19,0.8);
+  }
+
+  .message {
+    background-color: rgba(40,222,15,0.8);
+  }
+
+  .main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: inherit;
+    margin-top: -65px;
+  }
+
+  .logo-sala {
+    width: 480px;
+    height: 263px;
+    background-color: transparent;
+  }
+
+  .input-container {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    margin-top: -23px;
+  }
+
+  .input-number {
+    padding: 0 5px;
+    font-size: 1.8rem,
+  }
+
+  .input-number:focus {
+    outline: none;
+  }
+
+  .icon-keypad {
+    width: 24px;
+    height: 29px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    background-image: url(../images/logo_keypad.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+
+  .table_teclado {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 205px;
+    right: 78px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
+  }
+
+  .table_teclado td {
+    width: 33%;
+    height: 50px;
+    text-align: center;
+  }
+
+  .btn_delete {
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: transparent; */
+  }
+
+  .send-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    margin-bottom: -50px;
+  }
+
+  .send-button {
+    width: 200px;
+    height: 40px;
+    font-family: Inter;
+    font-size: 1.6rem;
+    border-radius: 30px;
+    border-color: blanchedalmond;
+  }
+
+@media (max-width: 799px){
+  /* Main section - Ludo  */
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+
+  html {
+    font-size: 62.5%;
+    background-color: rgba(0,0,0,1);
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/fondo.gif);
+  }
+
+  body {
+    height: inherit;
+    width: inherit;
+  }
+
+  .none-display {
+    display: none;
+  }
+
+  .main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: inherit;
+    margin-top: -90px;
+  }
+
+  .input-container {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    margin-top: 50px;
+  }
+
+  .input-number {
+    padding: 0 5px;
+    font-size: 1.8rem,
+  }
+
+  .input-number:focus {
+    outline: none;
+  }
+
+  .icon-keypad {
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    background-image: url(../images/logo_keypad.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+
+  .table_teclado {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin-top: 26px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
+  }
+
+  .table_teclado td {
+    width: 33%;
+    height: 50px;
+    text-align: center;
+  }
+
+  .btn_delete {
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: transparent; */
+  }
+
+  .send-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+  }
+
+  .send-button {
+    width: 200px;
+    height: 40px;
+    font-family: Inter;
+    font-size: 1.6rem;
+    border-radius: 30px;
+    border-color: blanchedalmond;
+  }
