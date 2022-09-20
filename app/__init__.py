@@ -22,6 +22,7 @@ from .uchukuta.huacho import huacho
 from .uchukuta.huarmey import huarmey
 from .uchukuta.casma import casma
 from .ludopatia import ludopatia
+from .ludopatia.cubatta import ludopatia_cub
 
 
 login_manager = LoginManager()
@@ -46,6 +47,7 @@ def create_app():
     app.register_blueprint(casma)
     app.register_blueprint(ecubatta)
     app.register_blueprint(ludopatia)
+    app.register_blueprint(ludopatia_cub)
 
     login_manager.init_app(app)
     db.init_app(app)
