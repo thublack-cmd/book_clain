@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_ludo.css') }}">
+      <title>Ludopatia database update</title>
+  </head>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <body onload="setTimeout(closeMessage, 3000)">
+    {% else %}
+      <body>
+    {% endif %}
+  {% endwith %}
+    <section class="main-section">
+      <header class="header">
+        <span class="text-header">DB UPDATE</span>
+      </header>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="message-container {{ category }}">
+              <span>{{ message }}</span>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form id="regForm" action="{{ url_for('ludopatia.client_view') }}" method="post" enctype = "multipart/form-data">
+
+        <div class="file-container">
+          <input class="input-file" id="Inputfile" type="file" name="fileUp">
+        </div>
+        <div class="snd-button-container">
+          <button class="send-button" type="button" id="nextBtn" accept=".xlsx" onclick="validateFile()">Actualizar</button>
+        </div>
+      </form>
+      </div>
+    </section>
+
+	<script type="text/javascript">
+    var tbInput = document.getElementById("tbInput");
+
+    function validateFile(){
+      document.getElementById("regForm").submit();
+    }
+
+    function closeMessage() {
+      pop = document.getElementsByClassName("message-container");
+      pop[0].style.display = "none";
+    }
+	</script>
+  </body>
+</html>

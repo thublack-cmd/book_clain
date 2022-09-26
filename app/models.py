@@ -422,7 +422,7 @@ class Ludopatia_db(db.Model):
     __bind_key__= 'ludopatia'
     id = db.Column(db.Integer, primary_key=True)
     num_reg = db.Column(db.Integer, nullable=False)
-    nro_dni = db.Column(db.Integer, nullable=False)
+    nro_dni = db.Column(db.String(15))
     name_dni = db.Column(db.String(100))
 
     def __repr__(self):

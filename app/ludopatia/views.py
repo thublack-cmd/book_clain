@@ -14,31 +14,34 @@ def client_view():
 
     sql_db = Ludopatia_db.query.with_entities(Ludopatia_db.nro_dni).all()
     sql_list = []
+    notInDB = 0
 
     for i in range(len(sql_db)):
         sql_list.append(sql_db[i][0])
 
     if request.method == 'POST':
-
-            return redirect(url_for('ludopatia_cub.client_view'))
+        with pandas.ExcelFile(request.files["fileUp"]) as xls:
+            sh = pandas.read_excel(xls, header=None)
+            breakpoint()
+            if len(sh) != len(sql_db):
+                for i in range(len(sh)):
+                    # breakpoint()
+                    if sh.loc[i][1] not in sql_list:
+                        notInDB+= 1
+                        new_entry = Ludopatia_db(
+                            num_reg= sh.loc[i][0],
+                            nro_dni= sh.loc[i][1],
+                            name_dni= sh.loc[i][2],
+                        )
+                        db.session.add(new_entry)
+                        db.session.commit()
+                flash(f'Se han agregado {notInDB} personas a la base de datos')
+                return redirect(url_for('ludopatia.client_view'))
+            else:
+                flash("No hay nuevas personas para agregar")
 
     data = {
             'sala': sala,
             }
 
-    with pandas.ExcelFile("~/Downloads/DBLudopatia.xlsx") as xls:
-        sh = pandas.read_excel(xls, "LUDO_DB")
-        if len(sh["Nro. Documento"]) != len(sql_db):
-            for index, row in sh.iterrows():
-                if row['Nro. Documento'] not in sql_list:
-                    new_entry = Ludopatia_db(
-                        num_reg= row['Num. Reg.'],
-                        nro_dni= row['Nro. Documento'],
-                        name_dni= row['Nombres y Apellidos']
-                    )
-                    db.session.add(new_entry)
-                    db.session.commit()
-                else:
-                    print(str(row['Num. Reg.']) + " SI ESTA \n")
-
-    return render_template('ludopatia.html', **data)
+    return render_template('update.html', **data)
