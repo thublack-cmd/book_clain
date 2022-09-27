@@ -21,7 +21,7 @@ def client_view():
 
     if request.method == 'POST':
         with pandas.ExcelFile(request.files["fileUp"]) as xls:
-            sh = pandas.read_excel(xls, header=None)
+            sh = pandas.read_excel(xls, header=None, dtype=str)
             breakpoint()
             if len(sh) != len(sql_db):
                 for i in range(len(sh)):

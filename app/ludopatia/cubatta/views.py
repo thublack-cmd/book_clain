@@ -57,19 +57,4 @@ def client_view():
             'sala': sala,
             }
 
-    with pandas.ExcelFile("~/Downloads/DBLudopatia.xlsx") as xls:
-        sh = pandas.read_excel(xls, "LUDO_DB")
-        if len(sh["Nro. Documento"]) != len(sql_db):
-            for index, row in sh.iterrows():
-                if row['Nro. Documento'] not in sql_list:
-                    new_entry = Ludopatia_db(
-                        num_reg= row['Num. Reg.'],
-                        nro_dni= row['Nro. Documento'],
-                        name_dni= row['Nombres y Apellidos']
-                    )
-                    db.session.add(new_entry)
-                    db.session.commit()
-                else:
-                    print(str(row['Num. Reg.']) + " SI ESTA \n")
-
     return render_template('ludopatia.html', **data)
