@@ -437,3 +437,13 @@ class ingreso_cubatta(db.Model):
 
     def __repr__(self):
         return '<Cliente %r>' % self.nro_document
+
+class no_access(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    nro_dni = db.Column(db.String(15))
+    name = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_dni

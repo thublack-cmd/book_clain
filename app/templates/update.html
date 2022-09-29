@@ -13,30 +13,38 @@
       <body>
     {% endif %}
   {% endwith %}
+
     <section class="main-section">
       <header class="header">
-        <span class="text-header">DB UPDATE</span>
+        <h1 class="text-header">DB UPDATE</h1>
       </header>
 
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="message-container {{ category }}">
-              <span>{{ message }}</span>
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="message-container {{ category }}">
+          <span>{{ message }}</span>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
 
       <form id="regForm" action="{{ url_for('ludopatia.client_view') }}" method="post" enctype = "multipart/form-data">
-
-        <div class="file-container">
-          <input class="input-file" id="Inputfile" type="file" name="fileUp">
+        <div class="input-container">
+          <div class="file-container">
+            <label for="Inputfile">Actualizar base de datos de ludopatia</label>
+            <input class="input-file" id="Inputfile" type="file" name="fileUp">
+          </div>
+          <div class="file-container">
+            <label for="Inputfile2">Actualizar base de datos de clientes</label>
+            <input class="input-file" id="Inputfile2" type="file" name="fileUpClient">
+          </div>
         </div>
         <div class="snd-button-container">
           <button class="send-button" type="button" id="nextBtn" accept=".xlsx" onclick="validateFile()">Actualizar</button>
         </div>
       </form>
+      <span class="none-display">Debe subir algun archivo para continuar</span>
       </div>
     </section>
 
@@ -44,7 +52,19 @@
     var tbInput = document.getElementById("tbInput");
 
     function validateFile(){
-      document.getElementById("regForm").submit();
+      var x = document.getElementsByClassName("input-file");
+      if (x[0].files.length > 0 || x[1].files.length > 0){
+        document.getElementById("regForm").submit();
+      }else {
+        var y = document.getElementsByClassName("none-display");
+        if (y) {
+          y[0].classList.add("invalid-Msg");
+          y[0].classList.remove("none-display");
+        }else {
+          y[0].classList.add("none-display");
+          y[0].classList.remove("invalid-Msg");
+        }
+      }
     }
 
     function closeMessage() {

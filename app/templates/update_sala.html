@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_check.css') }}">
+      <title>Ludopatia client check</title>
+  </head>
+    <body>
+    <section class="main-section">
+      <header class="header">
+        <h1 class="text-header">Revision de clientes conocidos en sistema de ludopatia</h1>
+      </header>
+
+      <form id="regForm" action="{{ url_for('ludopatia.sala_view') }}" method="post" enctype = "multipart/form-data">
+        <div class="input-container">
+          <div class="file-container">
+            <label for="Inputfile">Seleccione un archivo .xlsx</label>
+            <input class="input-file" id="Inputfile" type="file" name="fileUpdate">
+          </div>
+        </div>
+        <div class="snd-button-container">
+          <button class="send-button" type="button" id="nextBtn" accept=".xlsx" onclick="validateFile()">Verificar</button>
+        </div>
+      </form>
+      <span class="none-display">Debe subir algun archivo para continuar</span>
+      </div>
+    </section>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="message-container">
+              <span>{{ message }}</span>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% if user_list %}
+        <table class="user_table">
+          <tr>
+            <th>DNI o CE</th>
+            <th>NOMBRE y APELLIDO</th>
+          </tr>
+          {% for dni, name in user_list.items() %}
+            <tr>
+              <th>{{ dni }}</th>
+              <th>{{ name }}</th>
+            </tr>
+          {% endfor %}
+        </table>
+      {% endif %}
+
+	<script type="text/javascript">
+    var tbInput = document.getElementById("tbInput");
+
+    function validateFile(){
+      var x = document.getElementsByClassName("input-file");
+      if (x[0].files.length > 0){
+        document.getElementById("regForm").submit();
+      }else {
+        var y = document.getElementsByClassName("none-display");
+        if (y) {
+          y[0].classList.add("invalid-Msg");
+          y[0].classList.remove("none-display");
+        }else {
+          y[0].classList.add("none-display");
+          y[0].classList.remove("invalid-Msg");
+        }
+      }
+    }
+
+    function closeMessage() {
+      pop = document.getElementsByClassName("message-container");
+      pop[0].style.display = "none";
+    }
+	</script>
+  </body>
+</html>

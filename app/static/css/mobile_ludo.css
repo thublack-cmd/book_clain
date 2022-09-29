@@ -262,4 +262,70 @@
     height: 100%;
     width: 100%;
   }
+
+  .main-section {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .message-container {
+    position: absolute;
+    margin-top: -150px;
+    font-size: 1.8rem;
+  }
+
+  #regForm {
+    width: 80%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .input-container {
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+  }
+
+  label {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .file-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .none-display {
+    display: none;
+  }
+
+  .invalid-Msg {
+    z-index: 1;
+    position: absolute;
+    margin-top: -180px;
+    font-size: 2rem;
+    color: red;
+  }
+
+  .input-file {
+    font-size: 1.6rem;
+  }
+
+  .send-button {
+    width: 250px;
+    height: 70px;
+    border-radius: 25px;
+    font-size: 1.8rem;
+  }
 }

@@ -8,7 +8,6 @@ from flask_login import login_required
 # from APP
 from app.main_view import audit_main, discharge_main, processed_main
 from app.models import db, Ludopatia_db, ingreso_cubatta
-from app.mail import send_mail_open
 from . import ludopatia_cub
 
 import pandas, pygame

@@ -21,11 +21,6 @@ def client_view():
         breakpoint()
         d = datetime.strptime(request.form["date"], "%Y-%m-%dT%H:%M")
 
-        # if not request.form["amount"]:
-        #     amount_value = 0
-        # else:
-        #     amount_value = request.form["amount"]
-
         # add serial to table
         last_clain = Clain_cub.query.order_by(Clain_cub.created_at.desc()).first()
         if not last_clain:
