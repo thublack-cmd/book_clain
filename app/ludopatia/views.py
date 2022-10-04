@@ -47,11 +47,11 @@ def client_view():
                 if len(sh) != len(sql_db):
                     for i in range(len(sh)):
                         # breakpoint()
-                        if sh.loc[i][1] not in sql_list:
+                        if sh.loc[i][0] not in sql_list:
                             notInDB+= 1
                             new_entry = no_access(
-                                nro_dni= sh.loc[i][1],
-                                name= sh.loc[i][2],
+                                nro_dni= sh.loc[i][0],
+                                name= sh.loc[i][1],
                             )
                             db.session.add(new_entry)
                             db.session.commit()

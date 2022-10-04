@@ -29,7 +29,6 @@
   {% endwith %}
     <section class="main-section">
       <header class="header">
-        <span class="text-header">LUDOPATIA</span>
       </header>
 
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -97,7 +96,7 @@
           </tr>
           <tr>
             <td onclick="input(this)" colspan="2">0</td>
-            <td onclick="del()"><img class="btn_delete"></td>
+            <td onclick="del()"><div class="btn_delete"></div></td>
 	        </tr>
         </table>
         <div class="send-button-container">

@@ -122,25 +122,31 @@
     width: 200px;
     height: 200px;
     top: 205px;
-    right: 78px;
-    color: white;
+    right: 60px;
+    color: black;
     background-color: black;
-    font-size: 18px;
+    font-size: 30px;
   }
 
   .table_teclado td {
     width: 33%;
     height: 50px;
     text-align: center;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .table_teclado tr:nth-last-child(1) td:nth-last-child(1) {
+    background-color: black;
   }
 
   .btn_delete {
-    width: 24px;
-    height: 24px;
+    width: 64px;
+    height: 50px;
     background-image: url(../images/delete.png);
     background-repeat: no-repeat;
     background-position: center;
-    /* background-color: transparent; */
+    background-size: cover;
   }
 
   .send-button-container {
@@ -221,16 +227,22 @@
     width: 200px;
     height: 200px;
     margin-top: 26px;
-    color: white;
+    color: black;
     background-color: black;
-    font-size: 18px;
+    font-size: 30px;
   }
 
   .table_teclado td {
     width: 33%;
     height: 50px;
     text-align: center;
+    border-radius: 15px;
+    background-color: white;
   }
+
+  /* .table_teclado td:nth-last-child(1) { */
+  /*   background-color: black; */
+  /* } */
 
   .btn_delete {
     width: 24px;
@@ -293,7 +305,7 @@
   .input-container {
     display: flex;
     width: 60%;
-    justify-content: space-around;
+    justify-content: center;
   }
 
   label {

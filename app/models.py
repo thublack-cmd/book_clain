@@ -433,7 +433,8 @@ class ingreso_cubatta(db.Model):
     __bind_key__= 'ludopatia'
     id = db.Column(db.Integer, primary_key=True)
     ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
-    nro_document = db.Column(db.Integer)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
 
     def __repr__(self):
         return '<Cliente %r>' % self.nro_document

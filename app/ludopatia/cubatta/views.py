@@ -37,7 +37,8 @@ def client_view():
             flash("PROHIBIDO EL INGRESO", 'error')
             pygame.mixer.Sound.play(dont_access)
             new_log = ingreso_cubatta(
-                nro_document = answer["input-num"]
+                nro_document = str(answer["input-num"]),
+                is_ludo = 1
             )
             db.session.add(new_log)
             db.session.commit()
@@ -46,7 +47,8 @@ def client_view():
             flash("BIENVENIDO A LA SALA")
             pygame.mixer.Sound.play(access)
             new_log = ingreso_cubatta(
-                nro_document = answer["input-num"]
+                nro_document = str(answer["input-num"]),
+                is_ludo = 0
             )
             db.session.add(new_log)
             db.session.commit()
