@@ -1,3 +1,93 @@
+@media (max-width: 799px){
+  /* Main section - Ludo  */
+  html {
+    font-size: 62.5%;
+    background-color: rgba(0,0,0,1);
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/fondo.gif);
+  }
+
+  body {
+    height: inherit;
+    width: inherit;
+  }
+
+  .none-display {
+    display: none;
+  }
+
+  .main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: inherit;
+    margin-top: -90px;
+  }
+
+  .input-container {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    margin-top: 50px;
+  }
+
+  .input-number {
+    padding: 0 5px;
+    font-size: 1.8rem,
+  }
+
+  .input-number:focus {
+    outline: none;
+  }
+
+  .icon-keypad {
+    display: none;
+  }
+
+  .table_teclado {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin-top: 26px;
+    color: black;
+    background-color: black;
+    font-size: 30px;
+  }
+
+  .table_teclado td {
+    width: 33%;
+    height: 50px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .btn_delete {
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .send-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+  }
+
+  .send-button {
+    width: 200px;
+    height: 40px;
+    font-family: Inter;
+    font-size: 1.6rem;
+    border-radius: 30px;
+    border-color: blanchedalmond;
+  }
+}
+
 @media (max-width: 850px){
   /* Main section - Ludo  */
   * {
@@ -154,96 +244,6 @@
     justify-content: center;
     margin-top: 70px;
     margin-bottom: -50px;
-  }
-
-  .send-button {
-    width: 200px;
-    height: 40px;
-    font-family: Inter;
-    font-size: 1.6rem;
-    border-radius: 30px;
-    border-color: blanchedalmond;
-  }
-}
-
-@media (max-width: 799px){
-  /* Main section - Ludo  */
-  html {
-    font-size: 62.5%;
-    background-color: rgba(0,0,0,1);
-    height: 100%;
-    width: 100%;
-    background-image: url(../images/fondo.gif);
-  }
-
-  body {
-    height: inherit;
-    width: inherit;
-  }
-
-  .none-display {
-    display: none;
-  }
-
-  .main-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: inherit;
-    margin-top: -90px;
-  }
-
-  .input-container {
-    display: flex;
-    justify-content: center;
-    height: 30px;
-    margin-top: 50px;
-  }
-
-  .input-number {
-    padding: 0 5px;
-    font-size: 1.8rem,
-  }
-
-  .input-number:focus {
-    outline: none;
-  }
-
-  .icon-keypad {
-    display: none;
-  }
-
-  .table_teclado {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    margin-top: 26px;
-    color: black;
-    background-color: black;
-    font-size: 30px;
-  }
-
-  .table_teclado td {
-    width: 33%;
-    height: 50px;
-    text-align: center;
-    border-radius: 15px;
-    background-color: white;
-  }
-
-  .btn_delete {
-    width: 24px;
-    height: 24px;
-    background-image: url(../images/delete.png);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .send-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 35px;
   }
 
   .send-button {
