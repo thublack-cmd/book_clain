@@ -1,153 +1,146 @@
-@media (max-width: 799px){
-  /* Main section - Ludo  */
-  html {
-    font-size: 62.5%;
-    background-color: rgba(0,0,0,1);
-    height: 100%;
-    width: 100%;
-    background-image: url(../images/fondo.gif);
-  }
-
-  body {
-    height: inherit;
-    width: inherit;
-  }
-
-  .none-display {
-    display: none;
-  }
-
-  .main-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: inherit;
-    margin-top: -90px;
-  }
-
-  .input-container {
-    display: flex;
-    justify-content: center;
-    height: 30px;
-    margin-top: 50px;
-  }
-
-  .input-number {
-    padding: 0 5px;
-    font-size: 1.8rem,
-  }
-
-  .input-number:focus {
-    outline: none;
-  }
-
-  .icon-keypad {
-    display: none;
-  }
-
-  .table_teclado {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    margin-top: 26px;
-    color: black;
-    background-color: black;
-    font-size: 30px;
-  }
-
-  .table_teclado td {
-    width: 33%;
-    height: 50px;
-    text-align: center;
-    border-radius: 15px;
-    background-color: white;
-  }
-
-  .btn_delete {
-    width: 24px;
-    height: 24px;
-    background-image: url(../images/delete.png);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .send-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 35px;
-  }
-
-  .send-button {
-    width: 200px;
-    height: 40px;
-    font-family: Inter;
-    font-size: 1.6rem;
-    border-radius: 30px;
-    border-color: blanchedalmond;
-  }
+/* Main section - Ludo  */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-@media (max-width: 850px){
+html {
+  font-size: 62.5%;
+  background-color: rgba(0,0,0,1);
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: inherit;
+  width: inherit;
+  margin: 0px;
+}
+
+.none-display {
+  display: none;
+}
+
+.invalidMsg {
+  position: absolute;
+  top: 275px;
+  background-color: white;
+  border-radius: 0px 64px 64px 64px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.animated {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.message-container {
+  height: 330px;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-top: 120px;
+}
+
+.message-container span {
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+.error {
+  background-color: rgba(230,19,19,0.8);
+}
+
+.message {
+  background-color: rgba(40,222,15,0.8);
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+#regForm {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-sala {
+  width: 320px;
+  height: 190px;
+  background-color: transparent;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  margin-top: 145px;
+}
+
+.input-number {
+  padding: 0 5px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.input-number:focus {
+  outline: none;
+}
+
+.icon-keypad {
+  display: none;
+}
+
+.send-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.send-button {
+  width: 200px;
+  height: 40px;
+  font-family: Inter;
+  font-size: 1.6rem;
+  border-radius: 30px;
+  border-color: blanchedalmond;
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
   /* Main section - Ludo  */
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    font-size: 62.5%;
-    background-color: rgba(0,0,0,1);
-    height: 100%;
-    width: 100%;
-  }
-
-  body {
-    height: inherit;
-    width: inherit;
-  }
-
-  .none-display {
-    display: none;
-  }
-
   .invalidMsg {
-    position: absolute;
-    top: 320px;
-    background-color: white;
-    border-radius: 0px 64px 64px 64px;
-    padding: 10px 25px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  .animated {
-    animation: shake 0.5s;
-  }
-
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    top: 265px;
   }
 
   .message-container {
     width: 570px;
     height: 400px;
-    position: absolute;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 120px;
+    margin-top: 40px;
   }
 
   .message-container span {
@@ -156,46 +149,17 @@
     color: white;
   }
 
-  .error {
-    background-color: rgba(230,19,19,0.8);
-  }
-
-  .message {
-    background-color: rgba(40,222,15,0.8);
-  }
-
-  .main-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: inherit;
-    margin-top: -65px;
-  }
-
   .logo-sala {
-    width: 480px;
-    height: 310px;
-    background-color: transparent;
+    width: 460px;
+    height: 200px;
   }
 
   .input-container {
-    display: flex;
-    justify-content: center;
-    height: 30px;
-    margin-top: -23px;
-  }
-
-  .input-number {
-    padding: 0 5px;
-    font-size: 1.8rem,
-  }
-
-  .input-number:focus {
-    outline: none;
+    margin-top: 85px;
   }
 
   .icon-keypad {
+    display: block;
     width: 24px;
     height: 29px;
     border: none;
@@ -211,7 +175,7 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    top: 205px;
+    top: 210px;
     right: 60px;
     color: black;
     background-color: black;
@@ -238,12 +202,9 @@
     background-position: center;
     background-size: cover;
   }
-
+  
   .send-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 70px;
-    margin-bottom: -50px;
+    margin-top: 0;
   }
 
   .send-button {
@@ -256,35 +217,13 @@
   }
 }
 
-@media (max-width: 1920px){
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    }
-
-  html {
-    font-size: 62.5%;
-    background-color: rgba(0,0,0,1);
-    height: 100%;
-    width: 100%;
-  }
-
-  body {
-    height: inherit;
-    width: inherit;
-  }
-
+@media (min-width: 851px) {
   .main-section {
     height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-  }
-
-  h1 {
-    font-size: 40px;
   }
 
   .message-container {
@@ -303,12 +242,8 @@
     color: white;
   }
 
-  .error {
-    background-color: rgba(230,19,19,0.8);
-  }
-
-  .message {
-    background-color: rgba(40,222,15,0.8);
+  .invalidMsg {
+    top: 425px;
   }
 
   #regForm {
@@ -319,7 +254,12 @@
     justify-content: space-evenly;
     align-items: center;
   }
-  
+
+  .logo-sala {
+    width: 500px;
+    height: 250px;
+  }
+
   .input-container {
     display: flex;
     width: 60%;
@@ -334,8 +274,9 @@
   }
 
   .icon-keypad {
-    width: 30px;
-    height: 30px;
+    display: block;
+    width: 24px;
+    height: 29px;
     border: none;
     cursor: pointer;
     margin-left: 10px;
@@ -343,29 +284,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
-    background-size: contain;
-  }
-
-  label {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-
-  .file-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .none-display {
-    display: none;
   }
 
   .table_teclado {
     position: absolute;
     width: 245px;
     height: 240px;
-    top: 400px;
-    right: 260px;
+    top: 340px;
+    right: 100px;
     color: black;
     background-color: black;
     font-size: 30px;
@@ -377,7 +303,7 @@
     text-align: center;
     border-radius: 15px;
     background-color: white;
-  }
+    }
 
   .table_teclado tr:nth-last-child(1) td:nth-last-child(1) {
     background-color: black;
@@ -392,36 +318,37 @@
     background-size: cover;
   }
 
-  .invalidMsg {
-    position: absolute;
-    top: 640px;
-    background-color: white;
-    border-radius: 0px 64px 64px 64px;
-    padding: 10px 25px;
-    font-size: 18px;
-    font-weight: bold;
+/* UPDATE TEMPLATE */
+  h1 {
+    font-size: 40px;
+    color: white;
   }
 
-  .animated {
-    animation: shake 0.5s;
+  label {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
   }
 
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  .input_file-container {
+    display: flex;
+    width: 80%;
+    height: 30px;
+    justify-content: space-between;
+    margin-top: 95px;
+    margin-bottom: 100px;
+  }
+
+  .file-container {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
   }
 
   .input-file {
     font-size: 1.6rem;
+    height: 50px;
+    background-color: white;
   }
 
   .send-button {
