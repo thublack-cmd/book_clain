@@ -8,7 +8,6 @@ from sqlalchemy import extract
 from .models import *
 from .mail import send_mail_close
 
-
 def entry_point(sala):
     if sala == 'cubatta':
         clain_db = Clain_cub
@@ -282,4 +281,3 @@ def info_client_search(clain, clain_query, name, full_date, dia, mes, anio):
         print('serial')
         q = clain.query.filter(clain_query == name)
         return q
-

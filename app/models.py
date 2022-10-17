@@ -37,7 +37,6 @@ class Answer_cub(db.Model):
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
 
-
 class Clain_tri(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -70,7 +69,6 @@ class Answer_tri(db.Model):
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
 
-
 class Clain_mon(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -91,7 +89,7 @@ class Clain_mon(db.Model):
 
     def __repr__(self):
         return '<Clain %r>' % self.name
- 
+
 class Answer_mon(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -102,7 +100,6 @@ class Answer_mon(db.Model):
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
-
 
 class Clain_kav(db.Model):
 
@@ -136,7 +133,6 @@ class Answer_kav(db.Model):
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
 
-
 class Clain_sie(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -168,7 +164,6 @@ class Answer_sie(db.Model):
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
-
 
 class Clain_mag(db.Model):
 
@@ -202,7 +197,6 @@ class Answer_mag(db.Model):
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
 
-
 class Clain_cas(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -234,7 +228,6 @@ class Answer_cas(db.Model):
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
-
 
 class User(db.Model):
 
