@@ -23,6 +23,7 @@ from .uchukuta.huarmey import huarmey
 from .uchukuta.casma import casma
 from .ludopatia import ludopatia
 from .ludopatia.cubatta import ludopatia_cub
+from .publicidad import publicidad
 
 
 login_manager = LoginManager()
@@ -48,6 +49,7 @@ def create_app():
     app.register_blueprint(ecubatta)
     app.register_blueprint(ludopatia)
     app.register_blueprint(ludopatia_cub)
+    app.register_blueprint(publicidad)
 
     login_manager.init_app(app)
     db.init_app(app)

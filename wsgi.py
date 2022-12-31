@@ -9,4 +9,4 @@ def index():
     return redirect(url_for('cubatta.audit_view'))
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

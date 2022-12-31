@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/video_update.css') }}"/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+      type="text/css"/>
+    <title>Actualizacion de publicidad</title>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  </head>
+    <section class="main-section">
+      <header class="header">
+        <h1 class="text-header">Actualizacion de la publicidad de las salas</h1>
+      </header>
+      <form id="regForm" class="dropzone" action="{{ url_for('publicidad.main_view') }}" method="post" enctype = "multipart/form-data">
+        <div class="dz-message">Suelta o sube tus archivos aqui</div>
+      </form>
+    </section>
+
+	<script type="text/javascript">
+    const dropzone = new Dropzone("div.my-dropzone", { url: "/file/post"});
+	</script>
+  </body>
+</html>
