@@ -2,7 +2,6 @@
 from flask import render_template, request, redirect, url_for, flash
 
 # from APP
-# from app.models import db, Ludopatia_db, no_access
 from . import publicidad
 
 from paramiko import SSHClient
@@ -15,68 +14,66 @@ import tempfile
 def main_view():
 
     if request.method == 'POST':
-        ssh = SSHClient()
-        ssh.load_system_host_keys()
+        for data in request.files.getlist("file"):
+            match data.filename:
+                case "Cubatta.mp4":
+                    ip = '172.20.20.203'
+                    userName = 'pi'
+                    pword = 'PubliCuba'
+                    portN = 9000
 
-        match request.files["file"].filename:
-            case "Cubatta.mp4":
-                ssh.connect('172.20.20.203',username='pi',password='PubliCuba',port=9000)
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
-            case "Tribeca.mp4":
-                ssh.connect('172.20.21.186',username='pi',password='PubliSala')
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
-            case "Montreal.mp4":
-                ssh.connect('172.20.22.184',username='pi',password='PubliSala')
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
-            case "Kavari.mp4":
-                ssh.connect('172.20.23.186',username='pi',password='PubliSala')
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
-            case "Siete.mp4":
-                ssh.connect('172.20.24.184',username='pi',password='PubliSala')
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
-            case "Magia.mp4":
-                ssh.connect('172.20.25.186',username='pi',password='PubliSala')
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
-            case "Cassino.mp4":
-                ssh.connect('172.20.26.182',username='pi',password='PubliSala')
-                scp = SCPClient(ssh.get_transport())
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    temp_file = Path(tmpdir) / request.files['file'].filename
-                    request.files['file'].save(temp_file)
-                    scp.put(temp_file, remote_path='/home/pi/')
-                return redirect(url_for('publicidad.main_view'))
+                case "Tribeca.mp4":
+                    ip = '172.20.21.186'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Montreal.mp4":
+                    ip = '172.20.22.184'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Kavari.mp4":
+                    ip = '172.20.23.186'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Siete.mp4":
+                    ip = '172.20.24.184'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Magia.mp4":
+                    ip = '172.20.25.225'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 9000
+
+                case "Cassino.mp4":
+                    ip = '172.20.26.182'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+            send_update(data, ip, userName, pword, portN)
+
+    return render_template('video.html')
+
+def send_update(request, ip, userName, pword, portN):
+    ssh = SSHClient()
+    ssh.load_system_host_keys()
+
+    ssh.connect(ip,username=userName,password=pword,port=portN)
+    scp = SCPClient(ssh.get_transport())
+    with tempfile.TemporaryDirectory() as tmpdir:
+        temp_file = Path(tmpdir) / request.filename
+        request.save(temp_file)
+        scp.put(temp_file, remote_path='/home/pi/')
 
         scp.close()
         ssh.close()
-
-    return render_template('video.html')
+    flash(f'Se ha actualizado {request.filename}')
+    return redirect(url_for('publicidad.main_view'))
