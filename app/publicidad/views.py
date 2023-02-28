@@ -74,6 +74,7 @@ def send_update(request, ip, userName, pword, portN):
         scp.put(temp_file, remote_path='/home/pi/')
 
         scp.close()
+        ssh.exec_command("sudo reboot")
         ssh.close()
     flash(f'Se ha actualizado {request.filename}')
     return redirect(url_for('publicidad.main_view'))
