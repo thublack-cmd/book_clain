@@ -66,7 +66,7 @@ def send_update(request, ip, userName, pword, portN):
     ssh = SSHClient()
     ssh.load_system_host_keys()
 
-    ssh.connect(ip,username=userName,password=pword,port=portN)
+    ssh.connect(ip,username=userName,password=pword,port=portN, timeout=900)
     scp = SCPClient(ssh.get_transport())
     with tempfile.TemporaryDirectory() as tmpdir:
         temp_file = Path(tmpdir) / request.filename
