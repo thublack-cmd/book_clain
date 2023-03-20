@@ -74,7 +74,10 @@ def send_update(request, ip, userName, pword, portN):
         scp.put(temp_file, remote_path='/home/pi/')
 
         scp.close()
-        ssh.exec_command("sudo reboot")
+        if request.filename == 'Montreal.mp4':
+            ssh.exec_command("sshpass -p 'PubliSala' scp Montreal.mp4 pi@172.20.22.185:~/")
+        # ssh.exec_command("sudo reboot")
         ssh.close()
+
     flash(f'Se ha actualizado {request.filename}')
     return redirect(url_for('publicidad.main_view'))
