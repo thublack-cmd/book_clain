@@ -417,6 +417,36 @@ class Answer_uchu_casma(db.Model):
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
 
+class Clain_car(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    serial = db.Column(db.String(12))
+    name = db.Column(db.String(100), nullable=False)
+    type_doc = db.Column(db.String(10), nullable=True)
+    nro_doc = db.Column(db.String(12), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    type_claim = db.Column(db.String(7), nullable=False)
+    detail = db.Column(db.String(500), nullable=False)
+    answer_cub = db.relationship('Answer_car', uselist=False)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer_car.id'))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Clain %r>' % self.name
+
+class Answer_car(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    answer_con = db.Column(db.String(500), nullable=False)
+    id_user = db.Column(db.String(15))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+    def __repr__(self):
+        return '<Answer %r>' % self.answer_con
+
 class Ludopatia_db(db.Model):
 
     __bind_key__= 'ludopatia'

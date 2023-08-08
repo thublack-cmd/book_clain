@@ -24,6 +24,7 @@ from .uchukuta.proceres import proceres
 from .uchukuta.huacho import huacho
 from .uchukuta.huarmey import huarmey
 from .uchukuta.casma import casma
+from .carwash import carwash
 from .ludopatia import ludopatia
 from .ludopatia.cubatta import ludopatia_cub
 from .publicidad import publicidad
@@ -49,6 +50,7 @@ def create_app():
     app.register_blueprint(huacho)
     app.register_blueprint(huarmey)
     app.register_blueprint(casma)
+    app.register_blueprint(carwash)
     app.register_blueprint(ecubatta)
     app.register_blueprint(etribeca)
     app.register_blueprint(emontreal)
