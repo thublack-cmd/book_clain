@@ -4,7 +4,8 @@ class Config:
     SECRET_KEY = "b'_5#y2LF4Q8z\n\xec]/"
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://book:accessD8-clain@172.20.20.210/book_clain'
     SQLALCHEMY_BINDS = {
-        'uchukuta': 'mysql+pymysql://book:accessD8-clain@172.20.20.210/uchu_book_clain'
+        'uchukuta': 'mysql+pymysql://book:accessD8-clain@172.20.20.210/uchu_book_clain',
+        'ludopatia': 'mysql+pymysql://book:accessD8-clain@172.20.20.210/ludopatia'
     }
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     USE_SESSION_FOR_NEXT = True

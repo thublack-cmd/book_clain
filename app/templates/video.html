@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/video_update.css') }}"/>
+    <title>Actualizacion de publicidad</title>
+  </head>
+    <section class="main-section">
+      <header class="header">
+        <h1 class="text-header">Actualizacion de la publicidad de las salas</h1>
+      </header>
+      <form id="regForm" action="{{ url_for('publicidad.main_view') }}" method="post" enctype = "multipart/form-data">
+        <div id="input-contain">
+          <input id="file" name="file" type="file" multiple>
+        </div>
+        <button class="update_btn" type="submit">Actualizar</button>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </form>
+      <div class="guide">
+        <img src="{{ url_for('static', filename='images/publicidad.jpg') }}">
+      </div>
+    </section>
+  </body>
+</html>

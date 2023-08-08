@@ -416,3 +416,101 @@ class Answer_uchu_casma(db.Model):
 
     def __repr__(self):
         return '<Answer %r>' % self.answer_con
+
+class Ludopatia_db(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    num_reg = db.Column(db.Integer, nullable=False)
+    nro_dni = db.Column(db.String(15))
+    name_dni = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_dni
+
+class ingreso_cubatta(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class ingreso_tribeca(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class ingreso_montreal(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class ingreso_kavari(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class ingreso_siete(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class ingreso_magia(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class ingreso_cassino(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    ingreso = db.Column(db.DateTime, default=datetime.datetime.now)
+    nro_document = db.Column(db.String(15))
+    is_ludo = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_document
+
+class no_access(db.Model):
+
+    __bind_key__= 'ludopatia'
+    id = db.Column(db.Integer, primary_key=True)
+    nro_dni = db.Column(db.String(15))
+    name = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<Cliente %r>' % self.nro_dni

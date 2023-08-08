@@ -137,6 +137,32 @@
 	.search-container__name-filter {
 		width: 40%;
 	}
+	
+       .dropdown_audit {
+          display: flex;
+	  justify-content: center;
+       }
+
+       .dropdown_audit--content {
+  	  display: none;
+	  position: absolute;
+	  background-color: rgba(0,0,0,0.9);
+	  color: white;
+	  font-size: 1.7rem;
+	  padding: 2rem 3rem;
+	  line-height: 2rem;
+	  min-width: 100px;
+	  max-width: 900px;
+	  border-radius: 15px;
+	  box-shadow: -7px 11px 19px -4px rgba(0,0,0,0.75);
+	  z-index: 1;
+	}
+ 
+	.dropdown_audit:hover .dropdown_audit--content {
+	  display: flex;
+	  text-align: justify;
+	  align-self: center;
+	}
 
 	.search-container__sh_form--input {
 		height: 2.5rem;
@@ -417,14 +443,14 @@
 		width: 50%;
 		font-size: 5rem;
 		margin: 0 auto;
-		margin-top: 40px;
+		margin-top: -15px;
 		text-align: center;
 		color: white;
 	}
 
 	.form-section {
 		width: 100vw;
-		height: calc(100vh - 600px);
+		height: calc(100vh - 500px);
 	}
 
 	.form-section__form {
@@ -578,7 +604,7 @@
 		display: none;
 		width: 80%;
 		max-width: 500px;
-    margin-top: 90px;
+    margin-top: 40px;
 	}
 
 	/* Mark input boxes that gets an error on validation: */

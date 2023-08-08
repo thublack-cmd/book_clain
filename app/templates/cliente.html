@@ -33,7 +33,7 @@
   <header class="header">
     {% if sala == 'cubatta' %}
       <picture>
-        <img src="{{ url_for('static', filename='images/logo_cubatta_cliente.png') }}" alt="logo sala">
+        <img src="{{ url_for('static', filename='images/logo_cubatta.png') }}" alt="logo sala">
       </picture>
     {% elif sala == 'tribeca' %}
       <picture>
@@ -201,10 +201,10 @@
 		emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; 
 		const mediaQuery = window.matchMedia('(max-width: 820px)')
 
-    if (mediaQuery.matches) {
-	    p = document.getElementsByTagName("img");
-      p[0].src="/static/images/logo_uchukuta_small.png";
-    }
+    //if (mediaQuery.matches) {
+    //      p = document.getElementsByTagName("img");
+    //      p[0].src="/static/images/logo_uchukuta_small.png";
+    //}
 
 		function showTab(n) {
 			// This function will display the specified tab of the form...
@@ -246,7 +246,7 @@
 			}
 			// check datetime
       if (currentTab == 1 && !validateDate()) {
-        if (window.confirm("Actualice (F5) para continuar")) {
+        if (window.confirm("Se actualizara la pagina con la fecha actual")) {
           window.location.reload();
         }else {
           window.location.reload();
