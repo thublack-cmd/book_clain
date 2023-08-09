@@ -64,11 +64,11 @@ def main_view():
                     pword = 'PubliSala'
                     portN = 22
 
-                #case "Huacho.mp4" | "huacho.mp4":
-                #    ip = '172.20.24.182'
-                #    userName = 'pi'
-                #    pword = 'PubliSala'
-                #    portN = 22
+                case "Huacho.mp4" | "huacho.mp4":
+                    ip = '172.20.24.43'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
 
                 case "Huarmey.mp4" | "huarmey.mp4":
                     ip = '172.20.25.34'

@@ -4,6 +4,6 @@
 
 from flask import Blueprint
 
-carwash = Blueprint('carwash', __name__, url_prefix='/sala/carwash')
+carwash = Blueprint('carwash', __name__, url_prefix='/carwash')
 
 from . import views

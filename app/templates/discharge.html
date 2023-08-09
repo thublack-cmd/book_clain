@@ -15,6 +15,8 @@
     <title>Descargo de reclamo || Magia</title> 
   {% elif sala == 'cassino' %}
     <title>Descargo de reclamo || Cassino</title> 
+  {% elif sala == 'carwash' %}
+    <title>Descargo de reclamo || Carwash</title> 
   {% elif sala == 'zarate' %}
     <title>Descargo de reclamo || Uchukuta Zarate</title> 
   {% elif sala == 'proceres' %}
@@ -64,6 +66,8 @@
       <form class="dis-container__form" action="{{ url_for('magia.audit_view') }}" method="post">
     {% elif sala == 'cassino' %}
       <form class="dis-container__form" action="{{ url_for('cassino.audit_view') }}" method="post">
+    {% elif sala == 'carwash' %}
+      <form class="dis-container__form" action="{{ url_for('carwash.audit_view') }}" method="post">
     {% elif sala == 'zarate' %}
       <form class="dis-container__form" action="{{ url_for('zarate.audit_view') }}" method="post">
     {% elif sala == 'proceres' %}

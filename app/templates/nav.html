@@ -29,6 +29,10 @@
         <a href="{{ url_for('cassino.audit_view') }}">
           <img src="{{ url_for('static', filename='images/logo_cassino_audit.png') }}" alt="Logo sala">
         </a>                    
+      {% elif sala == 'carwash' %}
+        <a href="{{ url_for('carwash.audit_view') }}">
+          <img src="{{ url_for('static', filename='images/logo_cash.png') }}" alt="Logo sala">
+        </a>                    
       {% elif sala == 'zarate' %}
         <a href="{{ url_for('zarate.audit_view') }}">
           <img src="{{ url_for('static', filename='images/logo_uchu.png') }}" alt="Logo Uchukuta">
@@ -75,6 +79,7 @@
           <a href="{{ url_for('casma.audit_view') }}">Casma</a>
         </div>
       </li>
+      <li><a id="carwash_nav_link" href="{{ url_for('carwash.audit_view') }}">Carwash</a></li>
       <li><a id="logout" href="{{ url_for('auth.logout') }}">Log out</a></li>
     </ul>
   </nav>

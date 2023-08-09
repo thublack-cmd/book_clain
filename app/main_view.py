@@ -52,6 +52,12 @@ def entry_point(sala):
         answer_db = Answer_cas
         e_sender = 'cassino.sala@gmail.com'
         e_name = 'Sala Cassino'
+    elif sala == 'carwash':
+        clain_db = Clain_car
+        view = 'carwash.audit_view'
+        answer_db = Answer_car
+        e_sender = 'cassino.sala@gmail.com'
+        e_name = 'Sala Cassino'
     elif sala == 'zarate':
         clain_db = Clain_uchu_zarate
         view = 'zarate.audit_view'

@@ -15,6 +15,8 @@
     <title>Detalle  de reclamo || Magia</title> 
   {% elif sala == 'cassino' %}
     <title>Detalle  de reclamo || Cassino</title> 
+  {% elif sala == 'carwash' %}
+    <title>Detalle  de reclamo || Carwash</title> 
   {% elif sala == 'zarate' %}
     <title>Detalle  de reclamo || Uchukuta Zarate</title> 
   {% elif sala == 'proceres' %}
@@ -79,6 +81,9 @@
 				{% elif sala == 'cassino' %}
 					<td class="user_td">{{ q.answer_cas.id_user }}</td>                    
 					<td class="de_td">{{ q.answer_cas.answer_con }}</td>                    
+				{% elif sala == 'carwash' %}
+					<td class="user_td">{{ q.answer_cub.id_user }}</td>                    
+					<td class="de_td">{{ q.answer_cub.answer_con }}</td>                    
 				{% elif sala == 'huarmey' %}
 					<td class="user_td">{{ q.answer_uchu_huarmey.id_user }}</td>                    
 					<td class="de_td">{{ q.answer_uchu_huarmey.answer_con }}</td>                    

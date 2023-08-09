@@ -15,6 +15,8 @@
     <title>Gestion de reclamaciones || Magia</title> 
   {% elif sala == 'cassino' %}
     <title>Gestion de reclamaciones || Cassino</title> 
+  {% elif sala == 'carwash' %}
+    <title>Gestion de reclamaciones || Carwash</title> 
   {% elif sala == 'zarate' %}
     <title>Gestion de reclamaciones || Uchukuta Zarate</title> 
   {% elif sala == 'proceres' %}
@@ -61,6 +63,8 @@
       <form action="{{ url_for('magia.audit_view') }}" method="post" class="search-container__sh_form">
     {% elif sala == 'cassino' %}
       <form action="{{ url_for('cassino.audit_view') }}" method="post" class="search-container__sh_form">
+    {% elif sala == 'carwash' %}
+      <form action="{{ url_for('carwash.audit_view') }}" method="post" class="search-container__sh_form">
     {% elif sala == 'zarate' %}
       <form action="{{ url_for('zarate.audit_view') }}" method="post" class="search-container__sh_form">
     {% elif sala == 'proceres' %}
@@ -140,6 +144,8 @@
                         <td><a class="list-container--pending_a" href="{{ url_for('magia.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                     {% elif sala == 'cassino' %}
                         <td><a class="list-container--pending_a" href="{{ url_for('cassino.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
+                    {% elif sala == 'carwash' %}
+                        <td><a class="list-container--pending_a" href="{{ url_for('carwash.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                     {% elif sala == 'zarate' %}
                         <td><a class="list-container--pending_a" href="{{ url_for('zarate.discharge_view', id=r.id) }}">{{ r.name }}</a></td>
                     {% elif sala == 'proceres' %}
@@ -187,6 +193,8 @@
                   <td><a class="list-container--last_a" href="{{ url_for('magia.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                 {% elif sala == 'cassino' %}
                   <td><a class="list-container--last_a" href="{{ url_for('cassino.processed_view', id=r.id) }}">{{ r.name }}</a></td>
+                {% elif sala == 'carwash' %}
+                  <td><a class="list-container--last_a" href="{{ url_for('carwash.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                 {% elif sala == 'zarate' %}
                   <td><a class="list-container--last_a" href="{{ url_for('zarate.processed_view', id=r.id) }}">{{ r.name }}</a></td>
                 {% elif sala == 'proceres' %}
@@ -222,6 +230,8 @@
                     <a href="{{ url_for('magia.audit_view', page=page) }}">{{ page }}</a>
                   {% elif sala == 'cassino' %}
                     <a href="{{ url_for('cassino.audit_view', page=page) }}">{{ page }}</a>
+                  {% elif sala == 'carwash' %}
+                    <a href="{{ url_for('carwash.audit_view', page=page) }}">{{ page }}</a>
                   {% elif sala == 'zarate' %}
                     <a href="{{ url_for('zarate.audit_view', page=page) }}">{{ page }}</a>
                   {% elif sala == 'proceres' %}
