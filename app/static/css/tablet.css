@@ -56,14 +56,14 @@ html {
   height: 650px;
   position: absolute;
   background-color: white;
-  top: 100px;
+  top: 88px;
   left: 110px;
 }
 
 .flashes img {
   height: 252px;
   width: 274px;
-  margin: -200px 0;
+  margin: -290px 0;
 }
 
 .flashes span {
@@ -233,7 +233,7 @@ textarea:focus {
 .validate-message {
   position: absolute;
   right: 50rem;
-  bottom: 15rem;
+  top: 500px;
 }
 
 .validate-message span {

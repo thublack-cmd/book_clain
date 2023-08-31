@@ -17,8 +17,8 @@ sala = 'cubatta'
 # Inicializacion de librerias para el sonido
 pygame.init()
 pygame.mixer.init()
-dont_access = pygame.mixer.Sound("./app/static/alerta1.wav")
 access = pygame.mixer.Sound("./app/static/BIENVENIDA.wav")
+dont_access = pygame.mixer.Sound("./app/static/alerta.wav")
 
 
 @ludopatia_cub.route('/', methods=['POST', 'GET'])

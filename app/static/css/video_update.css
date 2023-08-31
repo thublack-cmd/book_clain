@@ -1,4 +1,3 @@
-/* Main section - Ludo  */
 * {
   padding: 0;
   margin: 0;
@@ -69,4 +68,10 @@ input::file-selector-button {
 
 .flashes li {
   line-height: 1.5;
+}
+
+.guide {
+  display: block;
+  position: absolute;
+  left: 320px;
 }
