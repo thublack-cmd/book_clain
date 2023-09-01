@@ -699,9 +699,17 @@
 		margin-bottom: 3rem;
 	 }
 
+	.login_container__form input::placeholder {
+		color: #ffffff8a;
+	}
+
+	.login_container__form input:focus::placeholder {
+		color: black;
+	}
+
 	.login_container__form input:focus {
 		outline: none;
-		border-bottom: 4px solid #00cc66;
+		border-bottom: 2px solid #00cc66;
 	 }
 
 	.login_container__form button {
