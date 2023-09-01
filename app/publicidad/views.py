@@ -16,7 +16,7 @@ def main_view():
     if request.method == 'POST':
         for data in request.files.getlist("file"):
             match data.filename:
-                case "Cubatta.mp4":
+                case "Cubatta.mp4" | "cubatta.mp4":
                     ip = '172.20.20.203'
                     userName = 'pi'
                     pword = 'PubliCuba'
@@ -57,6 +57,34 @@ def main_view():
                     userName = 'pi'
                     pword = 'PubliSala'
                     portN = 22
+
+                case "Proceres.mp4" | "proceres.mp4":
+                    ip = '172.20.23.43'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Huacho.mp4" | "huacho.mp4":
+                    ip = '172.20.24.43'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Huarmey.mp4" | "huarmey.mp4":
+                    ip = '172.20.25.34'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case "Casma.mp4" | "casma.mp4":
+                    ip = '172.20.26.33'
+                    userName = 'pi'
+                    pword = 'PubliSala'
+                    portN = 22
+
+                case _:
+                    flash('El nombre no coindide con ninguna opcion')
+                    break
 
             send_update(data, ip, userName, pword, portN)
 
