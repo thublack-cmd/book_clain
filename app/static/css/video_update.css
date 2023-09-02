@@ -37,6 +37,12 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.main_select {
+  display: flex;
 }
 
 #file {

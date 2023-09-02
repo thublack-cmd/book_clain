@@ -11,20 +11,32 @@
         <h1 class="text-header">Actualizacion de la publicidad de las salas</h1>
       </header>
       <form id="regForm" action="{{ url_for('publicidad.main_view') }}" method="post" enctype = "multipart/form-data">
-        <label for="sala">Seleccione un local</label>
-        <select name="sala">
-          <option value="Cubatta">Cubatta</option>
-          <option value="Tribeca">Tribeca</option>
-          <option value="Montreal">Montreal</option>
-          <option value="Kavari">Kavari</option>
-          <option value="Siete">Siete</option>
-          <option value="Magia">Magia</option>
-          <option value="Cassino">Cassino</option>
-          <option value="Proceres">Proceres</option>
-          <option value="Huacho">Huacho</option>
-          <option value="Huarmey">Huarmey</option>
-          <option value="Casma">Casma</option>
-        </select>
+        <div class="main_select">
+          <div id="select_container">
+            <label for="sala">Seleccione un local</label>
+            <select name="sala">
+              <option value="Cubatta">Cubatta</option>
+              <option value="Tribeca">Tribeca</option>
+              <option value="Montreal">Montreal</option>
+              <option value="Kavari">Kavari</option>
+              <option value="Siete">Siete</option>
+              <option value="Magia">Magia</option>
+              <option value="Cassino">Cassino</option>
+              <option value="Proceres">Proceres</option>
+              <option value="Huacho">Huacho</option>
+              <option value="Huarmey">Huarmey</option>
+              <option value="Casma">Casma</option>
+            </select>
+          </div>
+          <div id="chechbox-contain">
+            <label for="event">Evento?</label>
+            <input id="event" name="event" type="checkbox" value="1">
+          </div>
+        </div>
+        <div id="event-contain">
+          <label for="date">Seleccione el dia y la hora de comienzo</label>
+          <input id="date" name="date" type="datetime-local">
+        </div>
         <div id="input-contain">
           <input id="file" name="file" type="file" multiple>
         </div>
