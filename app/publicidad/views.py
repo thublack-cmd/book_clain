@@ -8,7 +8,7 @@ from paramiko import SSHClient
 from scp import SCPClient
 from pathlib import Path
 
-import tempfile
+import tempfile, re
 
 @publicidad.route('/', methods=['POST', 'GET'])
 def main_view():
@@ -17,10 +17,10 @@ def main_view():
         for data in request.files.getlist("file"):
             match request.form['sala']:
                 case "Cubatta":
-                    ip = '172.20.20.203'
+                    ip = '172.20.20.213'
                     userName = 'pi'
                     pword = 'PubliCuba'
-                    portN = 9000
+                    portN = 22
 
                 case "Tribeca":
                     ip = '172.20.21.186'
@@ -82,7 +82,10 @@ def main_view():
                     pword = 'PubliSala'
                     portN = 22
 
-            send_update(data, ip, userName, pword, portN, request)
+            if request.form['event']:
+                send_event(data, ip, userName, pword, portN, request)
+            else:
+                send_update(data, ip, userName, pword, portN, request)
 
     return render_template('video.html')
 
@@ -105,4 +108,24 @@ def send_update(request, ip, userName, pword, portN, local):
         ssh.close()
 
     flash(f'Se ha actualizado {local.form["sala"]}')
+    return redirect(url_for('publicidad.main_view'))
+
+def send_event(request, ip, userName, pword, portN, local):
+    ssh = SSHClient()
+    ssh.load_system_host_keys()
+    fecha = re.split(r'-|T|:', local.form['date'])
+
+    ssh.connect(ip,username=userName,password=pword,port=portN, timeout=900)
+    scp = SCPClient(ssh.get_transport())
+    with tempfile.TemporaryDirectory() as tmpdir:
+        temp_file = Path(tmpdir) / request.filename
+        request.save(temp_file)
+        remote_path = '/home/pi/prueba/' + fecha[2] + '.mp4'
+        scp.put(temp_file, remote_path)
+        scp.close()
+        # ssh.exec_command(f'sshpass -p "PubliCuba" crontab -l | {{ cat; echo "{fecha[4]} {fecha[3]} {fecha[2]} {fecha[1]} * /usr/bin/cp ~/prueba/{fecha[2]}.mp4 ~/prueba1/evento2.mp4"; }} | crontab -')
+        ssh.exec_command(f'echo "{fecha[4]} {fecha[3]} {fecha[2]} {fecha[1]} * /usr/bin/cp ~/prueba/{fecha[2]}.mp4 ~/prueba1/evento2.mp4" > ~/mycron && crontab ~/mycron')
+        ssh.close()
+
+    flash(f'Se ha agregado el evento en la sala {local.form["sala"]}')
     return redirect(url_for('publicidad.main_view'))
