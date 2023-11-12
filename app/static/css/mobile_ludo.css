@@ -130,6 +130,20 @@ body {
   border-color: blanchedalmond;
 }
 
+@media (max-width: 480px) {
+  img {
+    display: none;
+  }
+
+  .input-container {
+    margin-top: 90px;
+  }
+
+  .invalidMsg {
+    top: 65px;
+  }
+}
+
 @media (min-width: 800px) and (max-width: 850px) {
   /* Main section - Ludo  */
   .invalidMsg {

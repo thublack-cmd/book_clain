@@ -22,7 +22,7 @@
   </head>
   {% with messages = get_flashed_messages() %}
     {% if messages %}
-      <body onload="setTimeout(closeMessage, 3000)">
+      <body onload="setTimeout(closeMessage, 4000)">
     {% else %}
       <body>
     {% endif %}
@@ -34,6 +34,15 @@
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           {% for category, message in messages %}
+            {% if category == "error" %}
+              <audio id="audio_error" autoplay>
+                <source src="{{ url_for('static', filename='alerta.wav')  }}">
+              </audio>
+            {% else %}
+              <audio id="audio_access" autoplay>
+                <source src="{{ url_for('static', filename='BIENVENIDA.wav')  }}">
+              </audio>
+            {% endif %}
             <div class="message-container {{ category }}">
               <span>{{ message }}</span>
             </div>
@@ -41,7 +50,7 @@
         {% endif %}
       {% endwith %}
 
-      <form id="regForm" action="{{ url_for('ludopatia_cub.client_view') }}" method="post">
+      <form id="regForm" action="{{ url_for('ludopatia_cub.client_view') }}" method="post" onsubmit="return false">
         <div class="logo_container">
           {% if sala == 'cubatta' %}
             <picture>
@@ -75,7 +84,7 @@
         </div>
 
         <div class="input-container">
-          <input class="input-number" id="tbInput" type="number" name="input-num">
+          <input class="input-number" id="tbInput" type="number" name="input-num" autofocus>
           <button class="icon-keypad" type="button" onclick="showKeypad()">
         </div>
         <table class="none-display">
@@ -100,7 +109,8 @@
 	        </tr>
         </table>
         <div class="send-button-container">
-          <button class="send-button" type="button" id="nextBtn" onclick="validateDNI()">CONSULTAR</button>
+          <button class="send-button" type="submit" id="nextBtn" onclick="validateDNI()" >CONSULTAR</button>
+          <!-- <button class="send-button" type="submit" id="nextBtn">CONSULTAR</button> -->
         </div>
       </form>
       <div class="none-display">
@@ -108,58 +118,58 @@
       </div>
     </section>
 
-	<script type="text/javascript">
-    var tbInput = document.getElementById("tbInput");
+    <script type="text/javascript">
+      var tbInput = document.getElementById("tbInput");
 
-    function validateDNI(){
-      if(tbInput.value.length < 8 || tbInput.value.length > 10){
-        var invalidMsg = document.getElementsByClassName("none-display");
-        if (invalidMsg[1]) {
-          invalidMsg[1].classList.add("invalidMsg");
-          invalidMsg[1].classList.remove("none-display");
+      function validateDNI(){
+        if(tbInput.value.length < 8 || tbInput.value.length > 10){
+          var invalidMsg = document.getElementsByClassName("none-display");
+          if (invalidMsg[1]) {
+            invalidMsg[1].classList.add("invalidMsg");
+            invalidMsg[1].classList.remove("none-display");
+          } else {
+            invalidMsg = document.getElementsByClassName("invalidMsg");
+            invalidMsg[0].classList.add("animated");
+
+            setTimeout(function() {
+              invalidMsg[0].classList.remove("animated");
+            }, 1000)
+          }
           return false;
         } else {
-          invalidMsg = document.getElementsByClassName("invalidMsg");
-          invalidMsg[0].classList.add("animated");
-
-          setTimeout(function() {
-            invalidMsg[0].classList.remove("animated");
-          }, 1000)
+          document.getElementById("regForm").submit();
+          return true;
         }
-      } else {
-        document.getElementById("regForm").submit();
-        return true;
       }
-    }
 
-    function showKeypad() {
-      no_keypad = document.getElementsByClassName("none-display");
-      keypad = document.getElementsByClassName("table_teclado");
+      function showKeypad() {
+        no_keypad = document.getElementsByClassName("none-display");
+        keypad = document.getElementsByClassName("table_teclado");
 
-      if (keypad[0]) {
-        keypad[0].classList.add("none-display");
-        keypad[0].classList.remove("table_teclado");
-      }else {
-        no_keypad[0].classList.add("table_teclado");
-        no_keypad[0].classList.remove("none-display");
+        if (keypad[0]) {
+          keypad[0].classList.add("none-display");
+          keypad[0].classList.remove("table_teclado");
+        }else {
+          no_keypad[0].classList.add("table_teclado");
+          no_keypad[0].classList.remove("none-display");
+        }
       }
-    }
 
-    function input(e) {
-      //var tbInput = document.getElementById("tbInput");
-      tbInput.value = tbInput.value + e.innerHTML;
-    }
+      function input(e) {
+        //var tbInput = document.getElementById("tbInput");
+        tbInput.value = tbInput.value + e.innerHTML;
+      }
 
-    function del() {
-      //var tbInput = document.getElementById("tbInput");
-      tbInput.value = tbInput.value.substr(0, tbInput.value.length - 1);
-    }
+      function del() {
+        //var tbInput = document.getElementById("tbInput");
+        tbInput.value = tbInput.value.substr(0, tbInput.value.length - 1);
+      }
 
-    function closeMessage() {
-      pop = document.getElementsByClassName("message-container");
+      function closeMessage() {
+        pop = document.getElementsByClassName("message-container");
 
-      pop[0].style.display = "none";
-    }
-	</script>
+        pop[0].style.display = "none";
+      }
+    </script>
   </body>
 </html>

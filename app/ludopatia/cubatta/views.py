@@ -15,10 +15,10 @@ import pandas, pygame
 sala = 'cubatta'
 
 # Inicializacion de librerias para el sonido
-pygame.init()
-pygame.mixer.init()
-access = pygame.mixer.Sound("./app/static/BIENVENIDA.wav")
-dont_access = pygame.mixer.Sound("./app/static/alerta.wav")
+#pygame.init()
+#pygame.mixer.init()
+#access = pygame.mixer.Sound("./app/static/BIENVENIDA.wav")
+#dont_access = pygame.mixer.Sound("./app/static/alerta.wav")
 
 
 @ludopatia_cub.route('/', methods=['POST', 'GET'])
@@ -35,7 +35,7 @@ def client_view():
 
         if answer["input-num"] in sql_list:
             flash("PROHIBIDO EL INGRESO", 'error')
-            pygame.mixer.Sound.play(dont_access)
+            #pygame.mixer.Sound.play(dont_access)
             new_log = ingreso_cubatta(
                 nro_document = str(answer["input-num"]),
                 is_ludo = 1
@@ -45,7 +45,7 @@ def client_view():
             return redirect(url_for('ludopatia_cub.client_view'))
         else:
             flash("BIENVENIDO A LA SALA")
-            pygame.mixer.Sound.play(access)
+            #pygame.mixer.Sound.play(access)
             new_log = ingreso_cubatta(
                 nro_document = str(answer["input-num"]),
                 is_ludo = 0
