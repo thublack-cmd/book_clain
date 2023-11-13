@@ -2,9 +2,9 @@
 from flask import Flask
 
 from .config import Config
-from .auth.auth_db import user_model
+# from .auth.auth_db import user_model
 from .models import db
-from .auth import auth
+# from .auth import auth
 from .ludopatia import ludopatia
 from .ludopatia.cubatta import ludopatia_cub
 
@@ -15,7 +15,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    app.register_blueprint(auth)
+    # app.register_blueprint(auth)
     app.register_blueprint(ludopatia)
     app.register_blueprint(ludopatia_cub)
 
