@@ -10,3 +10,5 @@ images/
 *.sqlite3
 .env/
 __pycache__/
+clientes
+dbludopatia
