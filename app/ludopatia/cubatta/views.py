@@ -6,7 +6,6 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required
 
 # from APP
-from app.main_view import audit_main, discharge_main, processed_main
 from app.models import db, Ludopatia_db, ingreso_cubatta
 from . import ludopatia_cub
 
